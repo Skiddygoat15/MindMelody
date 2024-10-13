@@ -36,8 +36,16 @@
         "source": "com.devsquad.mind_melody.app-main-33:/xml/data_extraction_rules.xml"
     },
     {
+        "merged": "com.devsquad.mind_melody.app-debug-31:/layout_audio_item.xml.flat",
+        "source": "com.devsquad.mind_melody.app-main-33:/layout/audio_item.xml"
+    },
+    {
         "merged": "com.devsquad.mind_melody.app-debug-31:/mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "com.devsquad.mind_melody.app-main-33:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.devsquad.mind_melody.app-debug-31:/raw_rain.mp3.flat",
+        "source": "com.devsquad.mind_melody.app-main-33:/raw/rain.mp3"
     },
     {
         "merged": "com.devsquad.mind_melody.app-debug-31:/mipmap-hdpi_ic_launcher.webp.flat",
@@ -46,6 +54,10 @@
     {
         "merged": "com.devsquad.mind_melody.app-debug-31:/xml_backup_rules.xml.flat",
         "source": "com.devsquad.mind_melody.app-main-33:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.devsquad.mind_melody.app-debug-31:/raw_forest.mp3.flat",
+        "source": "com.devsquad.mind_melody.app-main-33:/raw/forest.mp3"
     },
     {
         "merged": "com.devsquad.mind_melody.app-debug-31:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
@@ -66,5 +78,9 @@
     {
         "merged": "com.devsquad.mind_melody.app-debug-31:/mipmap-mdpi_ic_launcher.webp.flat",
         "source": "com.devsquad.mind_melody.app-main-33:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.devsquad.mind_melody.app-debug-31:/layout_activity_audio_list.xml.flat",
+        "source": "com.devsquad.mind_melody.app-main-33:/layout/activity_audio_list.xml"
     }
 ]

@@ -1,0 +1,2 @@
+com.devsquad.mind_melody.test:style/WhiteBackgroundTheme = 0x7f010001
+com.devsquad.mind_melody.test:style/WhiteBackgroundDialogTheme = 0x7f010000

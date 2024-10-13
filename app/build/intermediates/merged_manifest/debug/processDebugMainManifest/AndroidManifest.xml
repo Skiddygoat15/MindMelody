@@ -28,7 +28,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.MindMelody" >
         <activity
-            android:name="com.devsquad.mind_melody.Activities.MainActivity"
+            android:name="com.devsquad.mind_melody.controller.AudioListActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +37,16 @@
             </intent-filter>
         </activity>
 
+        <!-- <activity -->
+        <!-- android:name=".Activities.MainActivity" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.devsquad.mind_melody.androidx-startup"
