@@ -1,5 +1,6 @@
 package com.devsquad.mind_melody.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -107,6 +108,13 @@ public class ForumActivity extends AppCompatActivity {
             runOnUiThread(() -> {
                 postAdapter = new PostAdapter(ForumActivity.this, postList, postDao);
                 recyclerView.setAdapter(postAdapter);
+                // 设置点击事件监听器
+                postAdapter.setOnItemClickListener(post -> {
+                    Intent intent = new Intent(ForumActivity.this, PostActivity.class);
+                    intent.putExtra("postId", post.getPostId());  // 传递帖子ID
+                    intent.putExtra("loggedInUser", loggedInUser);  // 传递当前登录用户
+                    startActivity(intent);
+                });
             });
         }).start();
     }

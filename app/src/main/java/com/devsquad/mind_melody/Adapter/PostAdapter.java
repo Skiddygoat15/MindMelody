@@ -27,6 +27,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     private PostDao postDao;  // 数据库DAO
     private Set<Integer> likedPosts = new HashSet<>();  // 跟踪用户点赞的帖子ID
 
+    // 定义接口
+    public interface OnItemClickListener {
+        void onItemClick(Post post);
+    }
+
+    // 接口的实例
+    private OnItemClickListener onItemClickListener;
+
+    // 设置监听器方法
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
+
     public PostAdapter(Context context, List<Post> postList, PostDao postDao) {
         this.context = context;
         this.postList = postList;
@@ -52,6 +65,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         String formattedDate = DateUtils.formatDateToSydneyTime(post.getCreatedAt());
         holder.createdAt.setText(formattedDate);  // 格式化后的时间显示
         holder.likesNum.setText(post.getLikesNum() + " Likes");
+
+        // 点击事件
+        holder.itemView.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick(post);  // 通过接口传递点击事件
+            }
+        });
 
         // 设置点赞图标的初始状态
         if (likedPosts.contains(post.getPostId())) {

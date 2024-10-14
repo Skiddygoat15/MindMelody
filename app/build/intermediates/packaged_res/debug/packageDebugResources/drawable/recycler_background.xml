@@ -4,7 +4,7 @@
     <solid android:color="#30D3D3D3" />
 
     <!-- 设置圆角 -->
-    <corners android:radius="16dp" />
+    <corners android:radius="2dp" />
 
     <!-- 设置边框 -->
     <stroke android:width="2dp" android:color="#FFB0B0B0" />

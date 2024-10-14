@@ -3100,12 +3100,14 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable recycler_background
+drawable reply_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
 id BOTTOM_END
 id BOTTOM_START
+id BackTo
 id CTRL
 id FUNCTION
 id META
@@ -3266,6 +3268,9 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id divider
+id dividerLine1
+id dividerLine2
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -3472,8 +3477,10 @@ id peekHeight
 id percent
 id pin
 id position
+id postAuthor
 id postButton
 id postContent
+id postDate
 id postLayout
 id postTitle
 id pressed
@@ -3483,7 +3490,13 @@ id radio
 id ratio
 id rectangles
 id recyclerView
+id recyclerViewReplies
 id refreshButton
+id replyAuthor
+id replyButton
+id replyContent
+id replyDate
+id replyInput
 id report_drawn
 id reverseSawtooth
 id right
@@ -3765,6 +3778,7 @@ layout home_activity
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_post
+layout item_reply
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3822,6 +3836,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout post_activity
 layout registration_activity
 layout select_dialog_item_material
 layout select_dialog_multichoice_material

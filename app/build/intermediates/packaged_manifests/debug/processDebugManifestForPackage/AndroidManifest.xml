@@ -42,6 +42,7 @@
         <activity android:name="com.devsquad.mind_melody.Activities.HomeActivity" />
         <!-- 声明 ForumActivity -->
         <activity android:name="com.devsquad.mind_melody.Activities.ForumActivity" />
+        <activity android:name="com.devsquad.mind_melody.Activities.PostActivity" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
