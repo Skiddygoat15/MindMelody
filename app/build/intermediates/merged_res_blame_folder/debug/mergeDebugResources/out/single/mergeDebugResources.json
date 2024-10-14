@@ -28,10 +28,6 @@
         "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.devsquad.mind_melody.app-debug-34:/layout_item_reply.xml.flat",
-        "source": "com.devsquad.mind_melody.app-main-36:/layout/item_reply.xml"
-    },
-    {
         "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-xhdpi\\ic_launcher.webp"
     },
@@ -118,6 +114,10 @@
     {
         "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\mipmap-anydpi_ic_launcher.xml.flat",
         "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_reply_background.xml.flat",
+        "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\reply_background.xml"
     },
     {
         "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\mipmap-xxhdpi_ic_launcher.webp.flat",

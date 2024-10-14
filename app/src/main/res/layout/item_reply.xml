@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
+    android:layout_marginBottom="5dp"
     android:background="@drawable/reply_background">
 
     <!-- 回复者姓名 -->

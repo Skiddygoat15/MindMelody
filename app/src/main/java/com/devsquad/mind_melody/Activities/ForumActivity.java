@@ -40,8 +40,8 @@ public class ForumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forum_activity);
 
-        // 获取从 HomeActivity 传递过来的 loggedInUser
-        loggedInUser = (User) getIntent().getSerializableExtra("loggedInUser");
+        // 获取从 MyApplication 设置的全局 loggedInUser
+        loggedInUser = ((MyApplication) getApplicationContext()).getLoggedInUser();
 
         if (loggedInUser != null) {
             Log.d("ForumActivity", "Logged in User ID: " + loggedInUser.getUserId());

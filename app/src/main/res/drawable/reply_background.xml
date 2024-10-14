@@ -5,7 +5,4 @@
 
     <!-- 设置圆角 -->
     <corners android:radius="2dp" />
-
-    <!-- 设置边框 -->
-    <stroke android:width="2dp" android:color="#FFB0B0B0" />
 </shape>
