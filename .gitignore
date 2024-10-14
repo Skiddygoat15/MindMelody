@@ -78,3 +78,5 @@ crashlytics.properties
 /.idea
 /.gradle
 /.gradle
+/.gradle/8.7/executionHistory
+/.gradle/buildOutputCleanup
