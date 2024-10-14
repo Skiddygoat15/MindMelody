@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\MindMelody\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from D:\MindMelody\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from D:\MindMelody\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from D:\MindMelody\app\src\main\AndroidManifest.xml:2:1-30:12
+ADDED from D:\MindMelody\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from D:\MindMelody\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from D:\MindMelody\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from D:\MindMelody\app\src\main\AndroidManifest.xml:2:1-32:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Calvin Li\.gradle\caches\transforms-4\7a9aae6d8e9d27cf6e88168f6c33d267\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Calvin Li\.gradle\caches\transforms-4\46094d77014813b13aed4c51924d9232\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\Calvin Li\.gradle\caches\transforms-4\b84ae970fce4774e3416c512c72b4d0a\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
@@ -59,8 +59,8 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\Calvin 
 	xmlns:android
 		ADDED from D:\MindMelody\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from D:\MindMelody\app\src\main\AndroidManifest.xml:5:5-28:19
-INJECTED from D:\MindMelody\app\src\main\AndroidManifest.xml:5:5-28:19
+ADDED from D:\MindMelody\app\src\main\AndroidManifest.xml:5:5-30:19
+INJECTED from D:\MindMelody\app\src\main\AndroidManifest.xml:5:5-30:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Calvin Li\.gradle\caches\transforms-4\7a9aae6d8e9d27cf6e88168f6c33d267\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Calvin Li\.gradle\caches\transforms-4\7a9aae6d8e9d27cf6e88168f6c33d267\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Calvin Li\.gradle\caches\transforms-4\46094d77014813b13aed4c51924d9232\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -125,6 +125,10 @@ activity#com.devsquad.mind_melody.Activities.HomeActivity
 ADDED from D:\MindMelody\app\src\main\AndroidManifest.xml:27:9-61
 	android:name
 		ADDED from D:\MindMelody\app\src\main\AndroidManifest.xml:27:19-58
+activity#com.devsquad.mind_melody.Activities.ForumActivity
+ADDED from D:\MindMelody\app\src\main\AndroidManifest.xml:29:9-62
+	android:name
+		ADDED from D:\MindMelody\app\src\main\AndroidManifest.xml:29:19-59
 uses-sdk
 INJECTED from D:\MindMelody\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\MindMelody\app\src\main\AndroidManifest.xml

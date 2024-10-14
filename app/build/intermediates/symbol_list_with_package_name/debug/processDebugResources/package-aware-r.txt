@@ -1376,6 +1376,7 @@ color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
+color colorPrimary
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
 color design_dark_default_color_background
@@ -3020,6 +3021,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_refresh
 drawable ic_search_black_24
 drawable indeterminate_static
 drawable m3_avd_hide_password
@@ -3094,6 +3096,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable recycler_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3181,6 +3184,7 @@ id appLogo
 id arc
 id asConfigured
 id async
+id author
 id auto
 id autoComplete
 id autoCompleteToEnd
@@ -3219,6 +3223,7 @@ id clip_vertical
 id clockwise
 id closest
 id collapseActionView
+id communityTitle
 id compress
 id confirm_button
 id constraint
@@ -3233,6 +3238,7 @@ id cos
 id counterclockwise
 id cradle
 id createUserButton
+id createdAt
 id currentState
 id custom
 id customPanel
@@ -3327,6 +3333,7 @@ id immediateStop
 id included
 id indeterminate
 id info
+id inputContainer
 id invisible
 id inward
 id italic
@@ -3339,6 +3346,7 @@ id layout
 id left
 id leftToRight
 id legacy
+id likesNum
 id line1
 id line3
 id linear
@@ -3347,6 +3355,7 @@ id list_item
 id loginButton
 id loginLinkText
 id m3_side_sheet
+id makePost
 id marquee
 id masked
 id match_constraint
@@ -3459,6 +3468,7 @@ id peekHeight
 id percent
 id pin
 id position
+id postButton
 id postLayout
 id pressed
 id progress_circular
@@ -3466,7 +3476,8 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
-id recyclerViewPosts
+id recyclerView
+id refreshButton
 id report_drawn
 id reverseSawtooth
 id right
@@ -3747,6 +3758,7 @@ layout forum_activity
 layout home_activity
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_post
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

@@ -1375,6 +1375,7 @@ int color cardview_dark_background 0x7f05002c
 int color cardview_light_background 0x7f05002d
 int color cardview_shadow_end_color 0x7f05002e
 int color cardview_shadow_start_color 0x7f05002f
+int color colorPrimary 0x7f050307
 int color design_bottom_navigation_shadow_color 0x7f050030
 int color design_box_stroke_color 0x7f050031
 int color design_dark_default_color_background 0x7f050032
@@ -3019,6 +3020,7 @@ int drawable ic_mtrl_checked_circle 0x7f070097
 int drawable ic_mtrl_chip_checked_black 0x7f070098
 int drawable ic_mtrl_chip_checked_circle 0x7f070099
 int drawable ic_mtrl_chip_close_circle 0x7f07009a
+int drawable ic_refresh 0x7f0700e9
 int drawable ic_search_black_24 0x7f07009b
 int drawable indeterminate_static 0x7f07009c
 int drawable m3_avd_hide_password 0x7f07009d
@@ -3093,6 +3095,7 @@ int drawable notification_template_icon_bg 0x7f0700e1
 int drawable notification_template_icon_low_bg 0x7f0700e2
 int drawable notification_tile_bg 0x7f0700e3
 int drawable notify_panel_notification_icon_bg 0x7f0700e4
+int drawable recycler_background 0x7f0700e8
 int drawable test_level_drawable 0x7f0700e5
 int drawable tooltip_frame_dark 0x7f0700e6
 int drawable tooltip_frame_light 0x7f0700e7
@@ -3180,6 +3183,7 @@ int id appLogo 0x7f080050
 int id arc 0x7f080051
 int id asConfigured 0x7f080052
 int id async 0x7f080053
+int id author 0x7f080203
 int id auto 0x7f080054
 int id autoComplete 0x7f080055
 int id autoCompleteToEnd 0x7f080056
@@ -3218,6 +3222,7 @@ int id clip_vertical 0x7f080076
 int id clockwise 0x7f080077
 int id closest 0x7f080078
 int id collapseActionView 0x7f080079
+int id communityTitle 0x7f080204
 int id compress 0x7f08007a
 int id confirm_button 0x7f08007b
 int id constraint 0x7f08007c
@@ -3232,6 +3237,7 @@ int id cos 0x7f080084
 int id counterclockwise 0x7f080085
 int id cradle 0x7f080086
 int id createUserButton 0x7f080087
+int id createdAt 0x7f080205
 int id currentState 0x7f080088
 int id custom 0x7f080089
 int id customPanel 0x7f08008a
@@ -3326,6 +3332,7 @@ int id immediateStop 0x7f0800e2
 int id included 0x7f0800e3
 int id indeterminate 0x7f0800e4
 int id info 0x7f0800e5
+int id inputContainer 0x7f080208
 int id invisible 0x7f0800e6
 int id inward 0x7f0800e7
 int id italic 0x7f0800e8
@@ -3338,6 +3345,7 @@ int id layout 0x7f0800ee
 int id left 0x7f0800ef
 int id leftToRight 0x7f0800f0
 int id legacy 0x7f0800f1
+int id likesNum 0x7f080206
 int id line1 0x7f0800f2
 int id line3 0x7f0800f3
 int id linear 0x7f0800f4
@@ -3346,6 +3354,7 @@ int id list_item 0x7f0800f6
 int id loginButton 0x7f0800f7
 int id loginLinkText 0x7f0800f8
 int id m3_side_sheet 0x7f0800f9
+int id makePost 0x7f080209
 int id marquee 0x7f0800fa
 int id masked 0x7f0800fb
 int id match_constraint 0x7f0800fc
@@ -3458,6 +3467,7 @@ int id peekHeight 0x7f080166
 int id percent 0x7f080167
 int id pin 0x7f080168
 int id position 0x7f080169
+int id postButton 0x7f08020a
 int id postLayout 0x7f08016a
 int id pressed 0x7f08016b
 int id progress_circular 0x7f08016c
@@ -3465,7 +3475,8 @@ int id progress_horizontal 0x7f08016d
 int id radio 0x7f08016e
 int id ratio 0x7f08016f
 int id rectangles 0x7f080170
-int id recyclerViewPosts 0x7f080171
+int id recyclerView 0x7f080207
+int id refreshButton 0x7f08020b
 int id report_drawn 0x7f080172
 int id reverseSawtooth 0x7f080173
 int id right 0x7f080174
@@ -3746,6 +3757,7 @@ int layout forum_activity 0x7f0b002d
 int layout home_activity 0x7f0b002e
 int layout ime_base_split_test_activity 0x7f0b002f
 int layout ime_secondary_split_test_activity 0x7f0b0030
+int layout item_post 0x7f0b006f
 int layout m3_alert_dialog 0x7f0b0031
 int layout m3_alert_dialog_actions 0x7f0b0032
 int layout m3_alert_dialog_title 0x7f0b0033

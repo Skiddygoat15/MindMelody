@@ -25,6 +25,8 @@
         <activity android:name=".Activities.RegistrationActivity" />
         <!-- 声明 HomeActivity -->
         <activity android:name=".Activities.HomeActivity" />
+        <!-- 声明 ForumActivity -->
+        <activity android:name=".Activities.ForumActivity" />
     </application>
 
 </manifest>
