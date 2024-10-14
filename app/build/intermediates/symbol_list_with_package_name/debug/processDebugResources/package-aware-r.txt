@@ -3000,6 +3000,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable edit_text_background
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3176,6 +3177,7 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
+id appLogo
 id arc
 id asConfigured
 id async
@@ -3226,9 +3228,11 @@ id contentPanel
 id contiguous
 id continuousVelocity
 id coordinator
+id copyrightText
 id cos
 id counterclockwise
 id cradle
+id createUserButton
 id currentState
 id custom
 id customPanel
@@ -3270,6 +3274,7 @@ id edge
 id edit_query
 id edit_text_id
 id elastic
+id emailEditText
 id embed
 id end
 id endToStart
@@ -3284,6 +3289,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id firstNameEditText
 id fitCenter
 id fitEnd
 id fitStart
@@ -3328,6 +3334,7 @@ id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
 id labeled
+id lastNameEditText
 id layout
 id left
 id leftToRight
@@ -3337,8 +3344,9 @@ id line3
 id linear
 id listMode
 id list_item
+id loginButton
+id loginLinkText
 id m3_side_sheet
-id main
 id marquee
 id masked
 id match_constraint
@@ -3442,6 +3450,8 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id passwordConfirmEditText
+id passwordEditText
 id password_toggle
 id path
 id pathRelative
@@ -3493,6 +3503,8 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signUpLink
+id signUpText
 id sin
 id skipCollapsed
 id skipped
@@ -3558,6 +3570,7 @@ id textinput_suffix_text
 id time
 id title
 id titleDividerNoCustom
+id titleTextView
 id title_template
 id toggle
 id top
@@ -3588,6 +3601,7 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id welcomeText
 id west
 id withText
 id with_icon
@@ -3728,6 +3742,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout home_activity
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout m3_alert_dialog
@@ -3787,6 +3802,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout registration_activity
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

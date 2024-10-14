@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.devsquad.mind_melody.app-mergeDebugResources-29:/values-v23/values-v23.xml",
+            "outputFile": "com.devsquad.mind_melody.app-mergeDebugResources-32:/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Calvin Li\\.gradle\\caches\\transforms-4\\c20effe805a199dde8f1eda53d78a70e\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",

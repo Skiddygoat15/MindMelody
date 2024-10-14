@@ -2,10 +2,26 @@ R_DEF: Internal format may change without notice
 local
 color black
 color white
+drawable edit_text_background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
-id main
+id appLogo
+id copyrightText
+id createUserButton
+id emailEditText
+id firstNameEditText
+id lastNameEditText
+id loginButton
+id loginLinkText
+id passwordConfirmEditText
+id passwordEditText
+id signUpLink
+id signUpText
+id titleTextView
+id welcomeText
 layout activity_main
+layout home_activity
+layout registration_activity
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
