@@ -1,3 +1,0 @@
-com.devsquad.mind_melody.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

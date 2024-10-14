@@ -30,7 +30,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.MindMelody" >
         <activity
-            android:name="com.devsquad.mind_melody.controller.AudioListActivity"
+            android:name="com.devsquad.mind_melody.Activities.AudioListActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,15 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- 声明 RegisterationActivity -->
-        <activity android:name="com.devsquad.mind_melody.Activities.RegistrationActivity" />
-        <!-- 声明 HomeActivity -->
-        <activity android:name="com.devsquad.mind_melody.Activities.HomeActivity" />
-
-        <service
-            android:name="androidx.room.MultiInstanceInvalidationService"
-            android:directBootAware="true"
-            android:exported="false" />
 
         <!-- <activity -->
         <!-- android:name=".Activities.MainActivity" -->
@@ -58,6 +49,16 @@
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
+        <!-- 声明 RegisterationActivity -->
+        <activity android:name="com.devsquad.mind_melody.Activities.RegistrationActivity" />
+        <!-- 声明 HomeActivity -->
+        <activity android:name="com.devsquad.mind_melody.Activities.HomeActivity" />
+
+        <service
+            android:name="androidx.room.MultiInstanceInvalidationService"
+            android:directBootAware="true"
+            android:exported="false" />
+
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.devsquad.mind_melody.androidx-startup"

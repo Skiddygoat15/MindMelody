@@ -7,8 +7,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="选择音频"
-        android:textSize="18sp"
+        android:text="Choose Audio"
+        android:textSize="20sp"
         android:layout_gravity="center_horizontal"
         android:padding="16dp"/>
 
@@ -21,17 +21,17 @@
         android:id="@+id/play_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="播放"/>
+        android:text="Play"/>
 
     <Button
         android:id="@+id/pause_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="暂停"/>
+        android:text="Pause"/>
 
     <Button
         android:id="@+id/stop_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="停止"/>
+        android:text="Stop"/>
 </LinearLayout>
