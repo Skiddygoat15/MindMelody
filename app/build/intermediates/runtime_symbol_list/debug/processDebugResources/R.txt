@@ -3227,9 +3227,11 @@ int id contentPanel 0x7f08007e
 int id contiguous 0x7f08007f
 int id continuousVelocity 0x7f080080
 int id coordinator 0x7f080081
+int id copyrightText 0x7f0801fb
 int id cos 0x7f080082
 int id counterclockwise 0x7f080083
 int id cradle 0x7f080084
+int id createUserButton 0x7f0801fc
 int id currentState 0x7f080085
 int id custom 0x7f080086
 int id customPanel 0x7f080087
@@ -3286,6 +3288,7 @@ int id fill 0x7f0800b8
 int id fill_horizontal 0x7f0800b9
 int id fill_vertical 0x7f0800ba
 int id filled 0x7f0800bb
+int id firstNameEditText 0x7f0801fd
 int id fitCenter 0x7f0800bc
 int id fitEnd 0x7f0800bd
 int id fitStart 0x7f0800be
@@ -3330,6 +3333,7 @@ int id item_touch_helper_previous_elevation 0x7f0800e4
 int id jumpToEnd 0x7f0800e5
 int id jumpToStart 0x7f0800e6
 int id labeled 0x7f0800e7
+int id lastNameEditText 0x7f0801fe
 int id layout 0x7f0800e8
 int id left 0x7f0800e9
 int id leftToRight 0x7f0800ea
@@ -3340,6 +3344,7 @@ int id linear 0x7f0800ee
 int id listMode 0x7f0800ef
 int id list_item 0x7f0800f0
 int id loginButton 0x7f0801f7
+int id loginLinkText 0x7f0801ff
 int id m3_side_sheet 0x7f0800f1
 int id marquee 0x7f0800f3
 int id masked 0x7f0800f4
@@ -3444,6 +3449,7 @@ int id parent 0x7f080156
 int id parentPanel 0x7f080157
 int id parentRelative 0x7f080158
 int id parent_matrix 0x7f080159
+int id passwordConfirmEditText 0x7f080201
 int id passwordEditText 0x7f0801f8
 int id password_toggle 0x7f08015a
 int id path 0x7f08015b
@@ -3563,6 +3569,7 @@ int id textinput_suffix_text 0x7f0801ca
 int id time 0x7f0801cb
 int id title 0x7f0801cc
 int id titleDividerNoCustom 0x7f0801cd
+int id titleTextView 0x7f080200
 int id title_template 0x7f0801ce
 int id toggle 0x7f0801cf
 int id top 0x7f0801d0
@@ -3593,6 +3600,7 @@ int id view_tree_saved_state_registry_owner 0x7f0801e8
 int id view_tree_view_model_store_owner 0x7f0801e9
 int id visible 0x7f0801ea
 int id visible_removing_fragment_view_tag 0x7f0801eb
+int id welcomeText 0x7f080202
 int id west 0x7f0801ec
 int id withText 0x7f0801ed
 int id with_icon 0x7f0801ee
@@ -3733,6 +3741,7 @@ int layout design_navigation_menu 0x7f0b0029
 int layout design_navigation_menu_item 0x7f0b002a
 int layout design_text_input_end_icon 0x7f0b002b
 int layout design_text_input_start_icon 0x7f0b002c
+int layout home_activity 0x7f0b006d
 int layout ime_base_split_test_activity 0x7f0b002d
 int layout ime_secondary_split_test_activity 0x7f0b002e
 int layout m3_alert_dialog 0x7f0b002f
@@ -3792,6 +3801,7 @@ int layout notification_template_custom_big 0x7f0b0064
 int layout notification_template_icon_group 0x7f0b0065
 int layout notification_template_part_chronometer 0x7f0b0066
 int layout notification_template_part_time 0x7f0b0067
+int layout registration_activity 0x7f0b006c
 int layout select_dialog_item_material 0x7f0b0068
 int layout select_dialog_multichoice_material 0x7f0b0069
 int layout select_dialog_singlechoice_material 0x7f0b006a

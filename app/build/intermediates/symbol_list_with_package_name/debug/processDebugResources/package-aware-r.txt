@@ -3228,9 +3228,11 @@ id contentPanel
 id contiguous
 id continuousVelocity
 id coordinator
+id copyrightText
 id cos
 id counterclockwise
 id cradle
+id createUserButton
 id currentState
 id custom
 id customPanel
@@ -3287,6 +3289,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id firstNameEditText
 id fitCenter
 id fitEnd
 id fitStart
@@ -3331,6 +3334,7 @@ id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
 id labeled
+id lastNameEditText
 id layout
 id left
 id leftToRight
@@ -3341,6 +3345,7 @@ id linear
 id listMode
 id list_item
 id loginButton
+id loginLinkText
 id m3_side_sheet
 id marquee
 id masked
@@ -3445,6 +3450,7 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id passwordConfirmEditText
 id passwordEditText
 id password_toggle
 id path
@@ -3564,6 +3570,7 @@ id textinput_suffix_text
 id time
 id title
 id titleDividerNoCustom
+id titleTextView
 id title_template
 id toggle
 id top
@@ -3594,6 +3601,7 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id welcomeText
 id west
 id withText
 id with_icon
@@ -3734,6 +3742,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout home_activity
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout m3_alert_dialog
@@ -3793,6 +3802,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout registration_activity
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

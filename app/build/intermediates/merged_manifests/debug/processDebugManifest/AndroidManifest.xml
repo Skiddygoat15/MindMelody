@@ -36,6 +36,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 声明 RegisterationActivity -->
+        <activity android:name="com.devsquad.mind_melody.Activities.RegistrationActivity" />
+        <!-- 声明 HomeActivity -->
+        <activity android:name="com.devsquad.mind_melody.Activities.HomeActivity" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
