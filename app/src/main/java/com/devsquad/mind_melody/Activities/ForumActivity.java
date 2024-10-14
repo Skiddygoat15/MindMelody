@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication;
 import com.devsquad.mind_melody.Adapter.PostAdapter;
 import com.devsquad.mind_melody.Model.Forum.ForumDB;
 import com.devsquad.mind_melody.Model.Forum.Post;
@@ -19,7 +20,6 @@ import com.devsquad.mind_melody.Model.Forum.PostDao;
 import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.R;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

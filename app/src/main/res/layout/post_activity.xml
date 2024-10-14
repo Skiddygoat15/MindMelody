@@ -6,95 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".Activities.PostActivity">
 
-    <!-- 帖子标题 -->
-    <TextView
-        android:id="@+id/postTitle"
-        android:layout_width="wrap_content"
+    <!-- RecyclerView 用于显示帖子详细内容 -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPostDetails"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Post Title"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- 作者 -->
-
-    <!-- 帖子内容 -->
-
-    <!-- 发布时间 -->
-
-    <!-- 分割线 -->
-
-    <!-- 回复列表 RecyclerView -->
-
-    <TextView
-        android:id="@+id/postAuthor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Author"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/postTitle"
-        app:layout_constraintTop_toBottomOf="@id/postTitle" />
-
-    <TextView
-        android:id="@+id/postContent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="Post Content"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/postTitle"
-        app:layout_constraintTop_toBottomOf="@id/postAuthor" />
-
-    <!-- 分割线2 -->
-
-    <!-- 输入回复框 -->
-
-    <!-- 回复按钮 -->
-
-    <TextView
-        android:id="@+id/postDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="48dp"
-        android:text="Posted on: Date"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@id/postTitle"
-        app:layout_constraintTop_toBottomOf="@id/postContent" />
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@id/dividerLine1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="6dp" />
 
     <View
         android:id="@+id/dividerLine1"
         android:layout_width="0dp"
         android:layout_height="3dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/postDate" />
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewPostDetails" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewReplies"
         android:layout_width="377dp"
         android:layout_height="407dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@id/dividerLine2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dividerLine1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewPostDetails"
+        app:layout_constraintVertical_bias="0.956" />
 
     <View
         android:id="@+id/dividerLine2"

@@ -21,8 +21,8 @@
 16
 17    <application
 17-->D:\MindMelody\app\src\main\AndroidManifest.xml:5:5-32:19
-18        android:name="com.devsquad.mind_melody.Activities.MyApplication"
-18-->D:\MindMelody\app\src\main\AndroidManifest.xml:6:9-49
+18        android:name="com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication"
+18-->D:\MindMelody\app\src\main\AndroidManifest.xml:6:9-74
 19        android:allowBackup="true"
 19-->D:\MindMelody\app\src\main\AndroidManifest.xml:7:9-35
 20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"

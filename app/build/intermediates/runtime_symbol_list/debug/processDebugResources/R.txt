@@ -3267,7 +3267,6 @@ int id disableIntraAutoTransition 0x7f0800a0
 int id disablePostScroll 0x7f0800a1
 int id disableScroll 0x7f0800a2
 int id disjoint 0x7f0800a3
-int id divider 0x7f0800a4
 int id dividerLine1 0x7f0800a5
 int id dividerLine2 0x7f0800a6
 int id dragAnticlockwise 0x7f0800a7
@@ -3489,6 +3488,7 @@ int id radio 0x7f08017e
 int id ratio 0x7f08017f
 int id rectangles 0x7f080180
 int id recyclerView 0x7f080181
+int id recyclerViewPostDetails 0x7f08021a
 int id recyclerViewReplies 0x7f080182
 int id refreshButton 0x7f080183
 int id replyAuthor 0x7f080184
@@ -3777,6 +3777,7 @@ int layout home_activity 0x7f0b002e
 int layout ime_base_split_test_activity 0x7f0b002f
 int layout ime_secondary_split_test_activity 0x7f0b0030
 int layout item_post 0x7f0b0031
+int layout item_post_reply 0x7f0b0072
 int layout item_reply 0x7f0b0032
 int layout m3_alert_dialog 0x7f0b0033
 int layout m3_alert_dialog_actions 0x7f0b0034

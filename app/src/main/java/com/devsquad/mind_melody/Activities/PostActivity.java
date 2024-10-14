@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.devsquad.mind_melody.Adapter.PostDetailAdapter;
 import com.devsquad.mind_melody.Adapter.ReplyAdapter;
 import com.devsquad.mind_melody.Adapter.SimpleDateFormatter.DateUtils;
 import com.devsquad.mind_melody.Model.Forum.ForumDB;
@@ -31,7 +32,7 @@ public class PostActivity extends AppCompatActivity {
     private TextView postTitle, postAuthor, postContent, postDate, backTo;
     private EditText replyContentEditText;
     private Button replyButton;
-    private RecyclerView replyRecyclerView;
+    private RecyclerView replyRecyclerView, recyclerViewPostDetails;
     private List<Reply> replyList;
     private ReplyAdapter replyAdapter;
     private ForumDB forumDB;
@@ -44,12 +45,9 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_activity);
+        recyclerViewPostDetails = findViewById(R.id.recyclerViewPostDetails);  // 初始化RecyclerView
 
         // 初始化UI组件
-        postTitle = findViewById(R.id.postTitle);
-        postAuthor = findViewById(R.id.postAuthor);
-        postContent = findViewById(R.id.postContent);
-        postDate = findViewById(R.id.postDate);
         replyContentEditText = findViewById(R.id.replyInput);
         replyButton = findViewById(R.id.replyButton);
         replyRecyclerView = findViewById(R.id.recyclerViewReplies);
@@ -111,19 +109,23 @@ public class PostActivity extends AppCompatActivity {
     // 加载帖子并显示
     private void loadPost(int postId) {
         new Thread(() -> {
-            Post post = postDao.getPostById(postId);
+            Post post = postDao.getPostById(postId);  // 从数据库获取帖子数据
 
             if (post != null) {
                 runOnUiThread(() -> {
-                    postTitle.setText(post.getTitle());
-                    postAuthor.setText(post.getAuthor());
-                    postContent.setText(post.getContent());
-                    String formattedDate = DateUtils.formatDateToSydneyTime(post.getCreatedAt());
-                    postDate.setText("Posted on: " + formattedDate);
+                    // 创建一个Post列表并将帖子添加到列表中
+                    List<Post> postDetails = new ArrayList<>();
+                    postDetails.add(post);
+
+                    // 创建PostDetailAdapter并设置RecyclerView
+                    PostDetailAdapter postDetailAdapter = new PostDetailAdapter(PostActivity.this, postDetails);
+                    recyclerViewPostDetails.setLayoutManager(new LinearLayoutManager(PostActivity.this));
+                    recyclerViewPostDetails.setAdapter(postDetailAdapter);  // 绑定Adapter到RecyclerView
                 });
             }
         }).start();
     }
+
 
     // 加载回复并更新RecyclerView
     private void loadReplies(int postId) {

@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication;
 import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.Model.User.UserDB;
 import com.devsquad.mind_melody.R;
