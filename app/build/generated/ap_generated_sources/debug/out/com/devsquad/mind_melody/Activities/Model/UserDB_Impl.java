@@ -1,22 +1,19 @@
-package com.devsquad.mind_melody.Activities.DataBase;
+package com.devsquad.mind_melody.Activities.Model;
 
 import androidx.annotation.NonNull;
 import androidx.room.DatabaseConfiguration;
 import androidx.room.InvalidationTracker;
 import androidx.room.RoomOpenHelper;
-import androidx.room.RoomOpenHelper.Delegate;
-import androidx.room.RoomOpenHelper.ValidationResult;
 import androidx.room.migration.AutoMigrationSpec;
 import androidx.room.migration.Migration;
 import androidx.room.util.DBUtil;
 import androidx.room.util.TableInfo;
-import androidx.room.util.TableInfo.Column;
-import androidx.room.util.TableInfo.ForeignKey;
-import androidx.room.util.TableInfo.Index;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
-import androidx.sqlite.db.SupportSQLiteOpenHelper.Callback;
-import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration;
+
+import com.devsquad.mind_melody.Model.UserDB;
+import com.devsquad.mind_melody.Model.UserDao;
+
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
@@ -98,7 +95,7 @@ public final class UserDB_Impl extends UserDB {
         final TableInfo _infoUser = new TableInfo("User", _columnsUser, _foreignKeysUser, _indicesUser);
         final TableInfo _existingUser = TableInfo.read(_db, "User");
         if (! _infoUser.equals(_existingUser)) {
-          return new RoomOpenHelper.ValidationResult(false, "User(com.devsquad.mind_melody.Activities.DataBase.User).\n"
+          return new RoomOpenHelper.ValidationResult(false, "User(com.devsquad.mind_melody.Model.User).\n"
                   + " Expected:\n" + _infoUser + "\n"
                   + " Found:\n" + _existingUser);
         }

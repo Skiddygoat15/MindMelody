@@ -1,4 +1,4 @@
-package com.devsquad.mind_melody.Activities.DataBase.DateConverter;
+package com.devsquad.mind_melody.Model.DateConverter;
 import androidx.room.TypeConverter;
 
 import java.util.Date;

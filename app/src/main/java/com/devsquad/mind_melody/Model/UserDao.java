@@ -1,12 +1,8 @@
-package com.devsquad.mind_melody.Activities.DataBase;
+package com.devsquad.mind_melody.Model;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
 import androidx.room.OnConflictStrategy;
-
-import java.util.Date;
-import java.util.List;
 
 @Dao
 public interface UserDao {

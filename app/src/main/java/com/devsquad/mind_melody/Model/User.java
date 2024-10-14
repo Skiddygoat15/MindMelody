@@ -1,4 +1,4 @@
-package com.devsquad.mind_melody.Activities.DataBase;
+package com.devsquad.mind_melody.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

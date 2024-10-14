@@ -1,4 +1,4 @@
-package com.devsquad.mind_melody.Activities.DataBase;
+package com.devsquad.mind_melody.Activities.Model;
 
 import android.database.Cursor;
 import androidx.room.EntityInsertionAdapter;
@@ -8,7 +8,10 @@ import androidx.room.SharedSQLiteStatement;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
-import com.devsquad.mind_melody.Activities.DataBase.DateConverter.DateConverter;
+import com.devsquad.mind_melody.Model.DateConverter.DateConverter;
+import com.devsquad.mind_melody.Model.User;
+import com.devsquad.mind_melody.Model.UserDao;
+
 import java.lang.Class;
 import java.lang.Long;
 import java.lang.Override;
