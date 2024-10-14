@@ -24,6 +24,10 @@
         "source": "com.devsquad.mind_melody.app-main-36:/layout/activity_main.xml"
     },
     {
+        "merged": "com.devsquad.mind_melody.app-debug-34:/layout_forum_activity.xml.flat",
+        "source": "com.devsquad.mind_melody.app-main-36:/layout/forum_activity.xml"
+    },
+    {
         "merged": "com.devsquad.mind_melody.app-debug-34:/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "com.devsquad.mind_melody.app-main-36:/mipmap-xhdpi/ic_launcher.webp"
     },

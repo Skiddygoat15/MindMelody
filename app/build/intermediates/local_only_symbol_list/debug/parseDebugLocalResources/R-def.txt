@@ -15,11 +15,13 @@ id loginButton
 id loginLinkText
 id passwordConfirmEditText
 id passwordEditText
+id recyclerViewPosts
 id signUpLink
 id signUpText
 id titleTextView
 id welcomeText
 layout activity_main
+layout forum_activity
 layout home_activity
 layout registration_activity
 mipmap ic_launcher

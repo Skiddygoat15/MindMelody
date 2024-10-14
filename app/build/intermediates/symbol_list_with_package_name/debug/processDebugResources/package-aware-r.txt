@@ -3466,6 +3466,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerViewPosts
 id report_drawn
 id reverseSawtooth
 id right
@@ -3742,6 +3743,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout forum_activity
 layout home_activity
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity

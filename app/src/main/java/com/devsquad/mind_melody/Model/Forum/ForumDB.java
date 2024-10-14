@@ -3,9 +3,13 @@ package com.devsquad.mind_melody.Model.Forum;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
+
 import android.content.Context;
+import com.devsquad.mind_melody.Model.DateConverter.DateConverter;
 
 @Database(entities = {Post.class, Reply.class}, version = 1, exportSchema = false)
+@TypeConverters({DateConverter.class})
 public abstract class ForumDB extends RoomDatabase {
 
     private static volatile ForumDB INSTANCE;
