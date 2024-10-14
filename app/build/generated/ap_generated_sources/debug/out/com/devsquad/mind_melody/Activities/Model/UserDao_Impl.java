@@ -9,8 +9,8 @@ import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.devsquad.mind_melody.Model.DateConverter.DateConverter;
-import com.devsquad.mind_melody.Model.User;
-import com.devsquad.mind_melody.Model.UserDao;
+import com.devsquad.mind_melody.Model.User.User;
+import com.devsquad.mind_melody.Model.User.UserDao;
 
 import java.lang.Class;
 import java.lang.Long;
