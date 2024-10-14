@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.devsquad.mind_melody.Model.User;
+import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.R;
 
 public class HomeActivity extends AppCompatActivity {

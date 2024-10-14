@@ -11,8 +11,8 @@ import androidx.room.util.TableInfo;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-import com.devsquad.mind_melody.Model.UserDB;
-import com.devsquad.mind_melody.Model.UserDao;
+import com.devsquad.mind_melody.Model.User.UserDB;
+import com.devsquad.mind_melody.Model.User.UserDao;
 
 import java.lang.Class;
 import java.lang.Override;
@@ -95,7 +95,7 @@ public final class UserDB_Impl extends UserDB {
         final TableInfo _infoUser = new TableInfo("User", _columnsUser, _foreignKeysUser, _indicesUser);
         final TableInfo _existingUser = TableInfo.read(_db, "User");
         if (! _infoUser.equals(_existingUser)) {
-          return new RoomOpenHelper.ValidationResult(false, "User(com.devsquad.mind_melody.Model.User).\n"
+          return new RoomOpenHelper.ValidationResult(false, "User(com.devsquad.mind_melody.Model.User.User).\n"
                   + " Expected:\n" + _infoUser + "\n"
                   + " Found:\n" + _existingUser);
         }
