@@ -3,24 +3,24 @@
 3    package="com.devsquad.mind_melody.test" >
 4
 5    <uses-sdk
-5-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:5:5-74
+5-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:5:5-74
 6        android:minSdkVersion="31"
-6-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:5:15-41
+6-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:5:15-41
 7        android:targetSdkVersion="34" />
-7-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:5:42-71
+7-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:5:42-71
 8
 9    <instrumentation
-9-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:11:5-15:74
+9-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:11:5-15:74
 10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:11:22-76
+10-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:11:22-76
 11        android:functionalTest="false"
-11-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:14:22-52
+11-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:14:22-52
 12        android:handleProfiling="false"
-12-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:13:22-53
+12-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:13:22-53
 13        android:label="Tests for com.devsquad.mind_melody"
-13-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:15:22-72
+13-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:15:22-72
 14        android:targetPackage="com.devsquad.mind_melody" />
-14-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:12:22-70
+14-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:12:22-70
 15
 16    <queries>
 16-->[androidx.test:runner:1.6.1] C:\Users\zyy11\.gradle\caches\transforms-4\727b09eea03318e0a0c2e1f198343b1c\transformed\runner-1.6.1\AndroidManifest.xml:24:5-28:15
@@ -40,12 +40,12 @@
 22-->[androidx.test:core:1.6.1] C:\Users\zyy11\.gradle\caches\transforms-4\2cb443ffdc663d09dd676afd89887a73\transformed\core-1.6.1\AndroidManifest.xml:24:22-69
 23
 24    <application
-24-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:7:5-9:19
+24-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:7:5-9:19
 25        android:debuggable="true"
 26        android:extractNativeLibs="false" >
 27        <uses-library android:name="android.test.runner" />
-27-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:8:9-60
-27-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest13121747106108775900.xml:8:23-57
+27-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:8:9-60
+27-->C:\Users\zyy11\Desktop\COMP5216\Assignment\Group Project\MindMelody\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest407176073975184726.xml:8:23-57
 28
 29        <activity
 29-->[androidx.test:core:1.6.1] C:\Users\zyy11\.gradle\caches\transforms-4\2cb443ffdc663d09dd676afd89887a73\transformed\core-1.6.1\AndroidManifest.xml:27:9-34:20
