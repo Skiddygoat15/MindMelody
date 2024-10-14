@@ -3,6 +3,7 @@ package com.devsquad.mind_melody.view;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
     public void onBindViewHolder(@NonNull AudioViewHolder holder, int position) {
         Audio audio = audioList.get(position);
         holder.audioName.setText(audio.getName());
+        holder.audioImage.setImageResource(audio.getImageResId());  // 设置图片
         holder.itemView.setOnClickListener(v -> {
             currentPosition = holder.getAdapterPosition();
             listener.onItemClick(audio);
@@ -56,10 +58,12 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
 
     public static class AudioViewHolder extends RecyclerView.ViewHolder {
         TextView audioName;
+        ImageView audioImage;  // 定义ImageView
 
         public AudioViewHolder(@NonNull View itemView) {
             super(itemView);
             audioName = itemView.findViewById(R.id.audio_name);
+            audioImage = itemView.findViewById(R.id.audio_image);  // 绑定ImageView
         }
     }
 }

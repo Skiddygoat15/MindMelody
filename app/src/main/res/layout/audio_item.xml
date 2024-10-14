@@ -5,6 +5,14 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
+    <!-- 添加用于显示图片的ImageView -->
+    <ImageView
+        android:id="@+id/audio_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop" />
+
     <TextView
         android:id="@+id/audio_name"
         android:layout_width="wrap_content"

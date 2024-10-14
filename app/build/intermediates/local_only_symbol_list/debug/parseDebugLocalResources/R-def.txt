@@ -2,8 +2,11 @@ R_DEF: Internal format may change without notice
 local
 color black
 color white
+drawable forest_image
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable rain_image
+id audio_image
 id audio_name
 id audio_recycler_view
 id main

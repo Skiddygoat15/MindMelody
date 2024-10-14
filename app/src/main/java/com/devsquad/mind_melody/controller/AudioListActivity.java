@@ -2,6 +2,8 @@ package com.devsquad.mind_melody.controller;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,10 +26,10 @@ public class AudioListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_list);
 
-        // 初始化音频列表
+        // 初始化音频列表 并为每个音频设置对应的图片资源ID
         audioList = new ArrayList<>();
-        audioList.add(new Audio("雨声", "android.resource://" + getPackageName() + "/" + R.raw.rain));
-        audioList.add(new Audio("森林", "android.resource://" + getPackageName() + "/" + R.raw.forest));
+        audioList.add(new Audio("雨声", "android.resource://" + getPackageName() + "/" + R.raw.rain, R.drawable.rain_image));
+        audioList.add(new Audio("森林", "android.resource://" + getPackageName() + "/" + R.raw.forest, R.drawable.forest_image));
 
         // RecyclerView设置
         RecyclerView recyclerView = findViewById(R.id.audio_recycler_view);
@@ -45,9 +47,30 @@ public class AudioListActivity extends AppCompatActivity {
     private void playAudio(Audio audio) {
         if (mediaPlayer != null) {
             mediaPlayer.release();
+            mediaPlayer = null;     // 避免空指针异常
         }
+//        mediaPlayer = MediaPlayer.create(this, android.net.Uri.parse(audio.getFilePath()));
+//        mediaPlayer.start();
+        // 从filePath创建MediaPlayer
         mediaPlayer = MediaPlayer.create(this, android.net.Uri.parse(audio.getFilePath()));
-        mediaPlayer.start();
+        // 检查MediaPlayer是否成功创建
+        if (mediaPlayer == null) {
+            Log.e("AudioPlayback", "MediaPlayer无法创建，音频路径: " + audio.getFilePath());
+            return;
+        }
+
+        Log.d("AudioPlayback", "正在播放音频: " + audio.getFilePath());
+
+        mediaPlayer.start(); // 播放音频
+        Log.i("AudioPlayback", "音频播放已启动");
+
+        // 设置onCompletionListener，当音频播放完毕时调用
+        mediaPlayer.setOnCompletionListener(mp -> {
+            Log.i("AudioPlayback", "音频播放完成");
+            // 释放资源，防止内存泄漏
+            mediaPlayer.release();
+            mediaPlayer = null;
+        });
     }
 
     // 暂停音频

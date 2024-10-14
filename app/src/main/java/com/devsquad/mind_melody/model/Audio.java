@@ -3,10 +3,12 @@ package com.devsquad.mind_melody.model;
 public class Audio {
     private String name;
     private String filePath;
+    private int imageResId;  // 新增图片资源ID --
 
-    public Audio(String name, String filePath) {
+    public Audio(String name, String filePath, int imageResId) {
         this.name = name;
         this.filePath = filePath;
+        this.imageResId = imageResId;
     }
 
     public String getName() {
@@ -23,5 +25,13 @@ public class Audio {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public int getImageResId() {
+        return imageResId;
+    }
+
+    public void setImageResId(int imageResId) {
+        this.imageResId = imageResId;
     }
 }
