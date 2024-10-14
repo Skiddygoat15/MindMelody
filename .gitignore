@@ -76,3 +76,5 @@ crashlytics.properties
 /.idea
 .idea/workspace.xml
 /.idea
+/.gradle
+/.gradle
