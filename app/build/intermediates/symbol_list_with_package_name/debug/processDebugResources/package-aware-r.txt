@@ -3000,6 +3000,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable edit_text_background
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3176,6 +3177,7 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
+id appLogo
 id arc
 id asConfigured
 id async
@@ -3270,6 +3272,7 @@ id edge
 id edit_query
 id edit_text_id
 id elastic
+id emailEditText
 id embed
 id end
 id endToStart
@@ -3337,8 +3340,8 @@ id line3
 id linear
 id listMode
 id list_item
+id loginButton
 id m3_side_sheet
-id main
 id marquee
 id masked
 id match_constraint
@@ -3442,6 +3445,7 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id passwordEditText
 id password_toggle
 id path
 id pathRelative
@@ -3493,6 +3497,8 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signUpLink
+id signUpText
 id sin
 id skipCollapsed
 id skipped

@@ -2999,6 +2999,7 @@ int drawable design_ic_visibility 0x7f070083
 int drawable design_ic_visibility_off 0x7f070084
 int drawable design_password_eye 0x7f070085
 int drawable design_snackbar_background 0x7f070086
+int drawable edit_text_background 0x7f0700e7
 int drawable ic_arrow_back_black_24 0x7f070087
 int drawable ic_call_answer 0x7f070088
 int drawable ic_call_answer_low 0x7f070089
@@ -3175,6 +3176,7 @@ int id animateToEnd 0x7f08004c
 int id animateToStart 0x7f08004d
 int id antiClockwise 0x7f08004e
 int id anticipate 0x7f08004f
+int id appLogo 0x7f0801f5
 int id arc 0x7f080050
 int id asConfigured 0x7f080051
 int id async 0x7f080052
@@ -3269,6 +3271,7 @@ int id edge 0x7f0800aa
 int id edit_query 0x7f0800ab
 int id edit_text_id 0x7f0800ac
 int id elastic 0x7f0800ad
+int id emailEditText 0x7f0801f6
 int id embed 0x7f0800ae
 int id end 0x7f0800af
 int id endToStart 0x7f0800b0
@@ -3336,8 +3339,8 @@ int id line3 0x7f0800ed
 int id linear 0x7f0800ee
 int id listMode 0x7f0800ef
 int id list_item 0x7f0800f0
+int id loginButton 0x7f0801f7
 int id m3_side_sheet 0x7f0800f1
-int id main 0x7f0800f2
 int id marquee 0x7f0800f3
 int id masked 0x7f0800f4
 int id match_constraint 0x7f0800f5
@@ -3441,6 +3444,7 @@ int id parent 0x7f080156
 int id parentPanel 0x7f080157
 int id parentRelative 0x7f080158
 int id parent_matrix 0x7f080159
+int id passwordEditText 0x7f0801f8
 int id password_toggle 0x7f08015a
 int id path 0x7f08015b
 int id pathRelative 0x7f08015c
@@ -3492,6 +3496,8 @@ int id shortcut 0x7f080189
 int id showCustom 0x7f08018a
 int id showHome 0x7f08018b
 int id showTitle 0x7f08018c
+int id signUpLink 0x7f0801f9
+int id signUpText 0x7f0801fa
 int id sin 0x7f08018d
 int id skipCollapsed 0x7f08018e
 int id skipped 0x7f08018f
