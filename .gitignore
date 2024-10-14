@@ -1,0 +1,78 @@
+# Android specific
+*.iml
+.gradle/
+local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+.DS_Store
+/build/
+captures/
+.externalNativeBuild/
+.cxx/
+.navigation/
+output.json
+
+# Gradle specific
+.gradle
+/local.properties
+/.gradle
+/build/
+/out/
+/captures/
+
+# Signing keys
+.signing/
+
+# Ignore Gradle wrapper jar file
+gradle-wrapper.jar
+
+# Android Studio specific
+.idea/
+/.idea/gradle.xml
+/.idea/workspace.xml
+/.idea/libraries/
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/dictionaries
+/.idea/caches/
+/.idea/assetWizardSettings.xml
+/.idea/compiler.xml
+/.idea/encodings.xml
+
+# Files for project settings
+.idea/
+/*.iml
+/.vscode/
+
+# Ignore Android specific cache files
+*.apk
+*.ap_
+
+
+# Ignore Google Services config
+google-services.json
+
+# Ignore crashlytics and fabric files
+fabric.properties
+crashlytics.properties
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.swp
+*.temp
+*.tmp
+
+# Ignore generated Java classes
+*.class
+
+# Ignore build output directories
+*/build/
+/.idea
+/.idea
+.idea/workspace.xml
+/.idea
