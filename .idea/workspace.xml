@@ -16,7 +16,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="edff21bd-be0c-4899-9ce0-4121fc8c9278" name="Changes" comment="" />
+    <list default="true" id="edff21bd-be0c-4899-9ce0-4121fc8c9278" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/devsquad/mind_melody/Model/Forum/ForumDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/devsquad/mind_melody/Model/Forum/Post.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/devsquad/mind_melody/Model/Forum/PostDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/devsquad/mind_melody/Model/Forum/Reply.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/devsquad/mind_melody/Model/Forum/ReplyDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,6 +59,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Android App.app.executor": "Run",
+    "PROJECT_TRUSTED_KEY": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
