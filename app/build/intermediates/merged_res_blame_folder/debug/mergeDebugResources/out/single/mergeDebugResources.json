@@ -44,6 +44,10 @@
         "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\layout\\registration_activity.xml"
     },
     {
+        "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_ic_thumb_up.png.flat",
+        "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\ic_thumb_up.png"
+    },
+    {
         "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\ic_launcher_foreground.xml"
     },
@@ -86,6 +90,10 @@
     {
         "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\xml_backup_rules.xml.flat",
         "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_ic_thumb_up_clicked.png.flat",
+        "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\ic_thumb_up_clicked.png"
     },
     {
         "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_ic_launcher_background.xml.flat",

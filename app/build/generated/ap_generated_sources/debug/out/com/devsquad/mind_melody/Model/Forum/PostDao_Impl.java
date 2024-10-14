@@ -29,6 +29,8 @@ public final class PostDao_Impl implements PostDao {
 
   private final SharedSQLiteStatement __preparedStmtOfLikePost;
 
+  private final SharedSQLiteStatement __preparedStmtOfDisLikePost;
+
   public PostDao_Impl(RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfPost = new EntityInsertionAdapter<Post>(__db) {
@@ -72,6 +74,13 @@ public final class PostDao_Impl implements PostDao {
         return _query;
       }
     };
+    this.__preparedStmtOfDisLikePost = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "UPDATE Post SET likesNum = likesNum - 1 WHERE postId = ?";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -100,6 +109,22 @@ public final class PostDao_Impl implements PostDao {
     } finally {
       __db.endTransaction();
       __preparedStmtOfLikePost.release(_stmt);
+    }
+  }
+
+  @Override
+  public void disLikePost(final int postId) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfDisLikePost.acquire();
+    int _argIndex = 1;
+    _stmt.bindLong(_argIndex, postId);
+    __db.beginTransaction();
+    try {
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfDisLikePost.release(_stmt);
     }
   }
 

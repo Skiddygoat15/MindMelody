@@ -34,6 +34,17 @@
     <!-- 输入帖子内容的 EditText -->
 
     <!-- 提交帖子按钮 -->
+    <!-- 细线 -->
+
+    <View
+        android:id="@+id/lineSeparator"
+        android:layout_width="359dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="104dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
     <EditText
         android:id="@+id/postTitle"
@@ -82,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="242dp"
+        android:layout_marginBottom="252dp"
         android:contentDescription="Refresh"
         android:src="@drawable/ic_refresh"
         app:backgroundTint="@color/colorPrimary"

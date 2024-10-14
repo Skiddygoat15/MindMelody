@@ -23,5 +23,9 @@ public interface PostDao {
     @Query("UPDATE Post SET likesNum = likesNum + 1 WHERE postId = :postId")
     void likePost(int postId);
 
+    // 更新点赞数
+    @Query("UPDATE Post SET likesNum = likesNum - 1 WHERE postId = :postId")
+    void disLikePost(int postId);
+
 
 }

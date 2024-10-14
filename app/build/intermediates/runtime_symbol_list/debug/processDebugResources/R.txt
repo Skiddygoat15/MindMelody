@@ -3023,6 +3023,8 @@ int drawable ic_mtrl_chip_checked_circle 0x7f070099
 int drawable ic_mtrl_chip_close_circle 0x7f07009a
 int drawable ic_refresh 0x7f0700e9
 int drawable ic_search_black_24 0x7f07009b
+int drawable ic_thumb_up 0x7f0700eb
+int drawable ic_thumb_up_clicked 0x7f0700ec
 int drawable indeterminate_static 0x7f07009c
 int drawable m3_avd_hide_password 0x7f07009d
 int drawable m3_avd_show_password 0x7f07009e
@@ -3346,9 +3348,11 @@ int id layout 0x7f0800ee
 int id left 0x7f0800ef
 int id leftToRight 0x7f0800f0
 int id legacy 0x7f0800f1
+int id likeIcon 0x7f08020f
 int id likesNum 0x7f080206
 int id line1 0x7f0800f2
 int id line3 0x7f0800f3
+int id lineSeparator 0x7f080210
 int id linear 0x7f0800f4
 int id listMode 0x7f0800f5
 int id list_item 0x7f0800f6

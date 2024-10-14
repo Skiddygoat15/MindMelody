@@ -3024,6 +3024,8 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_refresh
 drawable ic_search_black_24
+drawable ic_thumb_up
+drawable ic_thumb_up_clicked
 drawable indeterminate_static
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3347,9 +3349,11 @@ id layout
 id left
 id leftToRight
 id legacy
+id likeIcon
 id likesNum
 id line1
 id line3
+id lineSeparator
 id linear
 id listMode
 id list_item

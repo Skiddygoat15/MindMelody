@@ -105,7 +105,7 @@ public class ForumActivity extends AppCompatActivity {
 
             // 回到主线程更新RecyclerView
             runOnUiThread(() -> {
-                postAdapter = new PostAdapter(ForumActivity.this, postList);
+                postAdapter = new PostAdapter(ForumActivity.this, postList, postDao);
                 recyclerView.setAdapter(postAdapter);
             });
         }).start();

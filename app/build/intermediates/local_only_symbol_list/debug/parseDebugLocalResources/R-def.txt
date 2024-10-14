@@ -8,6 +8,8 @@ drawable edit_text_background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_refresh
+drawable ic_thumb_up
+drawable ic_thumb_up_clicked
 drawable recycler_background
 id appLogo
 id author
@@ -20,7 +22,9 @@ id emailEditText
 id firstNameEditText
 id goToForum
 id lastNameEditText
+id likeIcon
 id likesNum
+id lineSeparator
 id loginButton
 id loginLinkText
 id passwordConfirmEditText
