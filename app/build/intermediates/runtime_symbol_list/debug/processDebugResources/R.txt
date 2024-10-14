@@ -2987,6 +2987,7 @@ int drawable abc_textfield_search_material 0x7f070076
 int drawable abc_vector_test 0x7f070077
 int drawable avd_hide_password 0x7f070078
 int drawable avd_show_password 0x7f070079
+int drawable border_shape 0x7f0700ea
 int drawable btn_checkbox_checked_mtrl 0x7f07007a
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f07007b
 int drawable btn_checkbox_unchecked_mtrl 0x7f07007c
@@ -3309,6 +3310,7 @@ int id frost 0x7f0800cb
 int id fullscreen_header 0x7f0800cc
 int id ghost_view 0x7f0800cd
 int id ghost_view_holder 0x7f0800ce
+int id goToForum 0x7f08020c
 int id gone 0x7f0800cf
 int id graph 0x7f0800d0
 int id graph_wrap 0x7f0800d1
@@ -3332,7 +3334,6 @@ int id immediateStop 0x7f0800e2
 int id included 0x7f0800e3
 int id indeterminate 0x7f0800e4
 int id info 0x7f0800e5
-int id inputContainer 0x7f080208
 int id invisible 0x7f0800e6
 int id inward 0x7f0800e7
 int id italic 0x7f0800e8
@@ -3354,7 +3355,6 @@ int id list_item 0x7f0800f6
 int id loginButton 0x7f0800f7
 int id loginLinkText 0x7f0800f8
 int id m3_side_sheet 0x7f0800f9
-int id makePost 0x7f080209
 int id marquee 0x7f0800fa
 int id masked 0x7f0800fb
 int id match_constraint 0x7f0800fc
@@ -3468,7 +3468,9 @@ int id percent 0x7f080167
 int id pin 0x7f080168
 int id position 0x7f080169
 int id postButton 0x7f08020a
+int id postContent 0x7f08020d
 int id postLayout 0x7f08016a
+int id postTitle 0x7f08020e
 int id pressed 0x7f08016b
 int id progress_circular 0x7f08016c
 int id progress_horizontal 0x7f08016d

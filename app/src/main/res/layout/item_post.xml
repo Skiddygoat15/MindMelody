@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Author Name"
         android:textStyle="bold"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,18 +52,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2 hours ago"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="12dp" />
+
+    <!-- 点赞图标 -->
+    <ImageView
+        android:id="@+id/likeIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_thumb_up" 
+        app:layout_constraintEnd_toStartOf="@id/likesNum"
+        app:layout_constraintTop_toTopOf="@id/likesNum" />
 
     <!-- 点赞数 -->
     <TextView
         android:id="@+id/likesNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="0 Likes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="12dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,7 @@ public final class PostDao_Impl implements PostDao {
     this.__insertionAdapterOfPost = new EntityInsertionAdapter<Post>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `Post` (`postId`,`title`,`content`,`author`,`createdAt`,`likesNum`) VALUES (nullif(?, 0),?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `Post` (`postId`,`title`,`content`,`author`,`createdAt`,`likesNum`,`UserIdO`) VALUES (nullif(?, 0),?,?,?,?,?,?)";
       }
 
       @Override
@@ -62,6 +62,7 @@ public final class PostDao_Impl implements PostDao {
           stmt.bindLong(5, _tmp);
         }
         stmt.bindLong(6, value.getLikesNum());
+        stmt.bindLong(7, value.getUserIdO());
       }
     };
     this.__preparedStmtOfLikePost = new SharedSQLiteStatement(__db) {
@@ -115,6 +116,7 @@ public final class PostDao_Impl implements PostDao {
       final int _cursorIndexOfAuthor = CursorUtil.getColumnIndexOrThrow(_cursor, "author");
       final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
       final int _cursorIndexOfLikesNum = CursorUtil.getColumnIndexOrThrow(_cursor, "likesNum");
+      final int _cursorIndexOfUserIdO = CursorUtil.getColumnIndexOrThrow(_cursor, "UserIdO");
       final List<Post> _result = new ArrayList<Post>(_cursor.getCount());
       while(_cursor.moveToNext()) {
         final Post _item;
@@ -146,7 +148,9 @@ public final class PostDao_Impl implements PostDao {
         _tmpCreatedAt = DateConverter.fromTimestamp(_tmp);
         final int _tmpLikesNum;
         _tmpLikesNum = _cursor.getInt(_cursorIndexOfLikesNum);
-        _item = new Post(_tmpTitle,_tmpContent,_tmpAuthor,_tmpCreatedAt,_tmpLikesNum);
+        final int _tmpUserIdO;
+        _tmpUserIdO = _cursor.getInt(_cursorIndexOfUserIdO);
+        _item = new Post(_tmpTitle,_tmpContent,_tmpAuthor,_tmpCreatedAt,_tmpLikesNum,_tmpUserIdO);
         final int _tmpPostId;
         _tmpPostId = _cursor.getInt(_cursorIndexOfPostId);
         _item.setPostId(_tmpPostId);
@@ -174,6 +178,7 @@ public final class PostDao_Impl implements PostDao {
       final int _cursorIndexOfAuthor = CursorUtil.getColumnIndexOrThrow(_cursor, "author");
       final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
       final int _cursorIndexOfLikesNum = CursorUtil.getColumnIndexOrThrow(_cursor, "likesNum");
+      final int _cursorIndexOfUserIdO = CursorUtil.getColumnIndexOrThrow(_cursor, "UserIdO");
       final Post _result;
       if(_cursor.moveToFirst()) {
         final String _tmpTitle;
@@ -204,7 +209,9 @@ public final class PostDao_Impl implements PostDao {
         _tmpCreatedAt = DateConverter.fromTimestamp(_tmp);
         final int _tmpLikesNum;
         _tmpLikesNum = _cursor.getInt(_cursorIndexOfLikesNum);
-        _result = new Post(_tmpTitle,_tmpContent,_tmpAuthor,_tmpCreatedAt,_tmpLikesNum);
+        final int _tmpUserIdO;
+        _tmpUserIdO = _cursor.getInt(_cursorIndexOfUserIdO);
+        _result = new Post(_tmpTitle,_tmpContent,_tmpAuthor,_tmpCreatedAt,_tmpLikesNum,_tmpUserIdO);
         final int _tmpPostId;
         _tmpPostId = _cursor.getInt(_cursorIndexOfPostId);
         _result.setPostId(_tmpPostId);

@@ -3,6 +3,7 @@ local
 color black
 color colorPrimary
 color white
+drawable border_shape
 drawable edit_text_background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -17,15 +18,16 @@ id createUserButton
 id createdAt
 id emailEditText
 id firstNameEditText
-id inputContainer
+id goToForum
 id lastNameEditText
 id likesNum
 id loginButton
 id loginLinkText
-id makePost
 id passwordConfirmEditText
 id passwordEditText
 id postButton
+id postContent
+id postTitle
 id recyclerView
 id refreshButton
 id signUpLink

@@ -38,13 +38,13 @@ public final class ForumDB_Impl extends ForumDB {
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `Post` (`postId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT, `content` TEXT, `author` TEXT, `createdAt` INTEGER, `likesNum` INTEGER NOT NULL)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `Post` (`postId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT, `content` TEXT, `author` TEXT, `createdAt` INTEGER, `likesNum` INTEGER NOT NULL, `UserIdO` INTEGER NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `Reply` (`replyId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `postId` INTEGER NOT NULL, `content` TEXT, `author` TEXT, `createdAt` INTEGER, FOREIGN KEY(`postId`) REFERENCES `Post`(`postId`) ON UPDATE NO ACTION ON DELETE CASCADE )");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0e227d42bc281b1ac417c764deccd206')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e5de081a46e9f296df9f916068523cd4')");
       }
 
       @Override
@@ -90,13 +90,14 @@ public final class ForumDB_Impl extends ForumDB {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsPost = new HashMap<String, TableInfo.Column>(6);
+        final HashMap<String, TableInfo.Column> _columnsPost = new HashMap<String, TableInfo.Column>(7);
         _columnsPost.put("postId", new TableInfo.Column("postId", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsPost.put("title", new TableInfo.Column("title", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsPost.put("content", new TableInfo.Column("content", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsPost.put("author", new TableInfo.Column("author", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsPost.put("createdAt", new TableInfo.Column("createdAt", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsPost.put("likesNum", new TableInfo.Column("likesNum", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPost.put("UserIdO", new TableInfo.Column("UserIdO", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysPost = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesPost = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoPost = new TableInfo("Post", _columnsPost, _foreignKeysPost, _indicesPost);
@@ -124,7 +125,7 @@ public final class ForumDB_Impl extends ForumDB {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "0e227d42bc281b1ac417c764deccd206", "c66f1abd5a9db5854ce33ab5b5771b70");
+    }, "e5de081a46e9f296df9f916068523cd4", "237952019c62bc701f2d45abbdc0b246");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

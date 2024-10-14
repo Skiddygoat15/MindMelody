@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.devsquad.mind_melody.Model.Forum.Post;
 import com.devsquad.mind_melody.R;
+import com.devsquad.mind_melody.Adapter.SimpleDateFormatter.DateUtils;
 
 import java.util.List;
 
@@ -38,7 +39,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.author.setText(post.getAuthor());
         holder.title.setText(post.getTitle());
         holder.content.setText(post.getContent());
-        holder.createdAt.setText(post.getCreatedAt().toString());  // Format this as needed
+        // 使用 DateUtils 来格式化 createdAt
+        String formattedDate = DateUtils.formatDateToSydneyTime(post.getCreatedAt());
+        holder.createdAt.setText(formattedDate);  // 格式化后的时间显示
         holder.likesNum.setText(post.getLikesNum() + " Likes");
     }
 

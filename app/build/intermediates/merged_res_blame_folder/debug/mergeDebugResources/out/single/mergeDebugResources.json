@@ -48,6 +48,10 @@
         "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\ic_launcher_foreground.xml"
     },
     {
+        "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_border_shape.xml.flat",
+        "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\border_shape.xml"
+    },
+    {
         "merged": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_ic_refresh.png.flat",
         "source": "C:\\Users\\Calvin Li\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\ic_refresh.png"
     },
