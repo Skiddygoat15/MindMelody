@@ -31,7 +31,7 @@ public class ForumActivity extends AppCompatActivity {
     private ForumDB forumDB;
     private EditText postTitle;
     private EditText postContent;
-    private Button postButton;
+    private Button postButton, returnButton;
     private PostDao postDao;
     private User loggedInUser; // 当前登录的用户
 
@@ -55,6 +55,7 @@ public class ForumActivity extends AppCompatActivity {
         postTitle = findViewById(R.id.postTitle);
         postContent = findViewById(R.id.postContent);
         postButton = findViewById(R.id.postButton);
+        returnButton = findViewById(R.id.returnButton);
 
         // 获取数据库实例
         forumDB = ForumDB.getDatabase(this);
@@ -92,6 +93,19 @@ public class ForumActivity extends AppCompatActivity {
                     }
                 }).start();
             }
+        });
+        returnButton.setOnClickListener(v -> {
+            // 创建Intent对象，用于跳转到HomeActivity
+            Intent intent = new Intent(ForumActivity.this, HomeActivity.class);
+
+            // 如果需要传递当前用户信息，您可以添加如下代码
+            intent.putExtra("loggedInUser", loggedInUser);
+
+            // 启动HomeActivity
+            startActivity(intent);
+
+            // 结束当前Activity，防止返回时回到ForumActivity
+            finish();
         });
 
         // 设置刷新按钮监听器

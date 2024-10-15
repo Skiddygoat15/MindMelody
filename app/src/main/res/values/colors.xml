@@ -2,5 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#6750A4</color> <!-- Customized color -->
+    <color name="colorPrimary">#E6A7BF</color> <!-- 按钮颜色 -->
+    <color name="colorPrimaryDark">#B3C6E0</color> <!-- 状态栏颜色 -->
+    <color name="colorAccent">#FFD966</color> <!-- 按钮的强调色 -->
 </resources>
