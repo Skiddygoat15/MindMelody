@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication;
 import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.Model.User.UserDB;
 import com.devsquad.mind_melody.R;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     // 用户存在，跳转到 HomeActivity
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     intent.putExtra("loggedInUser", user);  // 将 User 对象传递给 HomeActivity
+                    ((MyApplication) getApplicationContext()).setLoggedInUser(user);
                     startActivity(intent);
                     finish();  // 结束当前 Activity，防止用户返回登录页面
                 } else {
