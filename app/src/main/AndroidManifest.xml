@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".Activities.OverallApplicationSetups.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -37,6 +38,9 @@
         <activity android:name=".Activities.RegistrationActivity" />
         <!-- 声明 HomeActivity -->
         <activity android:name=".Activities.HomeActivity" />
+        <!-- 声明 ForumActivity -->
+        <activity android:name=".Activities.ForumActivity" />
+        <activity android:name=".Activities.PostActivity" />
     </application>
 
 </manifest>
