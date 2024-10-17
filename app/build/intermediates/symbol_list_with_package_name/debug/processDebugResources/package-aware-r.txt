@@ -3000,6 +3000,11 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+<<<<<<< Updated upstream
+=======
+drawable edit_text_background
+drawable focus
+>>>>>>> Stashed changes
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3042,6 +3047,7 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable meditation
 drawable mtrl_bottomsheet_drag_handle
 drawable mtrl_checkbox_button
 drawable mtrl_checkbox_button_checked_unchecked
@@ -3183,6 +3189,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backToHomeButton
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3194,6 +3201,19 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+<<<<<<< Updated upstream
+=======
+id btnBack
+id btnPause
+id btnReplay
+id button1
+id button2
+id button3
+id button4
+id button5
+id button6
+id buttonLayout
+>>>>>>> Stashed changes
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3580,6 +3600,9 @@ id unlabeled
 id up
 id useLogo
 id vertical_only
+id videoThumbnail
+id videoTitle
+id videoView
 id view_offset_helper
 id view_transition
 id view_tree_lifecycle_owner
@@ -3712,6 +3735,12 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+<<<<<<< Updated upstream
+=======
+layout activity_meditation_video_list
+layout activity_video_player
+layout bottom_navigation
+>>>>>>> Stashed changes
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3730,6 +3759,14 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+<<<<<<< Updated upstream
+=======
+layout item_home_content
+layout item_post
+layout item_post_reply
+layout item_reply
+layout item_video
+>>>>>>> Stashed changes
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3794,6 +3831,14 @@ layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
+raw day1
+raw day2
+raw day3
+raw day4
+raw day5
+raw day6
+raw day7
+raw meditation
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

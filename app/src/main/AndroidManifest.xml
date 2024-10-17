@@ -21,6 +21,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< Updated upstream
+=======
+        <!-- 声明 RegisterationActivity -->
+        <activity android:name=".Activities.RegistrationActivity" />
+        <!-- 声明 HomeActivity -->
+        <activity android:name=".Activities.HomeActivity" />
+        <!-- 声明 ForumActivity -->
+        <activity android:name=".Activities.ForumActivity" />
+        <activity android:name=".Activities.PostActivity" />
+
+        <activity android:name=".Activities.MeditationVideoListActivity" />
+        <activity android:name=".Activities.VideoPlayerActivity" />
+
+>>>>>>> Stashed changes
     </application>
 
 </manifest>

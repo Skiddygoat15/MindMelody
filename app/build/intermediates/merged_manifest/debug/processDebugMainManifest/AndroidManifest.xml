@@ -36,6 +36,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< Updated upstream
+=======
+        <!-- 声明 RegisterationActivity -->
+        <activity android:name="com.devsquad.mind_melody.Activities.RegistrationActivity" />
+        <!-- 声明 HomeActivity -->
+        <activity android:name="com.devsquad.mind_melody.Activities.HomeActivity" />
+        <!-- 声明 ForumActivity -->
+        <activity android:name="com.devsquad.mind_melody.Activities.ForumActivity" />
+        <activity android:name="com.devsquad.mind_melody.Activities.PostActivity" />
+        <activity android:name="com.devsquad.mind_melody.Activities.MeditationVideoListActivity" />
+        <activity android:name="com.devsquad.mind_melody.Activities.VideoPlayerActivity" />
+
+        <service
+            android:name="androidx.room.MultiInstanceInvalidationService"
+            android:directBootAware="true"
+            android:exported="false" />
+>>>>>>> Stashed changes
 
         <provider
             android:name="androidx.startup.InitializationProvider"
