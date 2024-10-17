@@ -3,6 +3,15 @@
     <style name="Base.Theme.MindMelody" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- 应用的主色调 -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- 状态栏颜色 -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- 按钮的强调色 -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- 状态栏文字颜色 -->
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@drawable/background</item>
     </style>
 
     <style name="Theme.MindMelody" parent="Base.Theme.MindMelody" />
