@@ -20,7 +20,7 @@ import java.util.Locale;
 public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private Button goToForumButton, logOutButton;
+    private Button goToForumButton, goToWhiteNoiseButton, logOutButton;
     private HomeAdapter homeAdapter;
     private List<String> homeContentList;
 
@@ -32,7 +32,9 @@ public class HomeActivity extends AppCompatActivity {
 
         // 获取按钮视图
         goToForumButton = findViewById(R.id.goToForumButton);
+        goToWhiteNoiseButton = findViewById(R.id.goToWhiteNoiseButton);
         logOutButton = findViewById(R.id.logOutButton);
+
 
         // 获取 MainActivity 传递过来的用户信息
         User loggedInUser = (User) getIntent().getSerializableExtra("loggedInUser");
@@ -59,6 +61,18 @@ public class HomeActivity extends AppCompatActivity {
             intent.putExtra("loggedInUser", loggedInUser);
 
             // 启动 ForumActivity
+            startActivity(intent);
+        });
+
+        // 为 White Noise 按钮设置监听器
+        goToWhiteNoiseButton.setOnClickListener(v -> {
+            // 创建 Intent 跳转到 AudioListActivity
+            Intent intent = new Intent(HomeActivity.this, AudioListActivity.class);
+
+            // 将 loggedInUser 传递给 AudioListActivity，如果需要的话
+            intent.putExtra("loggedInUser", loggedInUser);
+
+            // 启动 AudioListActivity
             startActivity(intent);
         });
 

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="grey">#E0E0E0</color>
+    <color name="colorAccent">#FFD966</color>
+    <color name="colorPrimary">#E6A7BF</color>
+    <color name="colorPrimaryDark">#B3C6E0</color>
+    <color name="grey">#80C7C7C7</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">Mind-Melody</string>
     <string name="audio_library">Audio Library</string>
+    <string name="back">Go back to home page</string>
+    <string name="focus_mode">Go to focus mode</string>
     <string name="pause">Pause</string>
     <string name="play">Play</string>
     <string name="set_favorite">Set as default audio</string>
@@ -13,6 +18,15 @@
     <style name="Base.Theme.MindMelody" parent="Theme.Material3.DayNight.NoActionBar">
         
         
+        
+        <item name="colorPrimary">@color/colorPrimary</item>
+        
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        
+        <item name="colorAccent">@color/colorAccent</item>
+        
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@drawable/background</item>
     </style>
     <style name="Theme.MindMelody" parent="Base.Theme.MindMelody"/>
 </resources>

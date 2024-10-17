@@ -17,6 +17,7 @@
     <uses-permission android:name="com.devsquad.mind_melody.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
+        android:name="com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -29,15 +30,6 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.MindMelody" >
-        <activity
-            android:name="com.devsquad.mind_melody.Activities.AudioListActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <!-- <activity -->
         <!-- android:name=".Activities.MainActivity" -->
@@ -49,10 +41,25 @@
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
+
+
         <!-- 声明 RegisterationActivity -->
         <activity android:name="com.devsquad.mind_melody.Activities.RegistrationActivity" />
         <!-- 声明 HomeActivity -->
         <activity android:name="com.devsquad.mind_melody.Activities.HomeActivity" />
+        <activity
+            android:name="com.devsquad.mind_melody.Activities.AudioListActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 声明 ForumActivity -->
+        <activity android:name="com.devsquad.mind_melody.Activities.ForumActivity" />
+        <activity android:name="com.devsquad.mind_melody.Activities.PostActivity" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
