@@ -1,19 +1,28 @@
 R_DEF: Internal format may change without notice
 local
 color black
+color grey
 color white
+drawable divider
 drawable edit_text_background
 drawable forest_image
+drawable ic_favorite
+drawable ic_favorite_border
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable pause_icon
+drawable play_icon
 drawable rain_image
+drawable stop_icon
 id appLogo
 id audio_image
 id audio_name
 id audio_recycler_view
+id bottom_controls
 id copyrightText
 id createUserButton
 id emailEditText
+id favorite_button
 id firstNameEditText
 id lastNameEditText
 id loginButton
@@ -25,6 +34,7 @@ id play_button
 id signUpLink
 id signUpText
 id stop_button
+id text_view_title
 id titleTextView
 id welcomeText
 layout activity_audio_list
@@ -37,6 +47,12 @@ mipmap ic_launcher_round
 raw forest
 raw rain
 string app_name
+string audio_library
+string pause
+string play
+string set_favorite
+string stop
+string unset_favorite
 style Base.Theme.MindMelody
 style Theme.MindMelody
 xml backup_rules

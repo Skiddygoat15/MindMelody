@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +35,12 @@ public class AudioListActivity extends AppCompatActivity {
         // RecyclerView设置
         RecyclerView recyclerView = findViewById(R.id.audio_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // 添加分隔线
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        dividerItemDecoration.setDrawable(getResources().getDrawable(R.drawable.divider));
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
         adapter = new AudioAdapter(audioList, this::playAudio);
         recyclerView.setAdapter(adapter);
 
@@ -49,8 +56,7 @@ public class AudioListActivity extends AppCompatActivity {
             mediaPlayer.release();
             mediaPlayer = null;     // 避免空指针异常
         }
-//        mediaPlayer = MediaPlayer.create(this, android.net.Uri.parse(audio.getFilePath()));
-//        mediaPlayer.start();
+
         // 从filePath创建MediaPlayer
         mediaPlayer = MediaPlayer.create(this, android.net.Uri.parse(audio.getFilePath()));
         // 检查MediaPlayer是否成功创建

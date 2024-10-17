@@ -3,8 +3,10 @@ package com.devsquad.mind_melody.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +20,8 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
 
     private List<Audio> audioList;
     private OnItemClickListener listener;
-    private int currentPosition = -1;
+    private Audio defaultAudio = null;  // 保存当前默认音频
+    private int currentPosition = -1;    // 当前播放的音频位置
 
     public interface OnItemClickListener {
         void onItemClick(Audio audio);
@@ -40,7 +43,25 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
     public void onBindViewHolder(@NonNull AudioViewHolder holder, int position) {
         Audio audio = audioList.get(position);
         holder.audioName.setText(audio.getName());
-        holder.audioImage.setImageResource(audio.getImageResId());  // 设置图片
+        holder.audioImage.setImageResource(audio.getImageResId());
+
+        // 根据当前音频是否为默认，设置爱心图标
+        if (audio.equals(defaultAudio)) {
+            holder.favoriteButton.setImageResource(R.drawable.ic_favorite);  // 实心爱心
+        } else {
+            holder.favoriteButton.setImageResource(R.drawable.ic_favorite_border);  // 空心爱心
+        }
+
+        // 点击爱心按钮，设置为默认音频
+        holder.favoriteButton.setOnClickListener(v -> {
+            if (!audio.equals(defaultAudio)) {
+                defaultAudio = audio;
+                notifyDataSetChanged();  // 通知列表刷新
+                Toast.makeText(holder.itemView.getContext(), audio.getName() + " Has been set as default audio", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 点击播放音频，更新当前播放的位置
         holder.itemView.setOnClickListener(v -> {
             currentPosition = holder.getAdapterPosition();
             listener.onItemClick(audio);
@@ -52,18 +73,24 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
         return audioList.size();
     }
 
+    // 返回当前播放的音频对象
     public Audio getCurrentAudio() {
-        return currentPosition >= 0 ? audioList.get(currentPosition) : null;
+        if (currentPosition >= 0) {
+            return audioList.get(currentPosition);
+        }
+        return null;
     }
 
     public static class AudioViewHolder extends RecyclerView.ViewHolder {
         TextView audioName;
-        ImageView audioImage;  // 定义ImageView
+        ImageView audioImage;
+        ImageButton favoriteButton;  // 爱心按钮
 
         public AudioViewHolder(@NonNull View itemView) {
             super(itemView);
             audioName = itemView.findViewById(R.id.audio_name);
-            audioImage = itemView.findViewById(R.id.audio_image);  // 绑定ImageView
+            audioImage = itemView.findViewById(R.id.audio_image);
+            favoriteButton = itemView.findViewById(R.id.favorite_button);  // 绑定爱心按钮
         }
     }
 }

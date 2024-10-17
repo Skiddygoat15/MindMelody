@@ -1,37 +1,112 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- 顶部的TextView -->
     <TextView
+        android:id="@+id/text_view_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose Audio"
-        android:textSize="20sp"
-        android:layout_gravity="center_horizontal"
-        android:padding="16dp"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
+        android:text="@string/audio_library"
+        android:textSize="24sp" />
 
+    <!-- 固定高度的RecyclerView，超出时可以滚动 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/audio_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="300dp"
+        android:layout_below="@id/text_view_title"
+        android:layout_above="@+id/bottom_controls"/>
 
-    <Button
-        android:id="@+id/play_button"
-        android:layout_width="wrap_content"
+    <!-- 底部的按钮容器，带背景颜色 -->
+    <LinearLayout
+        android:id="@+id/bottom_controls"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Play"/>
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="@color/grey"
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/pause_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pause"/>
+        <!-- 播放按钮 -->
+        <ImageButton
+            android:id="@+id/play_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/play_icon"
+            android:contentDescription="@string/play"
+            android:scaleType="fitCenter"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_margin="8dp"/>
 
-    <Button
-        android:id="@+id/stop_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop"/>
-</LinearLayout>
+        <!-- 暂停按钮 -->
+        <ImageButton
+            android:id="@+id/pause_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/pause_icon"
+            android:contentDescription="@string/pause"
+            android:scaleType="fitCenter"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_margin="8dp"/>
+
+        <!-- 停止按钮 -->
+        <ImageButton
+            android:id="@+id/stop_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/stop_icon"
+            android:contentDescription="@string/stop"
+            android:scaleType="fitCenter"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_margin="8dp"/>
+    </LinearLayout>
+</RelativeLayout>
+
+
+
+
+
+    <!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical">-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/choose_audio"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:padding="16dp"/>-->
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/audio_recycler_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/play_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/play"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/pause_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/pause"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/stop_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/stop"/>-->
+<!--</LinearLayout>-->

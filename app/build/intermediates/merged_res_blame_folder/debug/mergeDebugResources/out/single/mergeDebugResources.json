@@ -1,5 +1,13 @@
 [
     {
+        "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_divider.xml.flat",
+        "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\divider.xml"
+    },
+    {
+        "merged": "com.devsquad.mind_melody.app-debug-34:/layout_audio_item.xml.flat",
+        "source": "com.devsquad.mind_melody.app-main-36:/layout/audio_item.xml"
+    },
+    {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_ic_launcher_background.xml.flat",
         "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\ic_launcher_background.xml"
     },
@@ -16,12 +24,12 @@
         "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-xxhdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\layout_audio_item.xml.flat",
@@ -32,12 +40,20 @@
         "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_ic_favorite.png.flat",
+        "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\ic_favorite.png"
+    },
+    {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\layout_activity_audio_list.xml.flat",
         "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\layout\\activity_audio_list.xml"
     },
     {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_pause_icon.png.flat",
+        "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\pause_icon.png"
     },
     {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\xml_data_extraction_rules.xml.flat",
@@ -54,10 +70,6 @@
     {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-xhdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "com.devsquad.mind_melody.app-debug-34:/layout_activity_audio_list.xml.flat",
-        "source": "com.devsquad.mind_melody.app-main-36:/layout/activity_audio_list.xml"
     },
     {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\xml_backup_rules.xml.flat",
@@ -80,12 +92,24 @@
         "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\raw\\rain.mp3"
     },
     {
+        "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_ic_favorite_border.png.flat",
+        "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\ic_favorite_border.png"
+    },
+    {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_stop_icon.png.flat",
+        "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\stop_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_play_icon.png.flat",
+        "source": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-main-36:\\drawable\\play_icon.png"
     },
     {
         "merged": "C:\\Users\\zyy11\\.gradle\\daemon\\8.7\\com.devsquad.mind_melody.app-debug-34:\\drawable_ic_launcher_foreground.xml.flat",
