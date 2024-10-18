@@ -20,7 +20,7 @@ import java.util.Locale;
 public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private Button goToForumButton, logOutButton, goToProfileButton;
+    private Button goToForumButton, logOutButton, goToProfileButton, goToSleepAssistButton;
     private HomeAdapter homeAdapter;
     private List<String> homeContentList;
 
@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         goToForumButton = findViewById(R.id.goToForumButton);
         logOutButton = findViewById(R.id.logOutButton);
         goToProfileButton = findViewById(R.id.goToProfileButton);
+        goToSleepAssistButton = findViewById(R.id.goToSleepAssistButton);
 
         // 获取 MainActivity 传递过来的用户信息
         User loggedInUser = (User) getIntent().getSerializableExtra("loggedInUser");
@@ -78,6 +79,17 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
 
             // 启动 ForumActivity
+            // 启动 MainActivity
+            startActivity(intent);
+        });
+
+
+        // 为 sleepactivity 按钮设置监听器
+        goToSleepAssistButton.setOnClickListener(v -> {
+            // 创建 Intent 跳转到 ForumActivity
+            Intent intent = new Intent(HomeActivity.this, SleepActivity.class);
+
+            // 启动 SleepActivity
             startActivity(intent);
         });
     }
