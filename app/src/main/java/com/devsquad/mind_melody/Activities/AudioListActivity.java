@@ -58,6 +58,11 @@ public class AudioListActivity extends AppCompatActivity {
         audioList = new ArrayList<>();
         audioList.add(new Audio("Rain", "android.resource://" + getPackageName() + "/" + R.raw.rain, R.drawable.rain_image));
         audioList.add(new Audio("Forest", "android.resource://" + getPackageName() + "/" + R.raw.forest, R.drawable.forest_image));
+        audioList.add(new Audio("Sea", "android.resource://" + getPackageName() + "/" + R.raw.sea, R.drawable.sea_image));
+        audioList.add(new Audio("Wind", "android.resource://" + getPackageName() + "/" + R.raw.wind, R.drawable.wind_image));
+        audioList.add(new Audio("Piano", "android.resource://" + getPackageName() + "/" + R.raw.piano, R.drawable.piano_image));
+        audioList.add(new Audio("Quiet", "android.resource://" + getPackageName() + "/" + R.raw.quiet, R.drawable.quiet_image));
+        audioList.add(new Audio("Cafe", "android.resource://" + getPackageName() + "/" + R.raw.coffee_shop, R.drawable.cafe_image));
 
         // RecyclerView设置
         RecyclerView recyclerView = findViewById(R.id.audio_recycler_view);
