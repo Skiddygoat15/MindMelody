@@ -21,7 +21,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Button goToForumButton, goToWhiteNoiseButton, logOutButton;
-    private Button goToForumButton, logOutButton;
     private Button focusModeButton;
     private HomeAdapter homeAdapter;
     private List<String> homeContentList;
@@ -74,6 +73,8 @@ public class HomeActivity extends AppCompatActivity {
 
             // 将 loggedInUser 传递给 AudioListActivity，如果需要的话
             intent.putExtra("loggedInUser", loggedInUser);
+            startActivity(intent);
+        });
 
             // 启动 AudioListActivity
         focusModeButton.setOnClickListener(v -> {

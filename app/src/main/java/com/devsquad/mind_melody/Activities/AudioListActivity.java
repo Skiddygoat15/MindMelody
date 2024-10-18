@@ -48,11 +48,11 @@ public class AudioListActivity extends AppCompatActivity {
 
         // 初始化专注模式按钮并设置点击事件
         focusModeButton = findViewById(R.id.focus_mode_button);
-//        focusModeButton.setOnClickListener(v -> {
-//            // 创建 Intent 跳转到 FocusModeActivity
-//            Intent intent = new Intent(AudioListActivity.this, FocusModeActivity.class);
-//            startActivity(intent);
-//        });
+        focusModeButton.setOnClickListener(v -> {
+            // 创建 Intent 跳转到 FocusModeActivity
+            Intent intent = new Intent(AudioListActivity.this, FocusModeActivity.class);
+            startActivity(intent);
+        });
 
         // 初始化音频列表 并为每个音频设置对应的图片资源ID
         audioList = new ArrayList<>();

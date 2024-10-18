@@ -3806,11 +3806,8 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-<<<<<<< HEAD
 layout activity_audio_list
-=======
 layout activity_focus_mode
->>>>>>> origin/Yuyan_C
 layout activity_main
 layout audio_item
 layout bottom_navigation
@@ -3904,14 +3901,11 @@ layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
-<<<<<<< HEAD
+raw coffee_shop
 raw forest
 raw rain
-=======
-raw coffee_shop
 raw rain_sound
 raw white_noise
->>>>>>> origin/Yuyan_C
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

@@ -1,50 +1,29 @@
-<<<<<<< HEAD
-#Thu Oct 17 23:52:24 AEDT 2024
+#Fri Oct 18 15:11:46 AEDT 2024
 base.0=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
-base.3=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
-base.4=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.5=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
-base.6=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
-base.7=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.8=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
-base.9=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.10=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.2=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
+base.3=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
+base.4=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
+base.5=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
+base.6=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
+base.7=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.8=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
+base.9=C\:\\Users\\zyy11\\Desktop\\COMP5216\\Assignment\\Group Project\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
-path.2=12/classes.dex
-path.3=14/classes.dex
-path.4=9/classes.dex
-path.5=5/classes.dex
-path.6=8/classes.dex
-path.7=11/classes.dex
-path.8=15/classes.dex
-path.9=7/classes.dex
-=======
-#Fri Oct 18 12:48:58 AEDT 2024
-base.0=C\:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.3=C\:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
-base.4=C\:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
-base.5=C\:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
-base.6=C\:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
-base.7=C\:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
-base.8=C\:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.9=C\:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-path.0=classes.dex
-path.1=0/classes.dex
+path.10=classes2.dex
 path.2=11/classes.dex
 path.3=12/classes.dex
 path.4=14/classes.dex
 path.5=15/classes.dex
 path.6=5/classes.dex
 path.7=7/classes.dex
-path.8=9/classes.dex
-path.9=classes2.dex
->>>>>>> origin/Yuyan_C
+path.8=8/classes.dex
+path.9=9/classes.dex
 renamed.0=classes.dex
 renamed.1=classes2.dex
+renamed.10=classes11.dex
 renamed.2=classes3.dex
 renamed.3=classes4.dex
 renamed.4=classes5.dex
