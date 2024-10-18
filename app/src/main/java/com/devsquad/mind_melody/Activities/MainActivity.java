@@ -64,17 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
             // 回到主线程更新 UI
             runOnUiThread(() -> {
-//                if (user != null) {
-//                    // 用户存在，跳转到 HomeActivity
-//                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-//                    intent.putExtra("loggedInUser", user);  // 将 User 对象传递给 HomeActivity
-//                    ((MyApplication) getApplicationContext()).setLoggedInUser(user);
-//                    startActivity(intent);
-//                    finish();  // 结束当前 Activity，防止用户返回登录页面
-//                } else {
-//                    // 用户不存在，提示信息错误
-//                    Toast.makeText(MainActivity.this, "User information incorrect, please try again or register a new account.", Toast.LENGTH_SHORT).show();
-//                }
                 if (user == null) {
                     Toast.makeText(this, "User not found!", Toast.LENGTH_SHORT).show();
                 } else {
