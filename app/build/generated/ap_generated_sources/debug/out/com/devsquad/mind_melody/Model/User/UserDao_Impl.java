@@ -314,6 +314,81 @@ public final class UserDao_Impl implements UserDao {
     }
   }
 
+  @Override
+  public User getUserByEmail(final String email) {
+    final String _sql = "SELECT * FROM User WHERE userEmail = ?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (email == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, email);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfUserId = CursorUtil.getColumnIndexOrThrow(_cursor, "userId");
+      final int _cursorIndexOfUserEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "userEmail");
+      final int _cursorIndexOfUserPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "userPassword");
+      final int _cursorIndexOfFirstName = CursorUtil.getColumnIndexOrThrow(_cursor, "firstName");
+      final int _cursorIndexOfLastName = CursorUtil.getColumnIndexOrThrow(_cursor, "lastName");
+      final int _cursorIndexOfRegisterDate = CursorUtil.getColumnIndexOrThrow(_cursor, "registerDate");
+      final int _cursorIndexOfLastMeditDate = CursorUtil.getColumnIndexOrThrow(_cursor, "lastMeditDate");
+      final User _result;
+      if(_cursor.moveToFirst()) {
+        final int _tmpUserId;
+        _tmpUserId = _cursor.getInt(_cursorIndexOfUserId);
+        final String _tmpUserEmail;
+        if (_cursor.isNull(_cursorIndexOfUserEmail)) {
+          _tmpUserEmail = null;
+        } else {
+          _tmpUserEmail = _cursor.getString(_cursorIndexOfUserEmail);
+        }
+        final String _tmpUserPassword;
+        if (_cursor.isNull(_cursorIndexOfUserPassword)) {
+          _tmpUserPassword = null;
+        } else {
+          _tmpUserPassword = _cursor.getString(_cursorIndexOfUserPassword);
+        }
+        final String _tmpFirstName;
+        if (_cursor.isNull(_cursorIndexOfFirstName)) {
+          _tmpFirstName = null;
+        } else {
+          _tmpFirstName = _cursor.getString(_cursorIndexOfFirstName);
+        }
+        final String _tmpLastName;
+        if (_cursor.isNull(_cursorIndexOfLastName)) {
+          _tmpLastName = null;
+        } else {
+          _tmpLastName = _cursor.getString(_cursorIndexOfLastName);
+        }
+        final Date _tmpRegisterDate;
+        final Long _tmp;
+        if (_cursor.isNull(_cursorIndexOfRegisterDate)) {
+          _tmp = null;
+        } else {
+          _tmp = _cursor.getLong(_cursorIndexOfRegisterDate);
+        }
+        _tmpRegisterDate = DateConverter.fromTimestamp(_tmp);
+        final Date _tmpLastMeditDate;
+        final Long _tmp_1;
+        if (_cursor.isNull(_cursorIndexOfLastMeditDate)) {
+          _tmp_1 = null;
+        } else {
+          _tmp_1 = _cursor.getLong(_cursorIndexOfLastMeditDate);
+        }
+        _tmpLastMeditDate = DateConverter.fromTimestamp(_tmp_1);
+        _result = new User(_tmpUserId,_tmpUserEmail,_tmpUserPassword,_tmpFirstName,_tmpLastName,_tmpRegisterDate,_tmpLastMeditDate);
+      } else {
+        _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();
   }

@@ -19,7 +19,7 @@ public interface UserDao {
     @Query("SELECT COUNT(*) FROM User WHERE userEmail = :email")
     int checkEmailExists(String email);
 
-    // 3. 用户登录：根据 email 和密码查找用户
+    // 3. 用户登录：根据 email 和密码查找用户 (已弃用！！！通过bcrypt对加密密码进行配对并登录)
     @Query("SELECT * FROM User WHERE userEmail = :email AND userPassword = :password")
     User loginUser(String email, String password);
 
