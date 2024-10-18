@@ -42,7 +42,7 @@ public class PerformanceTest {
         // 创建测试用的 Post
         Post testPost = new Post("Test Post Title", "Test Post Content", "Author", new Date(), 0, 1);
 
-        int iterations = 1000;  // 迭代次数设置为 1000 次
+        int iterations = 3000;  // 迭代次数设置为 3000 次
 
         // 测试使用 New Thread 插入和查询
         long newThreadInsertTime = testInsertPostWithNewThread(testPost, iterations);
