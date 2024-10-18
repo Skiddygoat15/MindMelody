@@ -20,7 +20,7 @@ import java.util.Locale;
 public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private Button goToForumButton, goToWhiteNoiseButton, logOutButton, goToProfileButton;
+    private Button goToForumButton, goToWhiteNoiseButton, logOutButton, goToProfileButton, goToSleepAssistButton;
     private Button focusModeButton;
     private HomeAdapter homeAdapter;
     private List<String> homeContentList;
@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         focusModeButton = findViewById(R.id.goToFocusButton);
         logOutButton = findViewById(R.id.logOutButton);
         goToProfileButton = findViewById(R.id.goToProfileButton);
-
+        goToSleepAssistButton = findViewById(R.id.goToSleepAssistButton);
 
         // 获取 MainActivity 传递过来的用户信息
         User loggedInUser = (User) getIntent().getSerializableExtra("loggedInUser");
@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-            // 启动 AudioListActivity
+        // 启动 AudioListActivity
         focusModeButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, FocusModeActivity.class);
             startActivity(intent);
@@ -92,12 +92,22 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        //Profile
+        // Profile
         goToProfileButton.setOnClickListener(v -> {
             // 创建 Intent 跳转到 ProfileActivity
             Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
 
             // 启动 ForumActivity
+            // 启动 MainActivity
+            startActivity(intent);
+        });
+
+        // 为 sleepactivity 按钮设置监听器
+        goToSleepAssistButton.setOnClickListener(v -> {
+            // 创建 Intent 跳转到 ForumActivity
+            Intent intent = new Intent(HomeActivity.this, SleepActivity.class);
+
+            // 启动 SleepActivity
             startActivity(intent);
         });
     }

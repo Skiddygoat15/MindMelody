@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <application
         android:name=".Activities.OverallApplicationSetups.MyApplication"
         android:allowBackup="true"
@@ -33,6 +34,8 @@
         <activity android:name=".Activities.PostActivity" />
         <activity android:name=".Activities.FocusModeActivity"></activity>
 
+        <activity android:name=".Activities.SleepActivity" />
+        <activity android:name=".Activities.SleepQualityReportActivity" />
         <activity android:name=".Activities.ProfileActivity" />
         <activity android:name=".Activities.AudioListActivity" />
 
