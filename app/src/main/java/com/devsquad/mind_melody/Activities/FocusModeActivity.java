@@ -1,6 +1,7 @@
 package com.devsquad.mind_melody.Activities;
 
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -12,12 +13,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.common.MediaItem;
+import androidx.media3.common.Player;
 import com.devsquad.mind_melody.R;
 
 public class FocusModeActivity extends AppCompatActivity {
 
     private TextView timerText;
-    private Button pauseButton, stopButton, extendButton, changeSoundButton;
+    private Button pauseButton, stopButton, extendButton, changeSoundButton, customMusicButton;
     private SeekBar volumeSeekBar;
     private Spinner scenarioSpinner;
     private CountDownTimer countDownTimer;
@@ -26,7 +28,7 @@ public class FocusModeActivity extends AppCompatActivity {
 
     // Variables for session control
     private long remainingTime = 25 * 60 * 1000; // 25 minutes
-    private long extendTime = 10 * 60 * 1000; // Extend by 10 minutes
+    private long extendTime = 5 * 60 * 1000; // Extend by 5 minutes
     private String currentSound = "white_noise"; // Default sound
 
     @Override
@@ -40,6 +42,7 @@ public class FocusModeActivity extends AppCompatActivity {
         stopButton = findViewById(R.id.button_stop);
         extendButton = findViewById(R.id.button_extend);
         changeSoundButton = findViewById(R.id.button_change_sound);
+        customMusicButton = findViewById(R.id.button_custom_music);
         volumeSeekBar = findViewById(R.id.seekbar_volume);
         scenarioSpinner = findViewById(R.id.spinner_scenario);
 
@@ -75,7 +78,7 @@ public class FocusModeActivity extends AppCompatActivity {
         // Extend button logic
         extendButton.setOnClickListener(v -> {
             countDownTimer.cancel();
-            remainingTime += extendTime; // Add 10 more minutes
+            remainingTime += extendTime; // Add 5 more minutes
             startFocusTimer(remainingTime);
         });
 
@@ -83,6 +86,12 @@ public class FocusModeActivity extends AppCompatActivity {
         changeSoundButton.setOnClickListener(v -> {
             // Change background sound based on user selection
             switchSoundBasedOnScenario();
+        });
+
+        // Custom Music button logic
+        customMusicButton.setOnClickListener(v -> {
+            Intent intent = new Intent(FocusModeActivity.this, AudioListActivity.class);
+            startActivityForResult(intent, 1);
         });
 
         // Volume control logic
@@ -124,6 +133,7 @@ public class FocusModeActivity extends AppCompatActivity {
         int soundResource = getSoundResourceByName(soundName);
         MediaItem mediaItem = MediaItem.fromUri("android.resource://" + getPackageName() + "/" + soundResource);
         player.setMediaItem(mediaItem);
+        player.setRepeatMode(Player.REPEAT_MODE_ALL); // Loop the sound until the session ends
         player.prepare();
         player.play();
     }
@@ -137,13 +147,13 @@ public class FocusModeActivity extends AppCompatActivity {
         String selectedScenario = scenarioSpinner.getSelectedItem().toString();
         switch (selectedScenario) {
             case "Work":
-                currentSound = "coffee_shop"; // Example sound file for work
+                currentSound = "coffee_shop";
                 break;
             case "Study":
-                currentSound = "rain"; // Example sound file for study
+                currentSound = "rain";
                 break;
             case "Reading":
-                currentSound = "white_noise"; // Example sound file for reading
+                currentSound = "white_noise";
                 break;
             default:
                 currentSound = "white_noise";
@@ -153,9 +163,7 @@ public class FocusModeActivity extends AppCompatActivity {
     }
 
     private void notifySessionEnd() {
-        // Notify the user when the session ends (could implement actual notifications here)
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        // Send a simple toast for now, or build a notification
         Toast.makeText(this, "Session finished! Time to take a break.", Toast.LENGTH_SHORT).show();
     }
 
@@ -164,6 +172,15 @@ public class FocusModeActivity extends AppCompatActivity {
         super.onDestroy();
         if (player != null) {
             player.release();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            String selectedAudio = data.getStringExtra("selectedAudio");
+            playBackgroundSound(selectedAudio);
         }
     }
 }
