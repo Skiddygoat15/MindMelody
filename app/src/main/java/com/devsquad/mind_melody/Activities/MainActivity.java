@@ -57,24 +57,21 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // 启动后台线程执行数据库操作
-        new Thread(() -> {
-            UserDB db = UserDB.getDatabase(getApplicationContext());
-            User user = db.userDao().getUserByEmail(email);
+        // 验证输入框不为空
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(MainActivity.this, "Email and password cannot be empty!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // 使用 Room 提供的查询线程池来执行查询任务
+        UserDB db = UserDB.getDatabase(getApplicationContext());
+
+        // 使用 UserDB 中定义的查询线程池
+        db.getQueryExecutor().execute(() -> {
+            User user = db.userDao().getUserByEmail(email);  // 查询用户信息
 
             // 回到主线程更新 UI
             runOnUiThread(() -> {
-//                if (user != null) {
-//                    // 用户存在，跳转到 HomeActivity
-//                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-//                    intent.putExtra("loggedInUser", user);  // 将 User 对象传递给 HomeActivity
-//                    ((MyApplication) getApplicationContext()).setLoggedInUser(user);
-//                    startActivity(intent);
-//                    finish();  // 结束当前 Activity，防止用户返回登录页面
-//                } else {
-//                    // 用户不存在，提示信息错误
-//                    Toast.makeText(MainActivity.this, "User information incorrect, please try again or register a new account.", Toast.LENGTH_SHORT).show();
-//                }
                 if (user == null) {
                     Toast.makeText(this, "User not found!", Toast.LENGTH_SHORT).show();
                 } else {
@@ -91,6 +88,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-        }).start();  // 启动线程
+        });
     }
 }
