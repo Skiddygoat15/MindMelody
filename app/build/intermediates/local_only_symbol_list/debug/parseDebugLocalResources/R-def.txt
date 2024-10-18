@@ -1,5 +1,6 @@
 R_DEF: Internal format may change without notice
 local
+array focus_scenarios
 color black
 color colorAccent
 color colorPrimary
@@ -43,6 +44,10 @@ id button3
 id button4
 id button5
 id button6
+id button_change_sound
+id button_extend
+id button_pause
+id button_stop
 id communityTitle
 id content
 id copyrightText
@@ -86,15 +91,25 @@ id replyContent
 id replyDate
 id replyInput
 id returnButton
+id seekbar_volume
 id signUpLink
 id signUpText
 id sloganText
+<<<<<<< HEAD
 id text_view_title
+=======
+id spinner_scenario
+>>>>>>> origin/Yuyan_C
 id timeMessage
+id timer_text
 id title
 id titleTextView
 id welcomeText
+<<<<<<< HEAD
 layout activity_audio_list
+=======
+layout activity_focus_mode
+>>>>>>> origin/Yuyan_C
 layout activity_main
 layout audio_item
 layout bottom_navigation
@@ -108,8 +123,14 @@ layout post_activity
 layout registration_activity
 mipmap ic_launcher
 mipmap ic_launcher_round
+<<<<<<< HEAD
 raw forest
 raw rain
+=======
+raw coffee_shop
+raw rain_sound
+raw white_noise
+>>>>>>> origin/Yuyan_C
 string app_name
 string audio_library
 string back

@@ -8,7 +8,11 @@
         android:minSdkVersion="31"
         android:targetSdkVersion="34" />
 
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+=======
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+>>>>>>> origin/Yuyan_C
 
     <permission
         android:name="com.devsquad.mind_melody.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -60,6 +64,7 @@
         <!-- 声明 ForumActivity -->
         <activity android:name="com.devsquad.mind_melody.Activities.ForumActivity" />
         <activity android:name="com.devsquad.mind_melody.Activities.PostActivity" />
+        <activity android:name="com.devsquad.mind_melody.Activities.FocusModeActivity" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"

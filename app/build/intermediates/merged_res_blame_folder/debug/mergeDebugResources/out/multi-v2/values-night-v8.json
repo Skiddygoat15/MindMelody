@@ -1,10 +1,14 @@
 {
     "logs": [
         {
-            "outputFile": "com.devsquad.mind_melody.app-mergeDebugResources-32:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.devsquad.mind_melody.app-mergeDebugResources-2:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\zyy11\\.gradle\\caches\\transforms-4\\7a9aae6d8e9d27cf6e88168f6c33d267\\transformed\\material-1.12.0\\res\\values-night-v8\\values-night-v8.xml",
+=======
+                    "source": "C:\\Users\\12955\\.gradle\\caches\\transforms-4\\3db5d4720adfd2956fd0553bad95c2f0\\transformed\\material-1.12.0\\res\\values-night-v8\\values-night-v8.xml",
+>>>>>>> origin/Yuyan_C
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +25,30 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\zyy11\\.gradle\\caches\\transforms-4\\325410e8cc28ed840be8d7b8f17cbe27\\transformed\\appcompat-1.7.0\\res\\values-night-v8\\values-night-v8.xml",
+=======
+                    "source": "C:\\DATA\\AAA-USYD\\COMP4216 Mobile Computing\\Assignment_Group\\MindMelody\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "102",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "322"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "168"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\12955\\.gradle\\caches\\transforms-4\\586ee710c9910cf3b0a672c8097c5662\\transformed\\appcompat-1.7.0\\res\\values-night-v8\\values-night-v8.xml",
+>>>>>>> origin/Yuyan_C
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

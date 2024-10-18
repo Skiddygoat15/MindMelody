@@ -77,6 +77,7 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array focus_scenarios
 attr SharedValue
 attr SharedValueId
 attr actionBarDivider
@@ -3234,6 +3235,10 @@ id button4
 id button5
 id button6
 id buttonPanel
+id button_change_sound
+id button_extend
+id button_pause
+id button_stop
 id cache_measures
 id callMeasure
 id cancel_button
@@ -3564,6 +3569,7 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id seekbar_volume
 id select_dialog_listview
 id selected
 id selection_type
@@ -3587,6 +3593,7 @@ id snapMargins
 id south
 id spacer
 id special_effects_controller_view_tag
+id spinner_scenario
 id spline
 id split_action_bar
 id spread
@@ -3641,6 +3648,7 @@ id textinput_prefix_text
 id textinput_suffix_text
 id time
 id timeMessage
+id timer_text
 id title
 id titleDividerNoCustom
 id titleTextView
@@ -3798,7 +3806,11 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+<<<<<<< HEAD
 layout activity_audio_list
+=======
+layout activity_focus_mode
+>>>>>>> origin/Yuyan_C
 layout activity_main
 layout audio_item
 layout bottom_navigation
@@ -3892,8 +3904,14 @@ layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
+<<<<<<< HEAD
 raw forest
 raw rain
+=======
+raw coffee_shop
+raw rain_sound
+raw white_noise
+>>>>>>> origin/Yuyan_C
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -3945,6 +3963,15 @@ string character_counter_pattern
 string clear_text_end_icon_content_description
 string error_a11y_label
 string error_icon_content_description
+string exo_download_completed
+string exo_download_description
+string exo_download_downloading
+string exo_download_failed
+string exo_download_notification_channel_name
+string exo_download_paused
+string exo_download_paused_for_network
+string exo_download_paused_for_wifi
+string exo_download_removing
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior

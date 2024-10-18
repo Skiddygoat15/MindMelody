@@ -45,6 +45,8 @@
         <!-- 声明 ForumActivity -->
         <activity android:name=".Activities.ForumActivity" />
         <activity android:name=".Activities.PostActivity" />
+        <activity android:name=".Activities.FocusModeActivity"></activity>
+
     </application>
 
 </manifest>

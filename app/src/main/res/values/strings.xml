@@ -8,4 +8,10 @@
     <string name="unset_favorite">Cancel default audio</string>
     <string name="back">Go back to home page</string>
     <string name="focus_mode">Go to focus mode</string>
+    <string-array name="focus_scenarios">
+        <item>Work</item>
+        <item>Study</item>
+        <item>Reading</item>
+    </string-array>
+
 </resources>

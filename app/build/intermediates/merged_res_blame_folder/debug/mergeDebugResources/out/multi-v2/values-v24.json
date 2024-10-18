@@ -1,9 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.devsquad.mind_melody.app-mergeDebugResources-32:/values-v24/values-v24.xml",
+            "outputFile": "com.devsquad.mind_melody.app-mergeDebugResources-2:/values-v24/values-v24.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\zyy11\\.gradle\\caches\\transforms-4\\325410e8cc28ed840be8d7b8f17cbe27\\transformed\\appcompat-1.7.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
@@ -15,6 +16,9 @@
                 },
                 {
                     "source": "C:\\Users\\zyy11\\.gradle\\caches\\transforms-4\\7a9aae6d8e9d27cf6e88168f6c33d267\\transformed\\material-1.12.0\\res\\values-v24\\values-v24.xml",
+=======
+                    "source": "C:\\Users\\12955\\.gradle\\caches\\transforms-4\\3db5d4720adfd2956fd0553bad95c2f0\\transformed\\material-1.12.0\\res\\values-v24\\values-v24.xml",
+>>>>>>> origin/Yuyan_C
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -31,6 +35,19 @@
                         "endColumns": "84,98,86,100,10,10,10,10",
                         "endOffsets": "427,526,613,714,913,1126,1327,1542"
                     }
+<<<<<<< HEAD
+=======
+                },
+                {
+                    "source": "C:\\Users\\12955\\.gradle\\caches\\transforms-4\\586ee710c9910cf3b0a672c8097c5662\\transformed\\appcompat-1.7.0\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+>>>>>>> origin/Yuyan_C
                 }
             ]
         }
