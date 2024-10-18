@@ -20,7 +20,7 @@ import java.util.Locale;
 public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private Button goToForumButton, goToWhiteNoiseButton, logOutButton;
+    private Button goToForumButton, goToWhiteNoiseButton, logOutButton, goToProfileButton;
     private Button focusModeButton;
     private HomeAdapter homeAdapter;
     private List<String> homeContentList;
@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         goToWhiteNoiseButton = findViewById(R.id.goToWhiteNoiseButton);
         focusModeButton = findViewById(R.id.goToFocusButton);
         logOutButton = findViewById(R.id.logOutButton);
+        goToProfileButton = findViewById(R.id.goToProfileButton);
 
 
         // 获取 MainActivity 传递过来的用户信息
@@ -86,6 +87,15 @@ public class HomeActivity extends AppCompatActivity {
         logOutButton.setOnClickListener(v -> {
             // 创建 Intent 跳转到 ForumActivity
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+
+            // 启动 ForumActivity
+            startActivity(intent);
+        });
+
+        //Profile
+        goToProfileButton.setOnClickListener(v -> {
+            // 创建 Intent 跳转到 ProfileActivity
+            Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
 
             // 启动 ForumActivity
             startActivity(intent);

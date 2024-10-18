@@ -1,7 +1,14 @@
 package com.devsquad.mind_melody.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.BatteryManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
@@ -19,9 +26,18 @@ import com.devsquad.mind_melody.Model.Forum.Post;
 import com.devsquad.mind_melody.Model.Forum.PostDao;
 import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.R;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ForumActivity extends AppCompatActivity {
 
@@ -83,6 +99,7 @@ public class ForumActivity extends AppCompatActivity {
                         runOnUiThread(() -> {
                             Toast.makeText(ForumActivity.this, "Post published successfully!", Toast.LENGTH_SHORT).show();
                             loadPosts(); // 刷新帖子列表
+                            savePostLocal(newPost);
 
                             // 清空输入框内容
                             postTitle.setText("");
@@ -153,4 +170,85 @@ public class ForumActivity extends AppCompatActivity {
 
         return true;
     }
+
+    // 新增的 savePostLocal 方法
+    private void savePostLocal(Post post) {
+        // 定义文件名：作者名-当前时间
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        String fileName = post.getAuthor() + "-" + timestamp + ".txt";
+
+        // 定义文件夹路径
+        File dir = new File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "ForumPosts");
+        if (!dir.exists()) {
+            dir.mkdirs();  // 创建文件夹
+        }
+
+        // 创建文件
+        File file = new File(dir, fileName);
+        try {
+            FileWriter writer = new FileWriter(file);
+            writer.append("Author: ").append(post.getAuthor()).append("\n");
+            writer.append("Title: ").append(post.getTitle()).append("\n");
+            writer.append("Content: ").append(post.getContent()).append("\n");
+            writer.append("Created At: ").append(post.getCreatedAt().toString()).append("\n");
+            writer.flush();
+            writer.close();
+
+            // 上传文件到 Firebase Storage
+            if(canUpload())
+                uploadFileToFirebase(file);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+//            Toast.makeText(ForumActivity.this, "Failed to save post locally!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // 上传文件到 Firebase Storage
+    private void uploadFileToFirebase(File file) {
+        // 获取 Firebase Storage 实例
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+
+        // 获取当前日期
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime());
+
+        // 以日期为文件夹名称，将文件存储到该文件夹中
+        StorageReference fileRef = storageRef.child(currentDate + "/" + file.getName());
+
+        // 上传文件
+        UploadTask uploadTask = fileRef.putFile(Uri.fromFile(file));
+        uploadTask.addOnSuccessListener(taskSnapshot -> {
+            // 上传成功后删除本地文件
+            if (file.delete()) {
+            } else {
+            }
+        }).addOnFailureListener(e -> {
+            e.printStackTrace();
+        });
+    }
+    // 新增 canUpload 方法
+    private boolean canUpload() {
+        // 检查电量是否大于30%
+        IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = registerReceiver(null, ifilter);
+        int level = 0;
+        int scale = 0;
+
+        if (batteryStatus != null) {
+            level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+            scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+        }
+
+        float batteryPct = level * 100 / (float) scale;
+
+        // 检查网络是否为Wi-Fi
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connManager.getActiveNetworkInfo();
+        boolean isWifi = networkInfo != null && networkInfo.getType() == ConnectivityManager.TYPE_WIFI;
+
+        // 只有当电量大于30%且连接到Wi-Fi时才允许上传
+        return batteryPct > 30 && isWifi;
+    }
+
 }

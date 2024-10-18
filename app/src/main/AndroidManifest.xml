@@ -15,38 +15,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MindMelody"
         tools:targetApi="31">
-
-
-
-<!--        <activity-->
-<!--            android:name=".Activities.MainActivity"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-
-        <!-- 声明 RegisterationActivity -->
-        <activity android:name=".Activities.RegistrationActivity" />
-        <!-- 声明 HomeActivity -->
-        <activity android:name=".Activities.HomeActivity" />
-
         <activity
             android:name=".Activities.AudioListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!-- 声明 RegisterationActivity -->
+        <activity android:name=".Activities.RegistrationActivity" />
+        <!-- 声明 HomeActivity -->
+        <activity android:name=".Activities.HomeActivity" />
         <!-- 声明 ForumActivity -->
         <activity android:name=".Activities.ForumActivity" />
         <activity android:name=".Activities.PostActivity" />
         <activity android:name=".Activities.FocusModeActivity"></activity>
 
+        <activity android:name=".Activities.ProfileActivity" />
     </application>
 
 </manifest>
