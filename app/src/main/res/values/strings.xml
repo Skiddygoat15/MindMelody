@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Mind-Melody</string>
+    <string-array name="focus_scenarios">
+        <item>Work</item>
+        <item>Study</item>
+        <item>Reading</item>
+    </string-array>
+
 </resources>

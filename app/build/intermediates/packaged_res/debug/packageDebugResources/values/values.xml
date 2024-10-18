@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="focus_scenarios">
+        <item>Work</item>
+        <item>Study</item>
+        <item>Reading</item>
+    </string-array>
     <color name="black">#FF000000</color>
     <color name="colorAccent">#FFD966</color>
     <color name="colorPrimary">#E6A7BF</color>

@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Button goToForumButton, logOutButton;
+    private Button focusModeButton;
     private HomeAdapter homeAdapter;
     private List<String> homeContentList;
 
@@ -32,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // 获取按钮视图
         goToForumButton = findViewById(R.id.goToForumButton);
+        focusModeButton = findViewById(R.id.goToFocusButton);
         logOutButton = findViewById(R.id.logOutButton);
 
         // 获取 MainActivity 传递过来的用户信息
@@ -59,6 +61,11 @@ public class HomeActivity extends AppCompatActivity {
             intent.putExtra("loggedInUser", loggedInUser);
 
             // 启动 ForumActivity
+            startActivity(intent);
+        });
+
+        focusModeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, FocusModeActivity.class);
             startActivity(intent);
         });
 
