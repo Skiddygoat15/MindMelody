@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class FocusModeActivity extends AppCompatActivity {
 
     private TextView timerText;
     private Button pauseButton, stopButton, extendButton, changeSoundButton, customMusicButton;
+    private ImageButton backButton;
     private SeekBar volumeSeekBar;
     private Spinner scenarioSpinner;
     private CountDownTimer countDownTimer;
@@ -45,6 +47,7 @@ public class FocusModeActivity extends AppCompatActivity {
         customMusicButton = findViewById(R.id.button_custom_music);
         volumeSeekBar = findViewById(R.id.seekbar_volume);
         scenarioSpinner = findViewById(R.id.spinner_scenario);
+        backButton = findViewById(R.id.back_button);
 
         // Initialize ExoPlayer for background sounds
         player = new ExoPlayer.Builder(this).build();
@@ -52,6 +55,11 @@ public class FocusModeActivity extends AppCompatActivity {
 
         // Set timer for 25 minutes
         startFocusTimer(remainingTime);
+
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(FocusModeActivity.this, HomeActivity.class);
+            startActivity(intent);
+        });
 
         // Pause button logic
         pauseButton.setOnClickListener(v -> {

@@ -11,6 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication;
+import com.devsquad.mind_melody.Model.User.User;
+import com.devsquad.mind_melody.Model.User.UserDB;
+import com.devsquad.mind_melody.Model.User.UserDao;
 import com.devsquad.mind_melody.R;
 import com.devsquad.mind_melody.Model.Audio;
 
@@ -57,6 +61,18 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
             if (!audio.equals(defaultAudio)) {
                 defaultAudio = audio;
                 notifyDataSetChanged();  // 通知列表刷新
+
+                // 更新数据库中的 favouriteMusic
+                User loggedInUser = ((MyApplication) holder.itemView.getContext().getApplicationContext()).getLoggedInUser();
+                UserDB userDB = UserDB.getDatabase(holder.itemView.getContext());
+                UserDao userDao = userDB.userDao();
+
+                // 更新数据库
+                new Thread(() -> {
+                    userDao.updateFavouriteMusic(loggedInUser.getUserId(), audio.getFilePath());
+                    loggedInUser.setFavouriteMusic(audio.getFilePath());  // 同时更新内存中的用户对象
+                }).start();
+
                 Toast.makeText(holder.itemView.getContext(), audio.getName() + " Has been set as default audio", Toast.LENGTH_SHORT).show();
             }
         });
@@ -71,6 +87,12 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
     @Override
     public int getItemCount() {
         return audioList.size();
+    }
+
+    // 设置默认音频并刷新适配器
+    public void setDefaultAudio(Audio audio) {
+        this.defaultAudio = audio;
+        notifyDataSetChanged();  // 刷新列表，更新UI
     }
 
     // 返回当前播放的音频对象

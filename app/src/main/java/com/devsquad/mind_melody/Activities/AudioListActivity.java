@@ -12,6 +12,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication;
+import com.devsquad.mind_melody.Model.User.User;
+import com.devsquad.mind_melody.Model.User.UserDB;
+import com.devsquad.mind_melody.Model.User.UserDao;
 import com.devsquad.mind_melody.R;
 import com.devsquad.mind_melody.Model.Audio;
 import com.devsquad.mind_melody.Adapter.AudioAdapter;
@@ -28,11 +32,21 @@ public class AudioListActivity extends AppCompatActivity {
     private boolean isPlaying = false; // 标识当前是否正在播放
     private int lastPosition = 0; // 保存暂停时的位置
     private Audio currentAudio = null; // 当前播放的音频
+    private User loggedInUser; // 当前登录的用户
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_list);
+
+        // RecyclerView设置
+        RecyclerView recyclerView = findViewById(R.id.audio_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // 添加分隔线
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        dividerItemDecoration.setDrawable(getResources().getDrawable(R.drawable.divider));
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
         // 初始化播放/暂停按钮和停止按钮
         playPauseButton = findViewById(R.id.play_button);
@@ -64,17 +78,28 @@ public class AudioListActivity extends AppCompatActivity {
         audioList.add(new Audio("Quiet", "android.resource://" + getPackageName() + "/" + R.raw.quiet, R.drawable.quiet_image));
         audioList.add(new Audio("Cafe", "android.resource://" + getPackageName() + "/" + R.raw.coffee_shop, R.drawable.cafe_image));
 
-        // RecyclerView设置
-        RecyclerView recyclerView = findViewById(R.id.audio_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        // 添加分隔线
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
-        dividerItemDecoration.setDrawable(getResources().getDrawable(R.drawable.divider));
-        recyclerView.addItemDecoration(dividerItemDecoration);
-
         adapter = new AudioAdapter(audioList, this::handleAudioItemClick);
         recyclerView.setAdapter(adapter);
+
+        // 从数据库中获取 favouriteMusic 并设置到 adapter
+        loggedInUser = ((MyApplication) getApplicationContext()).getLoggedInUser();
+        UserDB userDB = UserDB.getDatabase(this);
+        UserDao userDao = userDB.userDao();
+
+        // 异步获取数据库中的 favouriteMusic
+        new Thread(() -> {
+            String favouriteMusic = userDao.getFavouriteMusic(loggedInUser.getUserId());
+            runOnUiThread(() -> {
+                // 设置默认的favorite audio
+                if (favouriteMusic != null) {
+                    for (Audio audio : audioList) {
+                        if (audio.getFilePath().equals(favouriteMusic)) {
+                            adapter.setDefaultAudio(audio);  // 设置默认音频
+                        }
+                    }
+                }
+            });
+        }).start();
 
         playPauseButton.setOnClickListener(v -> {
             if (currentAudio == null) {
@@ -96,6 +121,7 @@ public class AudioListActivity extends AppCompatActivity {
             }
         });
     }
+
     // AudioListActivity.java 中，onCreate 方法之后
     private void handleAudioItemClick(Audio audio) {
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
@@ -142,4 +168,19 @@ public class AudioListActivity extends AppCompatActivity {
             mediaPlayer.pause();
         }
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // 当页面离开时，暂停音频并重置 MediaPlayer
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            pauseAudio();  // 暂停当前音频
+        }
+        if (mediaPlayer != null) {
+            mediaPlayer.reset();  // 重置 MediaPlayer
+            mediaPlayer.release(); // 释放 MediaPlayer 资源
+            mediaPlayer = null;    // 防止内存泄漏，清除 MediaPlayer 对象
+        }
+    }
+
 }
