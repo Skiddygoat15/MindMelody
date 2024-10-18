@@ -57,10 +57,18 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // 启动后台线程执行数据库操作
-        new Thread(() -> {
-            UserDB db = UserDB.getDatabase(getApplicationContext());
-            User user = db.userDao().getUserByEmail(email);
+        // 验证输入框不为空
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(MainActivity.this, "Email and password cannot be empty!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // 使用 Room 提供的查询线程池来执行查询任务
+        UserDB db = UserDB.getDatabase(getApplicationContext());
+
+        // 使用 UserDB 中定义的查询线程池
+        db.getQueryExecutor().execute(() -> {
+            User user = db.userDao().getUserByEmail(email);  // 查询用户信息
 
             // 回到主线程更新 UI
             runOnUiThread(() -> {
@@ -80,6 +88,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-        }).start();  // 启动线程
+        });
     }
 }

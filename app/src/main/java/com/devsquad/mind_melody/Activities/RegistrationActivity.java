@@ -99,10 +99,11 @@ public class RegistrationActivity extends AppCompatActivity {
         // 使用 Bcrypt 加密密码
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
-        // 启动后台线程执行数据库操作
-        new Thread(() -> {
-            UserDB db = UserDB.getDatabase(getApplicationContext());
+        // 获取 UserDB 实例
+        UserDB db = UserDB.getDatabase(getApplicationContext());
 
+        // 使用 Room 的查询线程池来检查邮箱是否存在
+        db.getQueryExecutor().execute(() -> {
             // 检查邮箱是否已存在
             int emailExists = db.userDao().checkEmailExists(email);
 
@@ -112,27 +113,28 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.makeText(this, "The email you provided is already in use!", Toast.LENGTH_SHORT).show();
                 } else {
                     // 构建 User 对象
-                    User user = new User(0, email, hashedPassword, firstName, lastName, new Date(), null, null);
+                    User user = new User(0, email, hashedPassword, firstName, lastName, new Date(), null, "android.resource://com.devsquad.mind_melody/2131755013");
 
-                    // 在后台线程中注册用户
-                    new Thread(() -> {
+                    // 使用 Room 的查询线程池来注册用户
+                    db.getQueryExecutor().execute(() -> {
                         long userId = db.userDao().registerUser(user);
 
+                        // 回到主线程更新 UI
                         runOnUiThread(() -> {
                             // 如果注册成功，跳转到 MainActivity
                             if (userId > 0) {
                                 Toast.makeText(this, "Registration successful! Please log in.", Toast.LENGTH_SHORT).show();
                                 Intent loginIntent = new Intent(RegistrationActivity.this, MainActivity.class);
                                 startActivity(loginIntent);
-                                finish();
+                                finish();  // 结束当前 Activity，防止用户返回注册页面
                             } else {
                                 Toast.makeText(this, "Registration failed, please try again.", Toast.LENGTH_SHORT).show();
                             }
                         });
-                    }).start();
+                    });
                 }
             });
-        }).start();  // 启动线程
+        });
     }
 
 
