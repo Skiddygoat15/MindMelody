@@ -4,6 +4,20 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!--    return button-->
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back_arrow"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp" />
+
     <!-- Dropdown to select Focus Mode Scenario (Work, Study, etc.) -->
     <Spinner
         android:id="@+id/spinner_scenario"
