@@ -112,7 +112,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.makeText(this, "The email you provided is already in use!", Toast.LENGTH_SHORT).show();
                 } else {
                     // 构建 User 对象
-                    User user = new User(0, email, hashedPassword, firstName, lastName, new Date(), null);
+                    User user = new User(0, email, hashedPassword, firstName, lastName, new Date(), null, null);
 
                     // 在后台线程中注册用户
                     new Thread(() -> {

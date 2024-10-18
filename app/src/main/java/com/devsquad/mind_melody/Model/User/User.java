@@ -32,8 +32,11 @@ public class User implements Serializable{
     @ColumnInfo(name = "lastMeditDate")
     private Date lastMeditDate;
 
+    @ColumnInfo(name = "favouriteMusic")
+    private String favouriteMusic;
+
     // All-arg constructor
-    public User(int userId, String userEmail, String userPassword, String firstName, String lastName, Date registerDate, Date lastMeditDate) {
+    public User(int userId, String userEmail, String userPassword, String firstName, String lastName, Date registerDate, Date lastMeditDate, String favouriteMusic) {
         this.userId = userId;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
@@ -41,6 +44,7 @@ public class User implements Serializable{
         this.lastName = lastName;
         this.registerDate = registerDate;
         this.lastMeditDate = lastMeditDate;
+        this.favouriteMusic = favouriteMusic;
     }
 
     // Getter & Setter
@@ -100,4 +104,11 @@ public class User implements Serializable{
         this.lastMeditDate = lastMeditDate;
     }
 
+    public void setFavouriteMusic(String favouriteMusic) {
+        this.favouriteMusic = favouriteMusic;
+    }
+
+    public String getFavouriteMusic() {
+        return favouriteMusic;
+    }
 }

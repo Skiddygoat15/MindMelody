@@ -33,7 +33,7 @@ public final class UserDao_Impl implements UserDao {
     this.__insertionAdapterOfUser = new EntityInsertionAdapter<User>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `User` (`userId`,`userEmail`,`userPassword`,`firstName`,`lastName`,`registerDate`,`lastMeditDate`) VALUES (nullif(?, 0),?,?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `User` (`userId`,`userEmail`,`userPassword`,`firstName`,`lastName`,`registerDate`,`lastMeditDate`,`favouriteMusic`) VALUES (nullif(?, 0),?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -70,6 +70,11 @@ public final class UserDao_Impl implements UserDao {
           stmt.bindNull(7);
         } else {
           stmt.bindLong(7, _tmp_1);
+        }
+        if (value.getFavouriteMusic() == null) {
+          stmt.bindNull(8);
+        } else {
+          stmt.bindString(8, value.getFavouriteMusic());
         }
       }
     };
@@ -152,6 +157,7 @@ public final class UserDao_Impl implements UserDao {
       final int _cursorIndexOfLastName = CursorUtil.getColumnIndexOrThrow(_cursor, "lastName");
       final int _cursorIndexOfRegisterDate = CursorUtil.getColumnIndexOrThrow(_cursor, "registerDate");
       final int _cursorIndexOfLastMeditDate = CursorUtil.getColumnIndexOrThrow(_cursor, "lastMeditDate");
+      final int _cursorIndexOfFavouriteMusic = CursorUtil.getColumnIndexOrThrow(_cursor, "favouriteMusic");
       final User _result;
       if(_cursor.moveToFirst()) {
         final int _tmpUserId;
@@ -196,7 +202,13 @@ public final class UserDao_Impl implements UserDao {
           _tmp_1 = _cursor.getLong(_cursorIndexOfLastMeditDate);
         }
         _tmpLastMeditDate = DateConverter.fromTimestamp(_tmp_1);
-        _result = new User(_tmpUserId,_tmpUserEmail,_tmpUserPassword,_tmpFirstName,_tmpLastName,_tmpRegisterDate,_tmpLastMeditDate);
+        final String _tmpFavouriteMusic;
+        if (_cursor.isNull(_cursorIndexOfFavouriteMusic)) {
+          _tmpFavouriteMusic = null;
+        } else {
+          _tmpFavouriteMusic = _cursor.getString(_cursorIndexOfFavouriteMusic);
+        }
+        _result = new User(_tmpUserId,_tmpUserEmail,_tmpUserPassword,_tmpFirstName,_tmpLastName,_tmpRegisterDate,_tmpLastMeditDate,_tmpFavouriteMusic);
       } else {
         _result = null;
       }
@@ -259,6 +271,7 @@ public final class UserDao_Impl implements UserDao {
       final int _cursorIndexOfLastName = CursorUtil.getColumnIndexOrThrow(_cursor, "lastName");
       final int _cursorIndexOfRegisterDate = CursorUtil.getColumnIndexOrThrow(_cursor, "registerDate");
       final int _cursorIndexOfLastMeditDate = CursorUtil.getColumnIndexOrThrow(_cursor, "lastMeditDate");
+      final int _cursorIndexOfFavouriteMusic = CursorUtil.getColumnIndexOrThrow(_cursor, "favouriteMusic");
       final User _result;
       if(_cursor.moveToFirst()) {
         final int _tmpUserId;
@@ -303,7 +316,13 @@ public final class UserDao_Impl implements UserDao {
           _tmp_1 = _cursor.getLong(_cursorIndexOfLastMeditDate);
         }
         _tmpLastMeditDate = DateConverter.fromTimestamp(_tmp_1);
-        _result = new User(_tmpUserId,_tmpUserEmail,_tmpUserPassword,_tmpFirstName,_tmpLastName,_tmpRegisterDate,_tmpLastMeditDate);
+        final String _tmpFavouriteMusic;
+        if (_cursor.isNull(_cursorIndexOfFavouriteMusic)) {
+          _tmpFavouriteMusic = null;
+        } else {
+          _tmpFavouriteMusic = _cursor.getString(_cursorIndexOfFavouriteMusic);
+        }
+        _result = new User(_tmpUserId,_tmpUserEmail,_tmpUserPassword,_tmpFirstName,_tmpLastName,_tmpRegisterDate,_tmpLastMeditDate,_tmpFavouriteMusic);
       } else {
         _result = null;
       }
@@ -334,6 +353,7 @@ public final class UserDao_Impl implements UserDao {
       final int _cursorIndexOfLastName = CursorUtil.getColumnIndexOrThrow(_cursor, "lastName");
       final int _cursorIndexOfRegisterDate = CursorUtil.getColumnIndexOrThrow(_cursor, "registerDate");
       final int _cursorIndexOfLastMeditDate = CursorUtil.getColumnIndexOrThrow(_cursor, "lastMeditDate");
+      final int _cursorIndexOfFavouriteMusic = CursorUtil.getColumnIndexOrThrow(_cursor, "favouriteMusic");
       final User _result;
       if(_cursor.moveToFirst()) {
         final int _tmpUserId;
@@ -378,7 +398,13 @@ public final class UserDao_Impl implements UserDao {
           _tmp_1 = _cursor.getLong(_cursorIndexOfLastMeditDate);
         }
         _tmpLastMeditDate = DateConverter.fromTimestamp(_tmp_1);
-        _result = new User(_tmpUserId,_tmpUserEmail,_tmpUserPassword,_tmpFirstName,_tmpLastName,_tmpRegisterDate,_tmpLastMeditDate);
+        final String _tmpFavouriteMusic;
+        if (_cursor.isNull(_cursorIndexOfFavouriteMusic)) {
+          _tmpFavouriteMusic = null;
+        } else {
+          _tmpFavouriteMusic = _cursor.getString(_cursorIndexOfFavouriteMusic);
+        }
+        _result = new User(_tmpUserId,_tmpUserEmail,_tmpUserPassword,_tmpFirstName,_tmpLastName,_tmpRegisterDate,_tmpLastMeditDate,_tmpFavouriteMusic);
       } else {
         _result = null;
       }

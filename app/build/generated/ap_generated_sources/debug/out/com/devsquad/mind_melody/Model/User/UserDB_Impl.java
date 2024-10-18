@@ -36,12 +36,12 @@ public final class UserDB_Impl extends UserDB {
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `User` (`userId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userEmail` TEXT, `userPassword` TEXT, `firstName` TEXT, `lastName` TEXT, `registerDate` INTEGER, `lastMeditDate` INTEGER)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `User` (`userId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userEmail` TEXT, `userPassword` TEXT, `firstName` TEXT, `lastName` TEXT, `registerDate` INTEGER, `lastMeditDate` INTEGER, `favouriteMusic` TEXT)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '153591aad79d8c5a19e95bd338ffd162')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a8329834d495d5bbf461ee0790651bee')");
       }
 
       @Override
@@ -85,7 +85,7 @@ public final class UserDB_Impl extends UserDB {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsUser = new HashMap<String, TableInfo.Column>(7);
+        final HashMap<String, TableInfo.Column> _columnsUser = new HashMap<String, TableInfo.Column>(8);
         _columnsUser.put("userId", new TableInfo.Column("userId", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUser.put("userEmail", new TableInfo.Column("userEmail", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUser.put("userPassword", new TableInfo.Column("userPassword", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -93,6 +93,7 @@ public final class UserDB_Impl extends UserDB {
         _columnsUser.put("lastName", new TableInfo.Column("lastName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUser.put("registerDate", new TableInfo.Column("registerDate", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUser.put("lastMeditDate", new TableInfo.Column("lastMeditDate", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUser.put("favouriteMusic", new TableInfo.Column("favouriteMusic", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysUser = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesUser = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoUser = new TableInfo("User", _columnsUser, _foreignKeysUser, _indicesUser);
@@ -104,7 +105,7 @@ public final class UserDB_Impl extends UserDB {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "153591aad79d8c5a19e95bd338ffd162", "eb5cb6b31f28906b9a7b036c18b323fc");
+    }, "a8329834d495d5bbf461ee0790651bee", "6241eada02d06de61c2e7ffd606c9c36");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

@@ -30,4 +30,10 @@ public interface UserDao {
     // 获取用户信息：根据用户的 email 获取用户信息（不再使用密码进行查询）
     @Query("SELECT * FROM User WHERE userEmail = :email")
     User getUserByEmail(String email);
+
+    @Query("UPDATE User SET favouriteMusic = :favouriteMusic WHERE userId = :userId")
+    void updateFavouriteMusic(int userId, String favouriteMusic);
+
+    @Query("SELECT favouriteMusic FROM User WHERE userId = :userId")
+    String getFavouriteMusic(int userId);
 }
