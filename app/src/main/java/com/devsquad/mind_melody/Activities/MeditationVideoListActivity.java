@@ -3,6 +3,8 @@ package com.devsquad.mind_melody.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +19,7 @@ import java.util.List;
 public class MeditationVideoListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private Button backToHomeButton;
+    private ImageButton backToHomeButton;
     private MeditationVideoAdapter adapter;
 
     @Override
