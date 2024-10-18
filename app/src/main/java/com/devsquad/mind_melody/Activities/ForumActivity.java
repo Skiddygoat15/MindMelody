@@ -77,7 +77,7 @@ public class ForumActivity extends AppCompatActivity {
         forumDB = ForumDB.getDatabase(this);
         postDao = forumDB.postDao();
 
-        // 使用Thread方法加载帖子
+        // 使用 Room 的线程池加载帖子
         loadPosts();
 
         // 设置发布按钮监听器
@@ -90,8 +90,8 @@ public class ForumActivity extends AppCompatActivity {
                 // 创建新帖子对象，使用 loggedInUser 的 firstName 作为 author，当前系统时间作为 postDate
                 Post newPost = new Post(title, content, loggedInUser.getFirstName(), new Date(), 0, loggedInUser.getUserId());
 
-                // 使用线程方法插入新帖子
-                new Thread(() -> {
+                // 使用 Room 线程池插入新帖子
+                forumDB.getQueryExecutor().execute(() -> {
                     long postId = postDao.insertPost(newPost); // 插入帖子
 
                     if (postId > 0) {
@@ -108,9 +108,10 @@ public class ForumActivity extends AppCompatActivity {
                     } else {
                         runOnUiThread(() -> Toast.makeText(ForumActivity.this, "Failed to publish post!", Toast.LENGTH_SHORT).show());
                     }
-                }).start();
+                });
             }
         });
+
         returnButton.setOnClickListener(v -> {
             // 创建Intent对象，用于跳转到HomeActivity
             Intent intent = new Intent(ForumActivity.this, HomeActivity.class);
@@ -129,9 +130,9 @@ public class ForumActivity extends AppCompatActivity {
         findViewById(R.id.refreshButton).setOnClickListener(v -> loadPosts());
     }
 
-    // 加载帖子并更新RecyclerView
+    // 使用 Room 线程池加载帖子并更新RecyclerView
     private void loadPosts() {
-        new Thread(() -> {
+        forumDB.getQueryExecutor().execute(() -> {
             // 在后台线程中获取帖子数据
             postList = postDao.getAllPosts();
 
@@ -147,8 +148,9 @@ public class ForumActivity extends AppCompatActivity {
                     startActivity(intent);
                 });
             });
-        }).start();
+        });
     }
+
 
     // 验证帖子标题和内容
     private boolean validatePost(String title, String content) {
