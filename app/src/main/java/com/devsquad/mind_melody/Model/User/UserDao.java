@@ -21,7 +21,7 @@ public interface UserDao {
     @Query("SELECT COUNT(*) FROM User WHERE userEmail = :email")
     int checkEmailExists(String email);
 
-    // 3. 用户登录：根据 email 和密码查找用户
+    // 3. 用户登录：根据 email 和密码查找用户 (已弃用！！！通过bcrypt对加密密码进行配对并登录)
     @Query("SELECT * FROM User WHERE userEmail = :email AND userPassword = :password")
     User loginUser(String email, String password);
 
@@ -36,4 +36,14 @@ public interface UserDao {
     // 6. 更新用户的冥想日期
     @Query("UPDATE User SET lastMeditDate = :date WHERE userId = :userId")
     void updateLastMeditDate(int userId, Date date);
+
+    // 获取用户信息：根据用户的 email 获取用户信息（不再使用密码进行查询）
+    @Query("SELECT * FROM User WHERE userEmail = :email")
+    User getUserByEmail(String email);
+
+    @Query("UPDATE User SET favouriteMusic = :favouriteMusic WHERE userId = :userId")
+    void updateFavouriteMusic(int userId, String favouriteMusic);
+
+    @Query("SELECT favouriteMusic FROM User WHERE userId = :userId")
+    String getFavouriteMusic(int userId);
 }

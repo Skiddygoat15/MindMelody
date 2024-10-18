@@ -33,6 +33,7 @@
         <activity android:name=".Activities.MeditationVideoListActivity" />
         <activity android:name=".Activities.VideoPlayerActivity" />
 
+        <activity android:name=".Activities.ProfileActivity" />
     </application>
 
 </manifest>

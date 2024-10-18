@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp">
+
+    <!-- Text for the letter -->
+    <TextView
+        android:id="@+id/letterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <!-- Solid Circle -->
+    <View
+        android:id="@+id/solidCircle"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/solid_circle" />
+</LinearLayout>

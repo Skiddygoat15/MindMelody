@@ -18,6 +18,8 @@ import com.devsquad.mind_melody.R;
 import java.util.Date;
 import java.util.regex.Pattern;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText firstNameEditText, lastNameEditText, emailEditText, passwordEditText, passwordConfirmEditText;
@@ -94,6 +96,9 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString();
 
+        // 使用 Bcrypt 加密密码
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
         // 启动后台线程执行数据库操作
         new Thread(() -> {
             UserDB db = UserDB.getDatabase(getApplicationContext());
@@ -107,7 +112,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.makeText(this, "The email you provided is already in use!", Toast.LENGTH_SHORT).show();
                 } else {
                     // 构建 User 对象
-                    User user = new User(0, email, password, firstName, lastName, new Date(), null);
+                    User user = new User(0, email, hashedPassword, firstName, lastName, new Date(), null, null);
 
                     // 在后台线程中注册用户
                     new Thread(() -> {
