@@ -3010,6 +3010,8 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable edit_text_background
 drawable ic_arrow_back_black_24
+drawable ic_arrow_left
+drawable ic_arrow_right
 drawable ic_call_answer
 drawable ic_call_answer_low
 drawable ic_call_answer_video
@@ -3032,6 +3034,7 @@ drawable ic_refresh
 drawable ic_search_black_24
 drawable ic_thumb_up
 drawable ic_thumb_up_clicked
+drawable ic_user_profile
 drawable indeterminate_static
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3107,6 +3110,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable recycler_background
 drawable reply_background
+drawable solid_circle
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3200,6 +3204,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backButton
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3217,6 +3222,7 @@ id button3
 id button4
 id button5
 id button6
+id buttonLayout
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3344,6 +3350,7 @@ id groups
 id header_title
 id hide_ime_id
 id hideable
+id historyRecyclerView
 id home
 id homeAsUp
 id honorRequest
@@ -3365,11 +3372,13 @@ id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
 id labeled
+id lastMeditation
 id lastNameEditText
 id layout
 id left
 id leftToRight
 id legacy
+id letterText
 id likeIcon
 id likesNum
 id line1
@@ -3381,6 +3390,7 @@ id list_item
 id logOutButton
 id loginButton
 id loginLinkText
+id logoutButton
 id m3_side_sheet
 id marquee
 id masked
@@ -3565,6 +3575,7 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id solidCircle
 id south
 id spacer
 id special_effects_controller_view_tag
@@ -3645,6 +3656,10 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id userEmail
+id userMembership
+id userName
+id userProfileImage
 id vertical_only
 id view_offset_helper
 id view_transition
@@ -3803,6 +3818,7 @@ layout ime_secondary_split_test_activity
 layout item_home_content
 layout item_post
 layout item_post_reply
+layout item_recycler_view
 layout item_reply
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -3862,6 +3878,7 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout post_activity
+layout profile_activity
 layout registration_activity
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
