@@ -31,5 +31,7 @@
         <activity android:name=".Activities.PostActivity" />
         <activity android:name=".Activities.SleepActivity" />
         <activity android:name=".Activities.SleepQualityReportActivity" />
+        <activity android:name=".Activities.ProfileActivity" />
     </application>
+
 </manifest>
