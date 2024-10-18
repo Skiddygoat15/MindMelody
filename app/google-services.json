@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "418290062086",
+    "project_id": "a3-7981e",
+    "storage_bucket": "a3-7981e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418290062086:android:65baba85dcdfd4d6478487",
+        "android_client_info": {
+          "package_name": "com.devsquad.mind_melody"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_WEvp5EWdiPSLmwQvHwS2hZrwbWa3tvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
