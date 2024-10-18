@@ -41,23 +41,29 @@ public class MeditationVideoListActivity extends AppCompatActivity {
         // 创建视频列表
         List<VideoItem> videoItemList = new ArrayList<>();
 
-        videoItemList.add(new VideoItem("focus Day 1", R.drawable.focus, R.raw.day1));
-        videoItemList.add(new VideoItem("focus Day 2", R.drawable.focus, R.raw.day2));
-        videoItemList.add(new VideoItem("focus Day 3", R.drawable.focus, R.raw.day3));
-        videoItemList.add(new VideoItem("focus Day 4", R.drawable.focus, R.raw.day4));
-        videoItemList.add(new VideoItem("focus Day 5", R.drawable.focus, R.raw.day5));
-        videoItemList.add(new VideoItem("focus Day 6", R.drawable.focus, R.raw.day6));
-        videoItemList.add(new VideoItem("focus Day 7", R.drawable.focus, R.raw.day7));
+        videoItemList.add(new VideoItem("Meditation", R.drawable.meditation, R.raw.meditation));
 
-        videoItemList.add(new VideoItem("meditation", R.drawable.meditation, R.raw.meditation));
-
+        videoItemList.add(new VideoItem("Focus Day 1", R.drawable.focus, R.raw.day1));
+        videoItemList.add(new VideoItem("Focus Day 2", R.drawable.focus, R.raw.day2));
+        videoItemList.add(new VideoItem("Focus Day 3", R.drawable.focus, R.raw.day3));
+        videoItemList.add(new VideoItem("Focus Day 4", R.drawable.focus, R.raw.day4));
+        videoItemList.add(new VideoItem("Focus Day 5", R.drawable.focus, R.raw.day5));
+        videoItemList.add(new VideoItem("Focus Day 6", R.drawable.focus, R.raw.day6));
+        videoItemList.add(new VideoItem("Focus Day 7", R.drawable.focus, R.raw.day7));
 
         adapter = new MeditationVideoAdapter(videoItemList, video -> {
             Intent intent = new Intent(MeditationVideoListActivity.this, VideoPlayerActivity.class);
             intent.putExtra("videoResId", video.getVideoResId());
             startActivity(intent);
         });
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(new MeditationVideoAdapter(videoItemList, videoItem -> {
+            Intent intent = new Intent(MeditationVideoListActivity.this, VideoPlayerActivity.class);
+            // 传递视频标题和视频ID
+            intent.putExtra("videoTitle", videoItem.getTitle());
+            intent.putExtra("videoResId", videoItem.getVideoResId());
+            startActivity(intent);
+        }));
+
     }
 }
 

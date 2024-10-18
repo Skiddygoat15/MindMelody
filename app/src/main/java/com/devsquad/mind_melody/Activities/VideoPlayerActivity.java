@@ -37,7 +37,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
         // 初始化控件
         videoView = findViewById(R.id.videoView);
         btnPlayPause = findViewById(R.id.btnPlayPause);
-        btnBack = findViewById(R.id.btnBack);
+        btnBack = findViewById(R.id.backButton);
         videoTitle = findViewById(R.id.videoTitle);
 
         // 获取全局用户数据
@@ -124,7 +124,10 @@ public class VideoPlayerActivity extends AppCompatActivity {
                 .setTitle("Low Battery")
                 .setMessage("Your battery is below 20%. Do you want to play the video?")
                 .setPositiveButton("Yes", (dialog, which) -> startVideoAndUpdateMeditationTime())
-                .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                .setNegativeButton("No", (dialog, which) -> {
+                    dialog.dismiss();
+                    finish(); // 返回到冥想视频列表界面
+                })
                 .show();
     }
 
