@@ -9,20 +9,21 @@
     tools:context="com.devsquad.mind_melody.Activities.SleepQualityReportActivity">
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sleep Quality Report"
-        android:textSize="30sp"
-        app:cornerRadius="10dp"
-        android:id="@+id/btn"
         android:paddingVertical="20dp"
-        android:textColor="@color/black"/>
+        android:text="Sleep Quality Report"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        app:cornerRadius="10dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv1"
         android:layout_below="@id/btn"
+        android:textSize="18dp"
         android:textColor="@color/black"/>
 
     <TextView
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv2"
         android:layout_below="@id/tv1"
+        android:textSize="18dp"
         android:layout_marginTop="10dp"
         android:textColor="@color/black"/>
 
@@ -43,6 +45,13 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="30sp" />
+
+    <Button
+        android:layout_marginTop="630dp"
+        android:id="@+id/returnButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Return to Sleep" />
 
 
 </RelativeLayout>

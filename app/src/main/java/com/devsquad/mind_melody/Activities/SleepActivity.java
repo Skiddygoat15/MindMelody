@@ -26,6 +26,11 @@ import androidx.core.view.WindowInsetsCompat;
 import com.devsquad.mind_melody.R;
 import com.google.android.material.button.MaterialButton;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 public class SleepActivity extends AppCompatActivity {
 
     private MaterialButton stop;
@@ -70,6 +75,20 @@ public class SleepActivity extends AppCompatActivity {
         stop = findViewById(R.id.stop);
         start = findViewById(R.id.start);
         audioRecordDemo = new AudioRecordDemo();
+
+        // 初始化返回按钮
+        Button returnButton = findViewById(R.id.returnButton);
+
+        // 为返回按钮设置点击事件
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 返回到 HomeActivity
+                Intent intent = new Intent(SleepActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish(); // 可选，结束当前活动以防止返回后按返回键再回到 SleepActivity
+            }
+        });
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
