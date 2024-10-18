@@ -85,8 +85,8 @@ public class PostActivity extends AppCompatActivity {
                 // 创建新的 Reply 对象
                 Reply newReply = new Reply(postId, replyContent, loggedInUser.getFirstName(), new Date());
 
-                // 使用线程方法插入新回复
-                new Thread(() -> {
+                // 使用 Room 线程池插入新回复
+                forumDB.getQueryExecutor().execute(() -> {
                     long replyId = replyDao.insertReply(newReply); // 插入回复
 
                     if (replyId > 0) {
@@ -101,14 +101,14 @@ public class PostActivity extends AppCompatActivity {
                     } else {
                         runOnUiThread(() -> Toast.makeText(PostActivity.this, "Failed to post reply!", Toast.LENGTH_SHORT).show());
                     }
-                }).start();
+                });
             }
         });
     }
 
-    // 加载帖子并显示
+    // 使用 Room 线程池加载帖子并显示
     private void loadPost(int postId) {
-        new Thread(() -> {
+        forumDB.getQueryExecutor().execute(() -> {
             Post post = postDao.getPostById(postId);  // 从数据库获取帖子数据
 
             if (post != null) {
@@ -123,13 +123,12 @@ public class PostActivity extends AppCompatActivity {
                     recyclerViewPostDetails.setAdapter(postDetailAdapter);  // 绑定Adapter到RecyclerView
                 });
             }
-        }).start();
+        });
     }
 
-
-    // 加载回复并更新RecyclerView
+    // 使用 Room 线程池加载回复并更新RecyclerView
     private void loadReplies(int postId) {
-        new Thread(() -> {
+        forumDB.getQueryExecutor().execute(() -> {
             replyList = replyDao.getRepliesByPostId(postId);
 
             runOnUiThread(() -> {
@@ -137,8 +136,9 @@ public class PostActivity extends AppCompatActivity {
                 replyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
                 replyRecyclerView.setAdapter(replyAdapter);
             });
-        }).start();
+        });
     }
+
 
     // 验证回复内容
     private boolean validateReply(String replyContent) {
