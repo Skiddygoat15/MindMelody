@@ -18,6 +18,8 @@ import com.devsquad.mind_melody.R;
 import java.util.Date;
 import java.util.regex.Pattern;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText firstNameEditText, lastNameEditText, emailEditText, passwordEditText, passwordConfirmEditText;
