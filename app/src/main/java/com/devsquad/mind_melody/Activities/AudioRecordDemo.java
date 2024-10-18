@@ -4,10 +4,19 @@ import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.util.Log;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.Manifest;
+
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 
 public class AudioRecordDemo {
- 
+
+    private static final int REQUEST_AUDIO_PERMISSION_CODE = 1;
     private static final String TAG = "AudioRecord";
     static final int SAMPLE_RATE_IN_HZ = 8000;
     static final int BUFFER_SIZE = AudioRecord.getMinBufferSize(SAMPLE_RATE_IN_HZ,
@@ -23,8 +32,27 @@ public class AudioRecordDemo {
     public AudioRecordDemo() {
         mLock = new Object();
     }
- 
-    public void getNoiseLevel() {
+
+    // 检查并申请录音权限
+    public boolean checkAndRequestPermissions(Context context) {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions((Activity) context,
+                    new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_AUDIO_PERMISSION_CODE);
+            return false;
+        } else {
+            // 权限已经被授予
+            return true;
+        }
+    }
+
+    public void getNoiseLevel(Context context) {
+        // 先检查权限
+        if (!checkAndRequestPermissions(context)) {
+            Log.e(TAG, "没有录音权限");
+            return;
+        }
+
         if (isGetVoiceRun) {
             Log.e(TAG, "还在录着呢");
             return;

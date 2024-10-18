@@ -8,11 +8,14 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -29,6 +32,7 @@ public class SleepActivity extends AppCompatActivity {
     private MaterialButton start;
     private SensorManager mSensorManager = null;
     private Sensor mSensor = null;
+    private static final int REQUEST_AUDIO_PERMISSION_CODE = 1;
     /*摇晃检测阈值，决定了对摇晃的敏感程度，越小越敏感。*/
     private static final double SHAKE_SHRESHOLD = 600;
     /*检测的时间间隔100ms*/
@@ -63,27 +67,51 @@ public class SleepActivity extends AppCompatActivity {
 
 
     private void initView() {
-        stop = (MaterialButton) findViewById(R.id.stop);
-        start = (MaterialButton) findViewById(R.id.start);
+        stop = findViewById(R.id.stop);
+        start = findViewById(R.id.start);
         audioRecordDemo = new AudioRecordDemo();
+
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSensorManager.registerListener(mSensorEventListener, mSensor
-                        , SensorManager.SENSOR_DELAY_NORMAL);
-                audioRecordDemo.getNoiseLevel();
-                start.setBackgroundColor(Color.BLUE);
-                start.setText("Sleep Monitoring in Progress...");
+                // 先检查是否有录音权限
+                if (ContextCompat.checkSelfPermission(SleepActivity.this, Manifest.permission.RECORD_AUDIO)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // 没有权限，申请权限
+                    ActivityCompat.requestPermissions(SleepActivity.this,
+                            new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_AUDIO_PERMISSION_CODE);
+                } else {
+                    // 已经有权限，开始录音
+                    startMonitoring();
+                }
             }
         });
+
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSensorManager.unregisterListener(mSensorEventListener, mSensor);
-                audioRecordDemo.setGetVoiceRun(false);
-                startActivity(new Intent(SleepActivity.this, SleepQualityReportActivity.class));
+                stopMonitoring();
             }
         });
+    }
+
+
+    private void startMonitoring() {
+        // 注册加速度传感器监听器
+        mSensorManager.registerListener(mSensorEventListener, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        // 开始录音
+        audioRecordDemo.getNoiseLevel(this);
+        start.setBackgroundColor(Color.BLUE);
+        start.setText("Sleep Monitoring in Progress...");
+    }
+
+    private void stopMonitoring() {
+        // 注销加速度传感器监听器
+        mSensorManager.unregisterListener(mSensorEventListener, mSensor);
+        // 停止录音
+        audioRecordDemo.setGetVoiceRun(false);
+        // 跳转到睡眠质量报告活动
+        startActivity(new Intent(SleepActivity.this, SleepQualityReportActivity.class));
     }
 
     /*声明一个SensorEventListener对象用于侦听Sensor事件，并重载onSensorChanged方法*/
@@ -125,5 +153,44 @@ public class SleepActivity extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_AUDIO_PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 权限被授予，开始录音
+                startMonitoring();
+            } else {
+                // 权限被拒绝
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO)) {
+                    // 用户勾选了 "Don't ask again"
+                    Log.e("SleepActivity", "权限被永久拒绝");
+                    showSettingsAlert();
+                } else {
+                    // 用户拒绝但未勾选 "Don't ask again"
+                    start.setText("Permission Denied");
+                    start.setBackgroundColor(Color.RED);
+                }
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private void showSettingsAlert() {
+        new AlertDialog.Builder(this)
+                .setTitle("需要权限")
+                .setMessage("该应用需要录音权限，请前往设置中手动授予权限。")
+                .setPositiveButton("去设置", (dialog, which) -> {
+                    // 跳转到应用设置页面
+                    Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    intent.setData(Uri.parse("package:" + getPackageName()));
+                    startActivity(intent);
+                })
+                .setNegativeButton("取消", (dialog, which) -> {
+                    // 用户取消操作
+                    Log.e("SleepActivity", "用户选择不前往设置");
+                })
+                .show();
+    }
 
 }

@@ -4,7 +4,7 @@
             "outputFile": "com.devsquad.mind_melody.app-mergeDebugResources-32:/values-w320dp-land-v13/values-w320dp-land-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Calvin Li\\.gradle\\caches\\transforms-4\\7a9aae6d8e9d27cf6e88168f6c33d267\\transformed\\material-1.12.0\\res\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
+                    "source": "/Users/chengzecheng/.gradle/caches/transforms-4/7a9aae6d8e9d27cf6e88168f6c33d267/transformed/material-1.12.0/res/values-w320dp-land-v13/values-w320dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

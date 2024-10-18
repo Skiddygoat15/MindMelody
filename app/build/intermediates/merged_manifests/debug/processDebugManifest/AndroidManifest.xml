@@ -8,6 +8,8 @@
         android:minSdkVersion="31"
         android:targetSdkVersion="34" />
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <permission
         android:name="com.devsquad.mind_melody.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
@@ -44,6 +46,8 @@
         <!-- 声明 ForumActivity -->
         <activity android:name="com.devsquad.mind_melody.Activities.ForumActivity" />
         <activity android:name="com.devsquad.mind_melody.Activities.PostActivity" />
+        <activity android:name="com.devsquad.mind_melody.Activities.SleepActivity" />
+        <activity android:name="com.devsquad.mind_melody.Activities.SleepQualityReportActivity" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"

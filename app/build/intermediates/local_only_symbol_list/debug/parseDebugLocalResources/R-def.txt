@@ -21,6 +21,7 @@ drawable reply_background
 id BackTo
 id appLogo
 id author
+id btn
 id button1
 id button2
 id button3
@@ -49,6 +50,7 @@ id lineSeparator
 id logOutButton
 id loginButton
 id loginLinkText
+id main
 id passwordConfirmEditText
 id passwordEditText
 id postAuthor
@@ -70,11 +72,20 @@ id returnButton
 id signUpLink
 id signUpText
 id sloganText
+id start
+id stop
+id textView1
+id textView2
 id timeMessage
 id title
 id titleTextView
+id tv1
+id tv2
+id tv3
 id welcomeText
 layout activity_main
+layout activity_sleep
+layout activity_sleep_quality_report
 layout bottom_navigation
 layout forum_activity
 layout home_activity
