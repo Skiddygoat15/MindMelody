@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <!-- Hour Picker -->
+    <NumberPicker
+        android:id="@+id/hour_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Minute Picker -->
+    <NumberPicker
+        android:id="@+id/minute_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
