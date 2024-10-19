@@ -8,12 +8,15 @@ import java.util.List;
 @Dao
 public interface ReplyDao {
 
-    // 插入回复
+    // Insert reply
     @Insert
     long insertReply(Reply reply);
 
-    // 根据 postId 获取某个帖子的所有回复
+    // Get all replies to a post by postId.
     @Query("SELECT * FROM Reply WHERE postId = :postId ORDER BY createdAt ASC")
     List<Reply> getRepliesByPostId(int postId);
+
+    @Query("UPDATE Reply SET author = :newAuthor WHERE author = :oldAuthor")
+    void updateReplyAuthor(String newAuthor, String oldAuthor);
 }
 

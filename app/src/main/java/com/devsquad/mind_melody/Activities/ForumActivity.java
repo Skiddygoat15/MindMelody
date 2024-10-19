@@ -56,7 +56,7 @@ public class ForumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forum_activity);
 
-        // 获取从 MyApplication 设置的全局 loggedInUser
+        // Get the global loggedInUser set from MyApplication.
         loggedInUser = ((MyApplication) getApplicationContext()).getLoggedInUser();
 
         if (loggedInUser != null) {
@@ -73,35 +73,35 @@ public class ForumActivity extends AppCompatActivity {
         postButton = findViewById(R.id.postButton);
         returnButton = findViewById(R.id.returnButton);
 
-        // 获取数据库实例
+        // Get the database instance
         forumDB = ForumDB.getDatabase(this);
         postDao = forumDB.postDao();
 
-        // 使用 Room 的线程池加载帖子
+        // Use Room's thread pool to load posts.
         loadPosts();
 
-        // 设置发布按钮监听器
+        // Setting up the publish button listener
         postButton.setOnClickListener(v -> {
             String title = postTitle.getText().toString().trim();
             String content = postContent.getText().toString().trim();
 
-            // 字段验证
+            // Field validation
             if (validatePost(title, content)) {
-                // 创建新帖子对象，使用 loggedInUser 的 firstName 作为 author，当前系统时间作为 postDate
+                // Create a new post object, using loggedInUser's firstName as the author and the current system time as the postDate.
                 Post newPost = new Post(title, content, loggedInUser.getFirstName(), new Date(), 0, loggedInUser.getUserId());
 
-                // 使用 Room 线程池插入新帖子
+                // Insert a new post using the Room thread pool
                 forumDB.getQueryExecutor().execute(() -> {
-                    long postId = postDao.insertPost(newPost); // 插入帖子
+                    long postId = postDao.insertPost(newPost);
 
                     if (postId > 0) {
-                        // 帖子插入成功后刷新帖子列表
+                        // Refresh post list after successful post insertion
                         runOnUiThread(() -> {
                             Toast.makeText(ForumActivity.this, "Post published successfully!", Toast.LENGTH_SHORT).show();
-                            loadPosts(); // 刷新帖子列表
+                            loadPosts();
                             savePostLocal(newPost);
 
-                            // 清空输入框内容
+                            // Clear the contents of the input box
                             postTitle.setText("");
                             postContent.setText("");
                         });
@@ -113,38 +113,31 @@ public class ForumActivity extends AppCompatActivity {
         });
 
         returnButton.setOnClickListener(v -> {
-            // 创建Intent对象，用于跳转到HomeActivity
+            // Create an Intent object to jump to the HomeActivity.
             Intent intent = new Intent(ForumActivity.this, HomeActivity.class);
-
-            // 如果需要传递当前用户信息，您可以添加如下代码
-            intent.putExtra("loggedInUser", loggedInUser);
-
-            // 启动HomeActivity
             startActivity(intent);
-
-            // 结束当前Activity，防止返回时回到ForumActivity
             finish();
         });
 
-        // 设置刷新按钮监听器
+        // Setting up the refresh button listener
         findViewById(R.id.refreshButton).setOnClickListener(v -> loadPosts());
     }
 
-    // 使用 Room 线程池加载帖子并更新RecyclerView
+    // Use Room thread pool to load posts and update RecyclerView
     private void loadPosts() {
         forumDB.getQueryExecutor().execute(() -> {
-            // 在后台线程中获取帖子数据
+            // Getting post data in a background thread
             postList = postDao.getAllPosts();
 
-            // 回到主线程更新RecyclerView
+            // Return to the main thread to update the RecyclerView
             runOnUiThread(() -> {
                 postAdapter = new PostAdapter(ForumActivity.this, postList, postDao);
                 recyclerView.setAdapter(postAdapter);
-                // 设置点击事件监听器
+                // Setting up the click event listener
                 postAdapter.setOnItemClickListener(post -> {
                     Intent intent = new Intent(ForumActivity.this, PostActivity.class);
-                    intent.putExtra("postId", post.getPostId());  // 传递帖子ID
-                    intent.putExtra("loggedInUser", loggedInUser);  // 传递当前登录用户
+                    intent.putExtra("postId", post.getPostId());
+                    intent.putExtra("loggedInUser", loggedInUser);
                     startActivity(intent);
                 });
             });
@@ -152,9 +145,9 @@ public class ForumActivity extends AppCompatActivity {
     }
 
 
-    // 验证帖子标题和内容
+    // Validate post title and content
     private boolean validatePost(String title, String content) {
-        // 检查标题和内容是否为空或过短，且不能以空格开头
+        // Check that the title and content are not empty or too short and do not start with a space
         if (TextUtils.isEmpty(title) || TextUtils.isEmpty(content)) {
             Toast.makeText(this, "Title and content cannot be empty", Toast.LENGTH_SHORT).show();
             return false;
@@ -173,19 +166,19 @@ public class ForumActivity extends AppCompatActivity {
         return true;
     }
 
-    // 新增的 savePostLocal 方法
+    // Used to save backups for current post and upload the backup to Firebase
     private void savePostLocal(Post post) {
-        // 定义文件名：作者名-当前时间
+        // Define filename: author name - current time
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
         String fileName = post.getAuthor() + "-" + timestamp + ".txt";
 
-        // 定义文件夹路径
+        // Define the folder path
         File dir = new File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "ForumPosts");
         if (!dir.exists()) {
-            dir.mkdirs();  // 创建文件夹
+            dir.mkdirs();
         }
 
-        // 创建文件
+        // Create the file
         File file = new File(dir, fileName);
         try {
             FileWriter writer = new FileWriter(file);
@@ -196,32 +189,31 @@ public class ForumActivity extends AppCompatActivity {
             writer.flush();
             writer.close();
 
-            // 上传文件到 Firebase Storage
+            // Upload files to Firebase Storage
             if(canUpload())
                 uploadFileToFirebase(file);
 
         } catch (IOException e) {
             e.printStackTrace();
-//            Toast.makeText(ForumActivity.this, "Failed to save post locally!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    // 上传文件到 Firebase Storage
+    // Upload files to Firebase Storage
     private void uploadFileToFirebase(File file) {
-        // 获取 Firebase Storage 实例
+        // Getting a Firebase Storage Instance
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
 
-        // 获取当前日期
+        // Get the current date
         String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime());
 
-        // 以日期为文件夹名称，将文件存储到该文件夹中
+        // Store files in a folder with the date as the folder name
         StorageReference fileRef = storageRef.child(currentDate + "/" + file.getName());
 
-        // 上传文件
+        // Uploading files
         UploadTask uploadTask = fileRef.putFile(Uri.fromFile(file));
         uploadTask.addOnSuccessListener(taskSnapshot -> {
-            // 上传成功后删除本地文件
+            // Delete local files after successful upload
             if (file.delete()) {
             } else {
             }
@@ -229,9 +221,9 @@ public class ForumActivity extends AppCompatActivity {
             e.printStackTrace();
         });
     }
-    // 新增 canUpload 方法
+    // Determines whether should upload the backup
     private boolean canUpload() {
-        // 检查电量是否大于30%
+        // Check that the power level is greater than 30%
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = registerReceiver(null, ifilter);
         int level = 0;
@@ -244,12 +236,12 @@ public class ForumActivity extends AppCompatActivity {
 
         float batteryPct = level * 100 / (float) scale;
 
-        // 检查网络是否为Wi-Fi
+        // Check if the network is Wi-Fi
         ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connManager.getActiveNetworkInfo();
         boolean isWifi = networkInfo != null && networkInfo.getType() == ConnectivityManager.TYPE_WIFI;
 
-        // 只有当电量大于30%且连接到Wi-Fi时才允许上传
+        // Uploads are only allowed when the battery is greater than 30% and you are connected to Wi-Fi
         return batteryPct > 30 && isWifi;
     }
 

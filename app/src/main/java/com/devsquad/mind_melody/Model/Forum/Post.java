@@ -27,12 +27,12 @@ public class Post implements Serializable {
     private Date createdAt;
 
     @ColumnInfo(name = "likesNum")
-    private int likesNum;  // 新增字段：记录点赞数
+    private int likesNum;
 
     @ColumnInfo(name = "UserIdO")
     private int UserIdO;
 
-    // 构造函数，getter 和 setter
+    // All-arg constructors
     public Post(String title, String content, String author, Date createdAt, int likesNum, int UserIdO) {
         this.title = title;
         this.content = content;
@@ -41,7 +41,7 @@ public class Post implements Serializable {
         this.likesNum = likesNum;
         this.UserIdO = UserIdO;
     }
-
+    // getter setters
     public int getPostId() { return postId; }
     public void setPostId(int postId) { this.postId = postId; }
 

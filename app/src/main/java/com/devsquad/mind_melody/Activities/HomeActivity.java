@@ -13,11 +13,8 @@ import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.R;
 import com.devsquad.mind_melody.Adapter.HomeAdapter;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -32,20 +29,20 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 加载 home_activity.xml 布局
+        // Load home_activity.xml layout
         setContentView(R.layout.home_activity);
 
-        // 获取按钮视图
+        // Get Button View
         goToForumButton = findViewById(R.id.goToForumButton);
         goToWhiteNoiseButton = findViewById(R.id.goToWhiteNoiseButton);
         focusModeButton = findViewById(R.id.goToFocusButton);
         logOutButton = findViewById(R.id.logOutButton);
-        goToMeditationButton = findViewById(R.id.goToMeditationButton);  // 初始化冥想按钮
+        goToMeditationButton = findViewById(R.id.goToMeditationButton);
 
         goToProfileButton = findViewById(R.id.goToProfileButton);
         goToSleepAssistButton = findViewById(R.id.goToSleepAssistButton);
 
-        // 获取 MainActivity 传递过来的用户信息
+        // Getting globally passed user information
         User loggedInUser = ((MyApplication) getApplicationContext()).getLoggedInUser();
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerViewHome);
@@ -63,76 +60,56 @@ public class HomeActivity extends AppCompatActivity {
         // Check the display state of the RecyclerView and reinitialize it if necessary.
         checkRecyclerViewVisibility();
 
-        // 为 Go to Forum 按钮设置监听器
+        // Button listeners
         goToForumButton.setOnClickListener(v -> {
-            // 创建 Intent 跳转到 ForumActivity
             Intent intent = new Intent(HomeActivity.this, ForumActivity.class);
 
-            // 将 loggedInUser 传递给 ForumActivity
-            intent.putExtra("loggedInUser", loggedInUser);
-
-            // 启动 ForumActivity
             startActivity(intent);
         });
 
-        // 为 White Noise 按钮设置监听器
         goToWhiteNoiseButton.setOnClickListener(v -> {
-            // 创建 Intent 跳转到 AudioListActivity
             Intent intent = new Intent(HomeActivity.this, AudioListActivity.class);
 
-            // 将 loggedInUser 传递给 AudioListActivity，如果需要的话
             intent.putExtra("loggedInUser", loggedInUser);
             startActivity(intent);
         });
 
-        // 启动 AudioListActivity
         focusModeButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, FocusModeActivity.class);
             startActivity(intent);
         });
 
-        // 为 Log Out 按钮设置监听器
         logOutButton.setOnClickListener(v -> {
-            // 创建 Intent 跳转到 ForumActivity
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
 
-            // 启动 ForumActivity
             startActivity(intent);
         });
 
-        // Profile
         goToProfileButton.setOnClickListener(v -> {
-            // 创建 Intent 跳转到 ProfileActivity
             Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
 
-            // 启动 ForumActivity
-            // 启动 MainActivity
             startActivity(intent);
         });
 
-        // 为 sleepactivity 按钮设置监听器
         goToSleepAssistButton.setOnClickListener(v -> {
-            // 创建 Intent 跳转到 ForumActivity
             Intent intent = new Intent(HomeActivity.this, SleepActivity.class);
 
-            // 启动 SleepActivity
             startActivity(intent);
         });
 
-        // 为 Go to Meditation 按钮设置监听器
         goToMeditationButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, MeditationVideoListActivity.class);
-            startActivity(intent);  // 启动冥想界面
+            startActivity(intent);
         });
     }
 
     private void checkRecyclerViewVisibility() {
-        // 检查 RecyclerView 是否可见
+        // Check if the RecyclerView is visible
         if (recyclerView.getVisibility() != View.VISIBLE) {
-            // 如果不可见，尝试重新初始化 RecyclerView
+            // If it's not visible, try reinitializing the RecyclerView.
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(homeAdapter); // 重新设置适配器
-            recyclerView.invalidate(); // 强制重新绘制 RecyclerView
+            recyclerView.setAdapter(homeAdapter); // Reset the adapter
+            recyclerView.invalidate(); // Force the RecyclerView to redraw.
         }
     }
 

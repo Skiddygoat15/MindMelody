@@ -7,25 +7,28 @@ import java.util.List;
 @Dao
 public interface PostDao {
 
-    // 插入帖子
+    // insert post
     @Insert
     long insertPost(Post post);
 
-    // 获取所有帖子
+    // Get all posts
     @Query("SELECT * FROM Post ORDER BY createdAt DESC")
     List<Post> getAllPosts();
 
-    // 根据 postId 获取帖子
+    // Get post by postId
     @Query("SELECT * FROM Post WHERE postId = :postId")
     Post getPostById(int postId);
 
-    // 更新点赞数
+    // Updating the number of likes
     @Query("UPDATE Post SET likesNum = likesNum + 1 WHERE postId = :postId")
     void likePost(int postId);
 
-    // 更新点赞数
+    // Updating the number of likes
     @Query("UPDATE Post SET likesNum = likesNum - 1 WHERE postId = :postId")
     void disLikePost(int postId);
+
+    @Query("UPDATE Post SET author = :author WHERE UserIdO = :userId")
+    void updatePostAuthor(String author, int userId);
 
 
 }

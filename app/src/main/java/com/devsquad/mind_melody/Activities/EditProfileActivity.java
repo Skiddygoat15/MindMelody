@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication;
+import com.devsquad.mind_melody.Model.Forum.ForumDB;
+import com.devsquad.mind_melody.Model.Forum.PostDao;
+import com.devsquad.mind_melody.Model.Forum.ReplyDao;
 import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.Model.User.UserDB;
 import com.devsquad.mind_melody.Model.User.UserDao;
@@ -21,6 +24,10 @@ public class EditProfileActivity extends AppCompatActivity {
     private Button saveProfileButton;
     private UserDao userDao;
     private User loggedInUser;
+    private ForumDB forumDB;
+    private PostDao postDao;
+    private ReplyDao replyDao;
+    private String oldAuthor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +41,15 @@ public class EditProfileActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         saveProfileButton = findViewById(R.id.saveProfileButton);
 
+        forumDB = ForumDB.getDatabase(this);
+        postDao = forumDB.postDao();
+        replyDao = forumDB.replyDao();
+
         // 获取当前登录的用户
         MyApplication myApp = (MyApplication) getApplication();
         loggedInUser = myApp.getLoggedInUser();
+        oldAuthor = loggedInUser.getFirstName();
+
 
         if (loggedInUser != null) {
             // 填充当前用户信息到编辑框
@@ -81,8 +94,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 loggedInUser.setUserPassword(hashedPassword);
             }
 
-            // 更新用户信息到数据库
-            new Thread(() -> {
+            forumDB.getQueryExecutor().execute(() -> {
                 if (!password.isEmpty()) {
                     // 更新包括密码在内的所有信息
                     userDao.updateUser(
@@ -103,6 +115,13 @@ public class EditProfileActivity extends AppCompatActivity {
                     );
                 }
 
+                // 更新该用户的所有帖子中的作者名
+                postDao.updatePostAuthor(loggedInUser.getFirstName(), loggedInUser.getUserId());
+
+                // 更新回复中的作者名
+                replyDao.updateReplyAuthor(loggedInUser.getFirstName(), oldAuthor);
+
+                // 回到主线程更新UI
                 runOnUiThread(() -> {
                     // 显示保存成功的提示
                     Toast.makeText(EditProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
@@ -113,8 +132,9 @@ public class EditProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish(); // 关闭当前活动
                 });
-            }).start();
+            });
         }
+
     }
 
 }

@@ -23,7 +23,7 @@ public class Reply implements Serializable {
     private int replyId;
 
     @ColumnInfo(name = "postId")
-    private int postId;  // 外键，指向 Post 表
+    private int postId;  // Foreign key
 
     @ColumnInfo(name = "content")
     private String content;
@@ -34,7 +34,7 @@ public class Reply implements Serializable {
     @ColumnInfo(name = "createdAt")
     private Date createdAt;
 
-    // 构造函数，getter 和 setter
+    // Constructors and getter setters
     public Reply(int postId, String content, String author, Date createdAt) {
         this.postId = postId;
         this.content = content;

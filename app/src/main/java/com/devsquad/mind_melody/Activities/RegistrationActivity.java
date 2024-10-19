@@ -31,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_activity);
 
-        // 获取布局中的视图
+        // Get the view in the layout
         firstNameEditText = findViewById(R.id.firstNameEditText);
         lastNameEditText = findViewById(R.id.lastNameEditText);
         emailEditText = findViewById(R.id.emailEditText);
@@ -40,21 +40,21 @@ public class RegistrationActivity extends AppCompatActivity {
         createUserButton = findViewById(R.id.createUserButton);
         loginLinkText = findViewById(R.id.loginLinkText);
 
-        // 设置 "Create User" 按钮点击事件
+        // Set the ‘Create User’ button click event.
         createUserButton.setOnClickListener(v -> {
             if (validateFields()) {  // 验证用户输入字段
                 registerUser();
             }
         });
 
-        // 设置 "Log in" 文本点击事件，跳转到登录页面
+        // Set the ‘Log in’ text click event to jump to the login page.
         loginLinkText.setOnClickListener(v -> {
             Intent loginIntent = new Intent(RegistrationActivity.this, MainActivity.class);
             startActivity(loginIntent);
         });
     }
 
-    // 验证所有输入字段的正确性
+    // Verify that all input fields are correct
     private boolean validateFields() {
         String firstName = firstNameEditText.getText().toString().trim();
         String lastName = lastNameEditText.getText().toString().trim();
@@ -62,25 +62,25 @@ public class RegistrationActivity extends AppCompatActivity {
         String password = passwordEditText.getText().toString();
         String confirmPassword = passwordConfirmEditText.getText().toString();
 
-        // 验证 First Name 和 Last Name
+        // Verify First Name and Last Name
         if (TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || containsPunctuation(firstName) || containsPunctuation(lastName)) {
             Toast.makeText(this, "First Name and Last Name cannot be empty or contain punctuation!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        // 验证 Email 格式
+        // Validate the Email format
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Please enter a valid email address!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        // 验证密码
+        // Verify the password
         if (TextUtils.isEmpty(password) || password.length() < 6) {
             Toast.makeText(this, "Password cannot be empty and must be at least 6 characters long!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        // 验证确认密码
+        // Verify the confirmation password
         if (!password.equals(confirmPassword)) {
             Toast.makeText(this, "The passwords do not match, please check!", Toast.LENGTH_SHORT).show();
             return false;
@@ -89,44 +89,38 @@ public class RegistrationActivity extends AppCompatActivity {
         return true;
     }
 
-    // 注册用户逻辑
+    // Register User Logic
     private void registerUser() {
         String firstName = firstNameEditText.getText().toString().trim();
         String lastName = lastNameEditText.getText().toString().trim();
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString();
 
-        // 使用 Bcrypt 加密密码
+        // Encrypt passwords with Bcrypt
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
-        // 获取 UserDB 实例
+        // Get a UserDB instance
         UserDB db = UserDB.getDatabase(getApplicationContext());
 
-        // 使用 Room 的查询线程池来检查邮箱是否存在
+        // Use Room's query thread pool to check for the existence of a mailbox
         db.getQueryExecutor().execute(() -> {
-            // 检查邮箱是否已存在
             int emailExists = db.userDao().checkEmailExists(email);
 
-            // 回到主线程更新 UI
             runOnUiThread(() -> {
                 if (emailExists > 0) {
                     Toast.makeText(this, "The email you provided is already in use!", Toast.LENGTH_SHORT).show();
                 } else {
-                    // 构建 User 对象
                     User user = new User(0, email, hashedPassword, firstName, lastName, new Date(), null, "android.resource://com.devsquad.mind_melody/2131755013");
 
-                    // 使用 Room 的查询线程池来注册用户
                     db.getQueryExecutor().execute(() -> {
                         long userId = db.userDao().registerUser(user);
 
-                        // 回到主线程更新 UI
                         runOnUiThread(() -> {
-                            // 如果注册成功，跳转到 MainActivity
                             if (userId > 0) {
                                 Toast.makeText(this, "Registration successful! Please log in.", Toast.LENGTH_SHORT).show();
                                 Intent loginIntent = new Intent(RegistrationActivity.this, MainActivity.class);
                                 startActivity(loginIntent);
-                                finish();  // 结束当前 Activity，防止用户返回注册页面
+                                finish();
                             } else {
                                 Toast.makeText(this, "Registration failed, please try again.", Toast.LENGTH_SHORT).show();
                             }
@@ -138,7 +132,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    // 检查是否包含标点符号
+    // Check for punctuation
     private boolean containsPunctuation(String str) {
         Pattern pattern = Pattern.compile("\\p{Punct}");
         return pattern.matcher(str).find();

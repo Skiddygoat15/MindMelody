@@ -24,18 +24,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     private List<Post> postList;
     private Context context;
-    private PostDao postDao;  // 数据库DAO
-    private Set<Integer> likedPosts = new HashSet<>();  // 跟踪用户点赞的帖子ID
+    private PostDao postDao;  // Database DAO
+    private Set<Integer> likedPosts = new HashSet<>();  // Track post IDs that users like
 
-    // 定义接口
+    // Define the interface
     public interface OnItemClickListener {
         void onItemClick(Post post);
     }
 
-    // 接口的实例
+    // Instances of the interface
     private OnItemClickListener onItemClickListener;
 
-    // 设置监听器方法
+    // Setting up listener methods
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
     }
@@ -61,48 +61,48 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.title.setText(post.getTitle());
         holder.content.setText(post.getContent());
 
-        // 使用 DateUtils 来格式化 createdAt
+        // Use DateUtils to format createdAt.
         String formattedDate = DateUtils.formatDateToSydneyTime(post.getCreatedAt());
-        holder.createdAt.setText(formattedDate);  // 格式化后的时间显示
+        holder.createdAt.setText(formattedDate);  // Formatted time display
         holder.likesNum.setText(post.getLikesNum() + " Likes");
 
         // 点击事件
         holder.itemView.setOnClickListener(v -> {
             if (onItemClickListener != null) {
-                onItemClickListener.onItemClick(post);  // 通过接口传递点击事件
+                onItemClickListener.onItemClick(post);  // Pass the click event through the interface
             }
         });
 
-        // 设置点赞图标的初始状态
+        // Set the initial state of the Like icon
         if (likedPosts.contains(post.getPostId())) {
-            holder.likeIcon.setImageResource(R.drawable.ic_thumb_up_clicked);  // 显示已点赞图标
+            holder.likeIcon.setImageResource(R.drawable.ic_thumb_up_clicked);  // Show Liked Icon
         } else {
-            holder.likeIcon.setImageResource(R.drawable.ic_thumb_up);  // 显示未点赞图标
+            holder.likeIcon.setImageResource(R.drawable.ic_thumb_up);  // Show unliked icon
         }
 
-        // 设置点赞图标的点击事件
+        // Set the click event for the Like icon
         holder.likeIcon.setOnClickListener(v -> {
             if (likedPosts.contains(post.getPostId())) {
-                // 如果已经点赞，取消点赞
+                // Unliked if already liked
                 CompletableFuture.runAsync(() -> {
-                    postDao.disLikePost(post.getPostId());  // 调用取消点赞的DAO方法
-                    post.setLikesNum(post.getLikesNum() - 1);  // 更新本地的点赞数
+                    postDao.disLikePost(post.getPostId());  // Call the DAO method that un-likes the
+                    post.setLikesNum(post.getLikesNum() - 1);  // Update local likes
                 }).thenRun(() -> {
                     // 更新UI
-                    likedPosts.remove(post.getPostId());  // 更新跟踪点赞的集合
-                    holder.likesNum.post(() -> holder.likesNum.setText(post.getLikesNum() + " Likes"));  // 更新点赞数
-                    holder.likeIcon.post(() -> holder.likeIcon.setImageResource(R.drawable.ic_thumb_up));  // 切换回未点赞图标
+                    likedPosts.remove(post.getPostId());  // Update the collection of tracked likes
+                    holder.likesNum.post(() -> holder.likesNum.setText(post.getLikesNum() + " Likes"));  // Update likes num
+                    holder.likeIcon.post(() -> holder.likeIcon.setImageResource(R.drawable.ic_thumb_up));  // Switch back to the Unliked icon
                 });
             } else {
-                // 如果没有点赞，进行点赞
+                // If there are no likes, do a like
                 CompletableFuture.runAsync(() -> {
-                    postDao.likePost(post.getPostId());  // 调用点赞的DAO方法
-                    post.setLikesNum(post.getLikesNum() + 1);  // 更新本地的点赞数
+                    postDao.likePost(post.getPostId());  // Call the DAO method for the likes
+                    post.setLikesNum(post.getLikesNum() + 1);  // Update local likes
                 }).thenRun(() -> {
-                    // 更新UI
-                    likedPosts.add(post.getPostId());  // 更新跟踪点赞的集合
-                    holder.likesNum.post(() -> holder.likesNum.setText(post.getLikesNum() + " Likes"));  // 更新点赞数
-                    holder.likeIcon.post(() -> holder.likeIcon.setImageResource(R.drawable.ic_thumb_up_clicked));  // 切换为已点赞图标
+                    // Update UI
+                    likedPosts.add(post.getPostId());  // Update the collection of tracked likes
+                    holder.likesNum.post(() -> holder.likesNum.setText(post.getLikesNum() + " Likes"));  // Update the number of likes
+                    holder.likeIcon.post(() -> holder.likeIcon.setImageResource(R.drawable.ic_thumb_up_clicked));  // Switch to the liked icon
                 });
             }
         });
@@ -116,7 +116,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     public static class PostViewHolder extends RecyclerView.ViewHolder {
 
         TextView author, title, content, createdAt, likesNum;
-        ImageView likeIcon;  // 新增点赞图标
+        ImageView likeIcon;  // Add a like icon
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -125,7 +125,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             content = itemView.findViewById(R.id.content);
             createdAt = itemView.findViewById(R.id.createdAt);
             likesNum = itemView.findViewById(R.id.likesNum);
-            likeIcon = itemView.findViewById(R.id.likeIcon);  // 获取点赞图标的视图
+            likeIcon = itemView.findViewById(R.id.likeIcon);
         }
     }
 }

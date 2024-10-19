@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.devsquad.mind_melody.Adapter.PostDetailAdapter;
 import com.devsquad.mind_melody.Adapter.ReplyAdapter;
-import com.devsquad.mind_melody.Adapter.SimpleDateFormatter.DateUtils;
 import com.devsquad.mind_melody.Model.Forum.ForumDB;
 import com.devsquad.mind_melody.Model.Forum.Post;
 import com.devsquad.mind_melody.Model.Forum.PostDao;
@@ -29,7 +28,7 @@ import java.util.List;
 
 public class PostActivity extends AppCompatActivity {
 
-    private TextView postTitle, postAuthor, postContent, postDate, backTo;
+    private TextView backTo;
     private EditText replyContentEditText;
     private Button replyButton;
     private RecyclerView replyRecyclerView, recyclerViewPostDetails;
@@ -38,64 +37,63 @@ public class PostActivity extends AppCompatActivity {
     private ForumDB forumDB;
     private PostDao postDao;
     private ReplyDao replyDao;
-    private User loggedInUser; // 当前登录的用户
-    private int postId; // 当前帖子的ID
+    private User loggedInUser;
+    private int postId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_activity);
-        recyclerViewPostDetails = findViewById(R.id.recyclerViewPostDetails);  // 初始化RecyclerView
+        recyclerViewPostDetails = findViewById(R.id.recyclerViewPostDetails);  // Initialize the RecyclerView
 
-        // 初始化UI组件
+        // Initialize UI components
         replyContentEditText = findViewById(R.id.replyInput);
         replyButton = findViewById(R.id.replyButton);
         replyRecyclerView = findViewById(R.id.recyclerViewReplies);
-        backTo = findViewById(R.id.BackTo); // 返回按钮
+        backTo = findViewById(R.id.BackTo);
 
-        // 获取传入的postId和loggedInUser
+        // Get the incoming postId and loggedInUser
         postId = getIntent().getIntExtra("postId", -1);
         loggedInUser = (User) getIntent().getSerializableExtra("loggedInUser");
 
-        // 获取数据库实例
+        // Get the database instance
         forumDB = ForumDB.getDatabase(this);
         postDao = forumDB.postDao();
         replyDao = forumDB.replyDao();
 
-        // 加载帖子数据
+        // Load post data
         loadPost(postId);
 
-        // 加载回复数据
+        // Load response data
         loadReplies(postId);
 
-        // 设置返回按钮的监听器，返回到ForumActivity
+        // Set up a listener for the return button to return to ForumActivity
         backTo.setOnClickListener(v -> {
             Intent intent = new Intent(PostActivity.this, ForumActivity.class);
-            intent.putExtra("loggedInUser", loggedInUser); // 传递当前用户信息
+            intent.putExtra("loggedInUser", loggedInUser);
             startActivity(intent);
-            finish(); // 销毁当前Activity，回到ForumActivity
+            finish(); // Destroy the current Activity and return to the ForumActivity.
         });
 
-        // 设置回复按钮监听器
+        // Set up a reply button listener
         replyButton.setOnClickListener(v -> {
             String replyContent = replyContentEditText.getText().toString().trim();
 
-            // 字段验证
+            // Field validation
             if (validateReply(replyContent)) {
-                // 创建新的 Reply 对象
                 Reply newReply = new Reply(postId, replyContent, loggedInUser.getFirstName(), new Date());
 
-                // 使用 Room 线程池插入新回复
+                // Insert a new reply using the Room thread pool
                 forumDB.getQueryExecutor().execute(() -> {
-                    long replyId = replyDao.insertReply(newReply); // 插入回复
+                    long replyId = replyDao.insertReply(newReply); // Insert reply
 
                     if (replyId > 0) {
-                        // 回复插入成功后刷新回复列表
+                        // Refresh the list of replies after a successful reply insertion
                         runOnUiThread(() -> {
                             Toast.makeText(PostActivity.this, "Reply posted successfully!", Toast.LENGTH_SHORT).show();
-                            loadReplies(postId); // 刷新回复列表
+                            loadReplies(postId); // Refresh the list of replies
 
-                            // 清空输入框内容
+                            // Clear the contents of the input box
                             replyContentEditText.setText("");
                         });
                     } else {
@@ -106,27 +104,27 @@ public class PostActivity extends AppCompatActivity {
         });
     }
 
-    // 使用 Room 线程池加载帖子并显示
+    // Use the Room thread pool to load the post and display it.
     private void loadPost(int postId) {
         forumDB.getQueryExecutor().execute(() -> {
-            Post post = postDao.getPostById(postId);  // 从数据库获取帖子数据
+            Post post = postDao.getPostById(postId);  // Getting post data from the database
 
             if (post != null) {
                 runOnUiThread(() -> {
-                    // 创建一个Post列表并将帖子添加到列表中
+                    // Create a Post list and add posts to the list
                     List<Post> postDetails = new ArrayList<>();
                     postDetails.add(post);
 
-                    // 创建PostDetailAdapter并设置RecyclerView
+                    // Create the PostDetailAdapter and set up the RecyclerView.
                     PostDetailAdapter postDetailAdapter = new PostDetailAdapter(PostActivity.this, postDetails);
                     recyclerViewPostDetails.setLayoutManager(new LinearLayoutManager(PostActivity.this));
-                    recyclerViewPostDetails.setAdapter(postDetailAdapter);  // 绑定Adapter到RecyclerView
+                    recyclerViewPostDetails.setAdapter(postDetailAdapter);  // Bind the Adapter to the RecyclerView.
                 });
             }
         });
     }
 
-    // 使用 Room 线程池加载回复并更新RecyclerView
+    // Use the Room thread pool to load replies and update the RecyclerView.
     private void loadReplies(int postId) {
         forumDB.getQueryExecutor().execute(() -> {
             replyList = replyDao.getRepliesByPostId(postId);
@@ -140,7 +138,7 @@ public class PostActivity extends AppCompatActivity {
     }
 
 
-    // 验证回复内容
+    // Use the Room thread pool to load replies and update the RecyclerView.
     private boolean validateReply(String replyContent) {
         if (TextUtils.isEmpty(replyContent)) {
             Toast.makeText(this, "Reply cannot be empty", Toast.LENGTH_SHORT).show();

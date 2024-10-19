@@ -83,14 +83,6 @@ public class ProfileActivity extends AppCompatActivity {
         lastMeditation.setText(userInfo.get("lastMeditation"));
 
 
-
-
-
-
-
-
-
-
         editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,10 +111,6 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
-
-
-
-
 
 
     // 示例：从历史记录获取用户信息 (可以替换为实际的数据来源)

@@ -21,8 +21,6 @@ public abstract class UserDB extends RoomDatabase {
     private static final String DATABASE_NAME = "user_db";
     private static volatile UserDB DBINSTANCE;
 
-    // 创建一个固定大小的线程池，这里创建了 4 个线程用于处理查询任务
-    private static final ExecutorService queryExecutor = Executors.newFixedThreadPool(4);
 
     // Getting Dao
     public abstract UserDao userDao();
@@ -34,8 +32,7 @@ public abstract class UserDB extends RoomDatabase {
                 if (DBINSTANCE == null) {
                     DBINSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     UserDB.class, DATABASE_NAME)
-                            .fallbackToDestructiveMigration()  // 如果迁移策略不存在，则销毁旧数据
-                            .setQueryExecutor(queryExecutor)
+                            .fallbackToDestructiveMigration()  // Destroy old data if migration policy does not exist
                             .build();
                 }
             }
@@ -48,13 +45,5 @@ public abstract class UserDB extends RoomDatabase {
         DBINSTANCE = null;
     }
 
-    // Define a migration strategy
-    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
-        @Override
-        public void migrate(SupportSQLiteDatabase database) {
-            // Implement the migration logic here
-            database.execSQL("ALTER TABLE your_table ADD COLUMN new_column INTEGER NOT NULL DEFAULT 0");
-        }
-    };
 
 }

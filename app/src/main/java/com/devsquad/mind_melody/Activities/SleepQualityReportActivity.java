@@ -62,17 +62,17 @@ public class SleepQualityReportActivity extends AppCompatActivity {
             tv3.setText("Sleep Quality:\n Good");
         }
 
-        // 初始化返回按钮
+        // Initialize the back button
         Button returnButton = findViewById(R.id.returnButton);
 
-        // 为返回按钮设置点击事件
+        // Set the click event for the back button
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 返回到 SleepActivity
+                // Return to SleepActivity
                 Intent intent = new Intent(SleepQualityReportActivity.this, SleepActivity.class);
                 startActivity(intent);
-                finish(); // 可选，结束当前活动以防止返回后按返回键再回到 SleepQualityReportActivity
+                finish();
             }
         });
     }

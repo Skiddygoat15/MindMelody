@@ -20,7 +20,7 @@ public class PostDetailAdapter extends RecyclerView.Adapter<PostDetailAdapter.Po
     private List<Post> postDetails;
     private Context context;
 
-    // 构造函数，接收帖子数据
+    // Constructor to receive post data
     public PostDetailAdapter(Context context, List<Post> postDetails) {
         this.context = context;
         this.postDetails = postDetails;
@@ -29,7 +29,7 @@ public class PostDetailAdapter extends RecyclerView.Adapter<PostDetailAdapter.Po
     @NonNull
     @Override
     public PostDetailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // 使用自定义布局文件 item_post_reply
+        // Use the custom layout file item_post_reply
         View view = LayoutInflater.from(context).inflate(R.layout.item_post_reply, parent, false);
         return new PostDetailViewHolder(view);
     }
@@ -38,13 +38,13 @@ public class PostDetailAdapter extends RecyclerView.Adapter<PostDetailAdapter.Po
     public void onBindViewHolder(@NonNull PostDetailViewHolder holder, int position) {
         Post post = postDetails.get(position);
 
-        // 设置帖子数据
+        // Setting up post data
         holder.postTitle.setText(post.getTitle());
         holder.postAuthor.setText(post.getAuthor());
         holder.postContent.setText(post.getContent());
-        // 使用 DateUtils 来格式化 createdAt
+        // Use DateUtils to format createdAt.
         String formattedDate = DateUtils.formatDateToSydneyTime(post.getCreatedAt());
-        holder.postDate.setText(formattedDate);  // 格式化后的时间显示
+        holder.postDate.setText(formattedDate);  // Formatted time display
     }
 
     @Override
@@ -53,13 +53,13 @@ public class PostDetailAdapter extends RecyclerView.Adapter<PostDetailAdapter.Po
     }
 
     public static class PostDetailViewHolder extends RecyclerView.ViewHolder {
-        // 帖子的各个部分
+        // Sections of the post
         TextView postTitle, postAuthor, postContent, postDate;
 
         public PostDetailViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            // 初始化View
+            // Initialize the View
             postTitle = itemView.findViewById(R.id.postTitle);
             postAuthor = itemView.findViewById(R.id.postAuthor);
             postContent = itemView.findViewById(R.id.postContent);

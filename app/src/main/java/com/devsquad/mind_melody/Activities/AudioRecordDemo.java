@@ -33,7 +33,7 @@ public class AudioRecordDemo {
         mLock = new Object();
     }
 
-    // 检查并申请录音权限
+    // Check and request recording permissions
     public boolean checkAndRequestPermissions(Context context) {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -41,27 +41,27 @@ public class AudioRecordDemo {
                     new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_AUDIO_PERMISSION_CODE);
             return false;
         } else {
-            // 权限已经被授予
+            // Permission has been granted
             return true;
         }
     }
 
     public void getNoiseLevel(Context context) {
-        // 先检查权限
+        // Check permissions first
         if (!checkAndRequestPermissions(context)) {
-            Log.e(TAG, "没有录音权限");
+            Log.e(TAG, "No recording privileges.");
             return;
         }
 
         if (isGetVoiceRun) {
-            Log.e(TAG, "还在录着呢");
+            Log.e(TAG, "It's still recording.");
             return;
         }
         mAudioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
                 SAMPLE_RATE_IN_HZ, AudioFormat.CHANNEL_IN_DEFAULT,
                 AudioFormat.ENCODING_PCM_16BIT, BUFFER_SIZE);
         if (mAudioRecord == null) {
-            Log.e("sound", "mAudioRecord初始化失败");
+            Log.e("sound", "mAudioRecord initialization failure");
         }
         isGetVoiceRun = true;
  
@@ -71,19 +71,19 @@ public class AudioRecordDemo {
                 mAudioRecord.startRecording();
                 short[] buffer = new short[BUFFER_SIZE];
                 while (isGetVoiceRun) {
-                    //r是实际读取的数据长度，一般而言r会小于buffersize
+                    //r is the length of the actual data read, generally r will be less than the buffersize
                     int r = mAudioRecord.read(buffer, 0, BUFFER_SIZE);
                     long v = 0;
-                    // 将 buffer 内容取出，进行平方和运算
+                    // Remove the contents of the buffer and perform the sum-of-squares operation.
                     for (int i = 0; i < buffer.length; i++) {
                         v += buffer[i] * buffer[i];
                     }
-                    // 平方和除以数据总长度，得到音量大小。
+                    // The sum of the squares is divided by the total length of the data to get the volume size.
                     double mean = v / (double) r;
                     double volume = 10 * Math.log10(mean);
-                    Log.d(TAG, "分贝值:" + volume);
+                    Log.d(TAG, "db:" + volume);
                     SleepActivity.decibel = Math.max(volume, SleepActivity.decibel);
-                    // 大概一秒十次
+                    // About ten times a second.
                     synchronized (mLock) {
                         try {
                             mLock.wait(100);

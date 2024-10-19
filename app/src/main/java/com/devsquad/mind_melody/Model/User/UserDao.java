@@ -9,35 +9,35 @@ import java.util.Date;
 @Dao
 public interface UserDao {
 
-    // 1. 获取用户：根据用户 ID 获取用户信息
+    // Get User: Get user information based on user ID
     @Query("SELECT * FROM User WHERE userId = :userId")
     User getUser(int userId);
 
-    // 2. 注册用户：注册新用户，确保 email 不重复
+    // Registered Users: Register a new user and make sure the email is not duplicated.
     @Insert(onConflict = OnConflictStrategy.ABORT)
     long registerUser(User user);
 
-    // 注册用户（检查邮箱是否重复）
+    // Registered users (check for duplicate mailboxes)
     @Query("SELECT COUNT(*) FROM User WHERE userEmail = :email")
     int checkEmailExists(String email);
 
-    // 3. 用户登录：根据 email 和密码查找用户 (已弃用！！！通过bcrypt对加密密码进行配对并登录)
+    // User login: lookup user by email and password (deprecated!!! Pair encrypted passwords with bcrypt and log in)
     @Query("SELECT * FROM User WHERE userEmail = :email AND userPassword = :password")
     User loginUser(String email, String password);
 
-    // 4. 更新用户信息：更新用户的邮箱、密码、姓名
+    // Update user information: update user's email, password, name
     @Query("UPDATE User SET userEmail = :email, userPassword = :password, firstName = :firstName, lastName = :lastName WHERE userId = :userId")
     void updateUser(int userId, String email, String password, String firstName, String lastName);
 
-    // 5. 获取用户的最近冥想日期
+    // Get the user's most recent meditation date
     @Query("SELECT lastMeditDate FROM User WHERE userId = :userId LIMIT 1")
     Date getLastMeditDate(int userId);
 
-    // 6. 更新用户的冥想日期
+    // Updating a user's meditation date
     @Query("UPDATE User SET lastMeditDate = :date WHERE userId = :userId")
     void updateLastMeditDate(int userId, Date date);
 
-    // 获取用户信息：根据用户的 email 获取用户信息（不再使用密码进行查询）
+    // Get user info: get user info based on user's email (no more password lookups)
     @Query("SELECT * FROM User WHERE userEmail = :email")
     User getUserByEmail(String email);
 

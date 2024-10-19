@@ -25,25 +25,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 加载 activity_main.xml 布局
+        // Load activity_main.xml Layout
         setContentView(R.layout.activity_main);
 
-        // 获取输入框和按钮
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
 
-        // 获取 Sign Up Link文本视图
+        // Get the Sign Up Link text view
         TextView signUpLink = findViewById(R.id.signUpLink);
 
-        // 为 Sign Up Link文本设置点击监听器
+        // Set up a click listener for the Sign Up Link text.
         signUpLink.setOnClickListener(view -> {
             // 跳转到 RegistrationActivity
             Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
             startActivity(intent);
         });
 
-        // 设置登录按钮的点击事件监听器
+        // Set up a click event listener for the login button.
         loginButton.setOnClickListener(view -> loginUser());
     }
 
@@ -51,38 +50,37 @@ public class MainActivity extends AppCompatActivity {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
 
-        // 验证输入框不为空
+        // Validate that the input box is not empty
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(MainActivity.this, "Email and password cannot be empty!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // 验证输入框不为空
+        // Validate that the input box is not empty
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(MainActivity.this, "Email and password cannot be empty!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // 使用 Room 提供的查询线程池来执行查询任务
+        // Use the query thread pool provided by Room to perform the query task.
         UserDB db = UserDB.getDatabase(getApplicationContext());
 
-        // 使用 UserDB 中定义的查询线程池
+        // Use the query thread pool defined in UserDB.
         db.getQueryExecutor().execute(() -> {
             User user = db.userDao().getUserByEmail(email);  // 查询用户信息
 
-            // 回到主线程更新 UI
             runOnUiThread(() -> {
                 if (user == null) {
                     Toast.makeText(this, "User not found!", Toast.LENGTH_SHORT).show();
                 } else {
-                    // 验证密码是否正确
+                    // Use BCrypt to decrypt the pair to verify that the password is correct.
                     if (BCrypt.checkpw(password, user.getUserPassword())) {
-                        // 用户存在，跳转到 HomeActivity
+                        // Password matches, jump to HomeActivity
                         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                        intent.putExtra("loggedInUser", user);  // 将 User 对象传递给 HomeActivity
+                        intent.putExtra("loggedInUser", user);  // Pass the User object to the HomeActivity.
                         ((MyApplication) getApplicationContext()).setLoggedInUser(user);
                         startActivity(intent);
-                        finish();  // 结束当前 Activity，防止用户返回登录页面
+                        finish();  // End the current Activity to prevent the user from returning to the login page.
                     } else {
                         Toast.makeText(this, "User information incorrect, please try again or register a new account.", Toast.LENGTH_SHORT).show();
                     }
