@@ -41,6 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private Button logoutButton;
     private ImageView backButton;
+    private TextView editProfileButton;
 
     private UserDB userDB;
     private UserDao userDao;
@@ -71,6 +72,8 @@ public class ProfileActivity extends AppCompatActivity {
         TextView userMembership = findViewById(R.id.userMembership);
         TextView lastMeditation = findViewById(R.id.lastMeditation);
 
+        editProfileButton = findViewById(R.id.editProfile);
+
         // 设置用户数据
         userName.setText(userInfo.get("name"));
         userEmail.setText(userInfo.get("email"));
@@ -83,6 +86,9 @@ public class ProfileActivity extends AppCompatActivity {
             // 这里假设你使用Glide或其他库来加载图片
             // Glide.with(this).load(profileImagePath).into(userProfileImage);
         //}
+
+
+
 
 
         // 示例历史记录数据，用字母表示
@@ -100,6 +106,16 @@ public class ProfileActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+
+
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+                startActivity(intent);
+            }
         });
 
 
