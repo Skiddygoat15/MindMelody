@@ -40,6 +40,11 @@ id createUserButton
 id createdAt
 id dividerLine1
 id dividerLine2
+id editEmail
+id editFirstName
+id editLastName
+id editPassword
+id editProfile
 id emailEditText
 id firstNameEditText
 id goToFocusButton
@@ -77,6 +82,7 @@ id replyContent
 id replyDate
 id replyInput
 id returnButton
+id saveProfileButton
 id signUpLink
 id signUpText
 id sloganText
@@ -91,6 +97,7 @@ id userProfileImage
 id welcomeText
 layout activity_main
 layout bottom_navigation
+layout edit_profile_activity
 layout forum_activity
 layout home_activity
 layout item_home_content

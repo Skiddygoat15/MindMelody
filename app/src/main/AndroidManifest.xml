@@ -30,6 +30,7 @@
         <activity android:name=".Activities.ForumActivity" />
         <activity android:name=".Activities.PostActivity" />
         <activity android:name=".Activities.ProfileActivity" />
+        <activity android:name=".Activities.EditProfileActivity" />
     </application>
 
 </manifest>

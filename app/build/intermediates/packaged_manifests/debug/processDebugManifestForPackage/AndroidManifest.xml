@@ -45,6 +45,7 @@
         <activity android:name="com.devsquad.mind_melody.Activities.ForumActivity" />
         <activity android:name="com.devsquad.mind_melody.Activities.PostActivity" />
         <activity android:name="com.devsquad.mind_melody.Activities.ProfileActivity" />
+        <activity android:name="com.devsquad.mind_melody.Activities.EditProfileActivity" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
