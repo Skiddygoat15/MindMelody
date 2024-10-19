@@ -167,11 +167,12 @@
                     android:paddingTop="8dp">
 
                     <TextView
+                        android:id="@+id/privacy"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Privacy"
-                        android:onClick="privacy"/>
+                        android:onClick="privacy"
+                        android:text="Privacy" />
 
                     <ImageView
                         android:layout_width="24dp"

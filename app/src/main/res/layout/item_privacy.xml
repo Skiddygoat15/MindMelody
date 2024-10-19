@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+
+    <TextView
+        android:id="@+id/privacyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Privacy Policy"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/privacyTitle"
+        android:layout_above="@+id/backButton"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/privacyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="We are committed to protecting your privacy. This privacy policy outlines how we collect, use, and safeguard your personal information when you use our services. We may collect data, including but not limited to, your name, contact information, and usage details to improve the functionality and experience of our application. Your personal information will only be used to provide and enhance our services and will not be shared with third parties without your consent, except as required by law. We implement reasonable security measures to protect your data, but please note that no method of data transmission over the internet is completely secure. By using our application, you consent to the collection and use of your information as described in this policy.
+
+"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp" />
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"/>
+
+
+
+</RelativeLayout>

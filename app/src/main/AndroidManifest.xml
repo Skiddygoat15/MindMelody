@@ -43,6 +43,7 @@
         <activity android:name=".Activities.FocusModeActivity" />
         <activity android:name=".Activities.SleepActivity" />
         <activity android:name=".Activities.SleepQualityReportActivity" />
+        <activity android:name=".Activities.PrivacyActivity"/>
     </application>
 
 </manifest>

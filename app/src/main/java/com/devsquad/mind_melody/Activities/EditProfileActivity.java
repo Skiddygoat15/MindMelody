@@ -12,6 +12,8 @@ import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.Model.User.UserDB;
 import com.devsquad.mind_melody.Model.User.UserDao;
 import com.devsquad.mind_melody.R;
+import org.mindrot.jbcrypt.BCrypt;
+
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -62,21 +64,45 @@ public class EditProfileActivity extends AppCompatActivity {
         String email = editEmail.getText().toString();
         String password = editPassword.getText().toString();
 
+        // 检查密码是否为空以及长度是否符合要求
+        if (!password.isEmpty() && password.length() <= 6) {
+            Toast.makeText(EditProfileActivity.this, "Password must be longer than 6 characters", Toast.LENGTH_SHORT).show();
+            return; // 如果密码长度不符合要求，退出方法
+        }
+
         if (loggedInUser != null) {
             loggedInUser.setFirstName(firstName);
             loggedInUser.setLastName(lastName);
             loggedInUser.setUserEmail(email);
-            loggedInUser.setUserPassword(password);
+
+            // 仅在密码输入框不为空时更新密码
+            if (!password.isEmpty()) {
+                String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+                loggedInUser.setUserPassword(hashedPassword);
+            }
 
             // 更新用户信息到数据库
             new Thread(() -> {
-                userDao.updateUser(
-                        loggedInUser.getUserId(),
-                        loggedInUser.getUserEmail(),
-                        loggedInUser.getUserPassword(),
-                        loggedInUser.getFirstName(),
-                        loggedInUser.getLastName()
-                );
+                if (!password.isEmpty()) {
+                    // 更新包括密码在内的所有信息
+                    userDao.updateUser(
+                            loggedInUser.getUserId(),
+                            loggedInUser.getUserEmail(),
+                            loggedInUser.getUserPassword(),
+                            loggedInUser.getFirstName(),
+                            loggedInUser.getLastName()
+                    );
+                } else {
+                    // 更新除了密码外的其他信息
+                    userDao.updateUser(
+                            loggedInUser.getUserId(),
+                            loggedInUser.getUserEmail(),
+                            loggedInUser.getUserPassword(), // 使用原密码
+                            loggedInUser.getFirstName(),
+                            loggedInUser.getLastName()
+                    );
+                }
+
                 runOnUiThread(() -> {
                     // 显示保存成功的提示
                     Toast.makeText(EditProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
@@ -90,4 +116,5 @@ public class EditProfileActivity extends AppCompatActivity {
             }).start();
         }
     }
+
 }

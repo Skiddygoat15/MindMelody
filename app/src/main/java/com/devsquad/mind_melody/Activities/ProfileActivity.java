@@ -42,6 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button logoutButton;
     private ImageView backButton;
     private TextView editProfileButton;
+    private TextView privacyButton;
 
     private UserDB userDB;
     private UserDao userDao;
@@ -73,6 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
         TextView lastMeditation = findViewById(R.id.lastMeditation);
 
         editProfileButton = findViewById(R.id.editProfile);
+        privacyButton = findViewById(R.id.privacy);
 
         // 设置用户数据
         userName.setText(userInfo.get("name"));
@@ -93,6 +95,14 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        privacyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, PrivacyActivity.class);
                 startActivity(intent);
             }
         });
