@@ -41,7 +41,7 @@ public class EditProfileActivity extends AppCompatActivity {
             editFirstName.setText(loggedInUser.getFirstName());
             editLastName.setText(loggedInUser.getLastName());
             editEmail.setText(loggedInUser.getUserEmail());
-            editPassword.setText(loggedInUser.getUserPassword());
+            //editPassword.setText(loggedInUser.getUserPassword());
         }
 
         // 初始化数据库访问
