@@ -80,33 +80,12 @@ public class ProfileActivity extends AppCompatActivity {
         userMembership.setText(userInfo.get("membership"));
         lastMeditation.setText(userInfo.get("lastMeditation"));
 
-        // 示例：根据历史记录加载用户头像 (需自定义逻辑)
-        String profileImagePath = userInfo.get("profileImage");
-        //if (profileImagePath != null) {
-            // 这里假设你使用Glide或其他库来加载图片
-            // Glide.with(this).load(profileImagePath).into(userProfileImage);
-        //}
 
 
 
 
 
-        // 示例历史记录数据，用字母表示
-        List<Character> historyLetters = Arrays.asList('S', 'M', 'T', 'W', 'T', 'F', 'S');
 
-        RecyclerView recyclerView = findViewById(R.id.historyRecyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 7));
-
-        // Sample data for letters
-        List<String> letters = Arrays.asList("M", "T", "W", "T", "F", "S", "S");
-        ProfileAdapter adapter = new ProfileAdapter(letters);
-        recyclerView.setAdapter(adapter);
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.historyRecyclerView), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
 
 
