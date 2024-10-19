@@ -20,8 +20,10 @@ import java.util.Locale;
 public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+
     private Button goToForumButton, goToWhiteNoiseButton, logOutButton, goToProfileButton, goToSleepAssistButton;
-    private Button focusModeButton;
+    private Button focusModeButton, goToMeditationButton;
+
     private HomeAdapter homeAdapter;
     private List<String> homeContentList;
 
@@ -36,6 +38,8 @@ public class HomeActivity extends AppCompatActivity {
         goToWhiteNoiseButton = findViewById(R.id.goToWhiteNoiseButton);
         focusModeButton = findViewById(R.id.goToFocusButton);
         logOutButton = findViewById(R.id.logOutButton);
+        goToMeditationButton = findViewById(R.id.goToMeditationButton);  // 初始化冥想按钮
+
         goToProfileButton = findViewById(R.id.goToProfileButton);
         goToSleepAssistButton = findViewById(R.id.goToSleepAssistButton);
 
@@ -109,6 +113,12 @@ public class HomeActivity extends AppCompatActivity {
 
             // 启动 SleepActivity
             startActivity(intent);
+        });
+
+        // 为 Go to Meditation 按钮设置监听器
+        goToMeditationButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, MeditationVideoListActivity.class);
+            startActivity(intent);  // 启动冥想界面
         });
     }
 

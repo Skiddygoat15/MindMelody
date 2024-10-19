@@ -4,6 +4,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.OnConflictStrategy;
 
+import java.util.Date;
+
 @Dao
 public interface UserDao {
 
@@ -26,6 +28,14 @@ public interface UserDao {
     // 4. 更新用户信息：更新用户的邮箱、密码、姓名
     @Query("UPDATE User SET userEmail = :email, userPassword = :password, firstName = :firstName, lastName = :lastName WHERE userId = :userId")
     void updateUser(int userId, String email, String password, String firstName, String lastName);
+
+    // 5. 获取用户的最近冥想日期
+    @Query("SELECT lastMeditDate FROM User WHERE userId = :userId LIMIT 1")
+    Date getLastMeditDate(int userId);
+
+    // 6. 更新用户的冥想日期
+    @Query("UPDATE User SET lastMeditDate = :date WHERE userId = :userId")
+    void updateLastMeditDate(int userId, Date date);
 
     // 获取用户信息：根据用户的 email 获取用户信息（不再使用密码进行查询）
     @Query("SELECT * FROM User WHERE userEmail = :email")
