@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -21,9 +22,16 @@ import androidx.media3.common.Player;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.common.MediaItem;
 import android.widget.ProgressBar;
+
+import com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication;
+import com.devsquad.mind_melody.Model.User.User;
+import com.devsquad.mind_melody.Model.User.UserDB;
+import com.devsquad.mind_melody.Model.User.UserDao;
 import com.devsquad.mind_melody.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 import java.lang.reflect.Field;
 
@@ -39,12 +47,14 @@ public class FocusModeActivity extends AppCompatActivity {
     private boolean isRunning = false;
     private ExoPlayer player;
     private ProgressBar progressBar;
+    private User loggedInUser;
 
     // Constants
     private final long extendTime = 5 * 60 * 1000; // Extend by 5 minutes
     private long totalTime = 6 * extendTime; // Default time: 30 minutes in milliseconds
     private long remainingTime = 6 * extendTime;
     private String currentSound = null;
+    private int currentIndex = 0; // store the index of the currently playing audio
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +77,10 @@ public class FocusModeActivity extends AppCompatActivity {
         // Initialize ExoPlayer for background sounds
         player = new ExoPlayer.Builder(this).build();
 
+        loggedInUser = ((MyApplication) getApplicationContext()).getLoggedInUser();
+        UserDB userDB = UserDB.getDatabase(this);
+        UserDao userDao = userDB.userDao();
+
         // Set initial timer value
         updateTimerText(remainingTime);
 
@@ -74,7 +88,7 @@ public class FocusModeActivity extends AppCompatActivity {
         changeSoundButton.setEnabled(false);
         customMusicButton.setEnabled(false);
         changeFavoriteButton.setEnabled(true);
-        backButton.setEnabled(false);
+        backButton.setEnabled(true);
         pauseButton.setEnabled(false);
         extendButton.setEnabled(false);
 
@@ -87,13 +101,12 @@ public class FocusModeActivity extends AppCompatActivity {
                 // Stop the session
                 new AlertDialog.Builder(FocusModeActivity.this)
                         .setTitle("Stop Session")
-                        .setMessage("Stop this session?")
+                        .setMessage("Are you sure you want to stop this session?")
                         .setPositiveButton("Yes", (dialog, which) -> resetSession())
                         .setNegativeButton("Cancel", null)
                         .show();
             }
         });
-
 
         // Pause button logic
         pauseButton.setOnClickListener(v -> {
@@ -160,13 +173,48 @@ public class FocusModeActivity extends AppCompatActivity {
                 }
             }
         });
-        // Back button logic
-        backButton.setOnClickListener(v -> finish());
 
-        // Custom Favourite Music button logic
+        // Back button logic
+        backButton.setOnClickListener(v -> {
+            if (isRunning) {
+                // If a session is in progress, a dialog box is displayed asking you to stop the session
+                new AlertDialog.Builder(FocusModeActivity.this)
+                        .setTitle("Stop Session")
+                        .setMessage("Are you sure you want to stop this session?")
+                        .setPositiveButton("Yes", (dialog, which) -> {
+                            // reset the session status
+                            resetSession();
+                            // return to home page
+                            Intent intent = new Intent(FocusModeActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
+            } else {
+                // If the session does not start, return to home page directly
+                Intent intent = new Intent(FocusModeActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Get Favourite Music from database and play
         customMusicButton.setOnClickListener(v -> {
-            Intent intent = new Intent(FocusModeActivity.this, AudioListActivity.class);
-            startActivityForResult(intent, 1);
+            // Pause audio from the ExoPlayer
+            if (player != null && player.isPlaying()) {
+                player.pause();
+            }
+
+            // Obtain the favouriteMusic from the database and play it
+            new Thread(() -> {
+                String favouriteMusic = userDao.getFavouriteMusic(loggedInUser.getUserId());
+                runOnUiThread(() -> {
+                    if (favouriteMusic != null) {
+                        playBackgroundSound(favouriteMusic);
+                    } else {
+                        Toast.makeText(FocusModeActivity.this, "No favorite audio set", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }).start();
         });
 
         // Change favorite button logic (goes to audio list page)
@@ -229,7 +277,6 @@ public class FocusModeActivity extends AppCompatActivity {
             changeSoundButton.setEnabled(true);
             customMusicButton.setEnabled(true);
             extendButton.setEnabled(true);
-            backButton.setEnabled(false);
             changeFavoriteButton.setEnabled(false);
         });
 
@@ -241,7 +288,6 @@ public class FocusModeActivity extends AppCompatActivity {
 
         builder.create().show();
     }
-
 
     // Recalculate the progress bar without starting the timer
     private void updateProgressBar() {
@@ -300,7 +346,6 @@ public class FocusModeActivity extends AppCompatActivity {
         changeSoundButton.setEnabled(false); // Disable change sound button
         customMusicButton.setEnabled(false); // Disable custom music button
         extendButton.setEnabled(false);      // Disable extend button
-        backButton.setEnabled(true);         // Re-enable back button
         changeFavoriteButton.setEnabled(true); // Re-enable change favorite button
     }
 
@@ -317,7 +362,7 @@ public class FocusModeActivity extends AppCompatActivity {
         String selectedScenario = scenarioSpinner.getSelectedItem().toString();
         switch (selectedScenario) {
             case "Work":
-                currentSound = "coffee_shop";
+                currentSound = "piano";
                 remainingTime = 12 * extendTime;
                 break;
             case "Study":
@@ -325,11 +370,24 @@ public class FocusModeActivity extends AppCompatActivity {
                 remainingTime = 9 * extendTime;
                 break;
             case "Reading":
-                currentSound = "white_noise";
+                currentSound = "forest";
                 remainingTime = 6 * extendTime;
                 break;
             case "Custom":
-                currentSound = "piano";
+                loggedInUser = ((MyApplication) getApplicationContext()).getLoggedInUser();
+                UserDB userDB = UserDB.getDatabase(this);
+                UserDao userDao = userDB.userDao();
+                // Obtain the favouriteMusic from the database and store it to currentSound
+                new Thread(() -> {
+                    String favouriteMusic = userDao.getFavouriteMusic(loggedInUser.getUserId());
+                    runOnUiThread(() -> {
+                        if (favouriteMusic != null) {
+                            currentSound = favouriteMusic;
+                        } else {
+                            Toast.makeText(FocusModeActivity.this, "No favorite audio set", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }).start();
                 remainingTime = 5 * extendTime;
                 break;
         }
@@ -338,18 +396,26 @@ public class FocusModeActivity extends AppCompatActivity {
 
     // Play the selected sound
     private void playBackgroundSound(String soundName) {
-        int soundResource = getSoundResourceByName(soundName);
-        if (soundResource != -1) {
-            MediaItem mediaItem = MediaItem.fromUri("android.resource://" + getPackageName() + "/" + soundResource);
+        if (soundName.startsWith("android.resource://")) {
+            // Resource file path, played using MediaItem
+            MediaItem mediaItem = MediaItem.fromUri(soundName);
             player.setMediaItem(mediaItem);
             player.setRepeatMode(Player.REPEAT_MODE_ALL);
             player.prepare();
             player.play();
         } else {
-            Toast.makeText(this, "Sound resource not found", Toast.LENGTH_SHORT).show();
+            int soundResource = getSoundResourceByName(soundName);
+            if (soundResource != -1) {
+                MediaItem mediaItem = MediaItem.fromUri("android.resource://" + getPackageName() + "/" + soundResource);
+                player.setMediaItem(mediaItem);
+                player.setRepeatMode(Player.REPEAT_MODE_ALL);
+                player.prepare();
+                player.play();
+            } else {
+                Toast.makeText(this, "Sound resource not found", Toast.LENGTH_SHORT).show();
+            }
         }
     }
-
 
     private int getSoundResourceByName(String soundName) {
         Resources res = getResources();
@@ -358,10 +424,28 @@ public class FocusModeActivity extends AppCompatActivity {
 
     // Play random sound from raw folder
     private void playRandomSound() {
-        Field[] rawFiles = R.raw.class.getFields();
-        int randomIndex = new Random().nextInt(rawFiles.length);
-        String randomSound = rawFiles[randomIndex].getName();
-        playBackgroundSound(randomSound);
+        // Create a list of all.mp3 file names
+        String[] mp3Files = {
+                "coffee_shop",
+                "forest",
+                "piano",
+                "quiet",
+                "rain",
+                "sea",
+                "wind"
+        };
+
+        if (mp3Files.length > 0) {
+            // Plays the audio file at the current index
+            String nextSound = mp3Files[currentIndex];
+            playBackgroundSound(nextSound);  // play next aduio
+
+            // Update the index to make sure play audio on sequence
+            // When the index reaches the end of the list, it is reset to 0
+            currentIndex = (currentIndex + 1) % mp3Files.length;
+        } else {
+            Toast.makeText(this, "No MP3 files found", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

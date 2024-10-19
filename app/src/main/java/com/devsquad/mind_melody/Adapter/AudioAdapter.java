@@ -24,8 +24,8 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
 
     private List<Audio> audioList;
     private OnItemClickListener listener;
-    private Audio defaultAudio = null;  // 保存当前默认音频
-    private int currentPosition = -1;    // 当前播放的音频位置
+    private Audio defaultAudio = null;  // Save the current default audio
+    private int currentPosition = -1;    // Currently playing audio position
 
     public interface OnItemClickListener {
         void onItemClick(Audio audio);
@@ -49,35 +49,34 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
         holder.audioName.setText(audio.getName());
         holder.audioImage.setImageResource(audio.getImageResId());
 
-        // 根据当前音频是否为默认，设置爱心图标
+        // Setting the heart icon depending on whether the current audio is the default or not
         if (audio.equals(defaultAudio)) {
-            holder.favoriteButton.setImageResource(R.drawable.ic_favorite);  // 实心爱心
+            holder.favoriteButton.setImageResource(R.drawable.ic_favorite);  // sincere love
         } else {
-            holder.favoriteButton.setImageResource(R.drawable.ic_favorite_border);  // 空心爱心
+            holder.favoriteButton.setImageResource(R.drawable.ic_favorite_border);  // hollow hearted love
         }
 
-        // 点击爱心按钮，设置为默认音频
+        // Click the heart button to set it as the default audio
         holder.favoriteButton.setOnClickListener(v -> {
             if (!audio.equals(defaultAudio)) {
                 defaultAudio = audio;
-                notifyDataSetChanged();  // 通知列表刷新
+                notifyDataSetChanged();
 
-                // 更新数据库中的 favouriteMusic
+                // Update favouriteMusic in the database
                 User loggedInUser = ((MyApplication) holder.itemView.getContext().getApplicationContext()).getLoggedInUser();
                 UserDB userDB = UserDB.getDatabase(holder.itemView.getContext());
                 UserDao userDao = userDB.userDao();
 
-                // 更新数据库
                 new Thread(() -> {
                     userDao.updateFavouriteMusic(loggedInUser.getUserId(), audio.getFilePath());
-                    loggedInUser.setFavouriteMusic(audio.getFilePath());  // 同时更新内存中的用户对象
+                    loggedInUser.setFavouriteMusic(audio.getFilePath());  // Also update the user object in memory
                 }).start();
 
                 Toast.makeText(holder.itemView.getContext(), audio.getName() + " Has been set as default audio", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // 点击播放音频，更新当前播放的位置
+        // Click Play Audio to update the current playing position
         holder.itemView.setOnClickListener(v -> {
             currentPosition = holder.getAdapterPosition();
             listener.onItemClick(audio);
@@ -89,13 +88,13 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
         return audioList.size();
     }
 
-    // 设置默认音频并刷新适配器
+    // Setting the default audio and refreshing the adapter
     public void setDefaultAudio(Audio audio) {
         this.defaultAudio = audio;
-        notifyDataSetChanged();  // 刷新列表，更新UI
+        notifyDataSetChanged();  // Refresh the list and update the UI
     }
 
-    // 返回当前播放的音频对象
+    // Returns the currently playing audio object
     public Audio getCurrentAudio() {
         if (currentPosition >= 0) {
             return audioList.get(currentPosition);
@@ -106,13 +105,13 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
     public static class AudioViewHolder extends RecyclerView.ViewHolder {
         TextView audioName;
         ImageView audioImage;
-        ImageButton favoriteButton;  // 爱心按钮
+        ImageButton favoriteButton;
 
         public AudioViewHolder(@NonNull View itemView) {
             super(itemView);
             audioName = itemView.findViewById(R.id.audio_name);
             audioImage = itemView.findViewById(R.id.audio_image);
-            favoriteButton = itemView.findViewById(R.id.favorite_button);  // 绑定爱心按钮
+            favoriteButton = itemView.findViewById(R.id.favorite_button);
         }
     }
 }
