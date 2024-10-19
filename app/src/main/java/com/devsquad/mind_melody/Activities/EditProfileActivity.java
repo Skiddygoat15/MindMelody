@@ -27,29 +27,29 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_profile_activity);
 
-        // 初始化视图
+        // Find the components
         editFirstName = findViewById(R.id.editFirstName);
         editLastName = findViewById(R.id.editLastName);
         editEmail = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
         saveProfileButton = findViewById(R.id.saveProfileButton);
 
-        // 获取当前登录的用户
+        // Get User
         MyApplication myApp = (MyApplication) getApplication();
         loggedInUser = myApp.getLoggedInUser();
 
         if (loggedInUser != null) {
-            // 填充当前用户信息到编辑框
+            // Fill the info textview
             editFirstName.setText(loggedInUser.getFirstName());
             editLastName.setText(loggedInUser.getLastName());
             editEmail.setText(loggedInUser.getUserEmail());
             //editPassword.setText(loggedInUser.getUserPassword());
         }
 
-        // 初始化数据库访问
+        // Database
         userDao = UserDB.getDatabase(this).userDao();
 
-        // 保存按钮的点击事件
+        // Click Listener for save
         saveProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,10 +64,10 @@ public class EditProfileActivity extends AppCompatActivity {
         String email = editEmail.getText().toString();
         String password = editPassword.getText().toString();
 
-        // 检查密码是否为空以及长度是否符合要求
+        // Password length limit
         if (!password.isEmpty() && password.length() <= 6) {
             Toast.makeText(EditProfileActivity.this, "Password must be longer than 6 characters", Toast.LENGTH_SHORT).show();
-            return; // 如果密码长度不符合要求，退出方法
+            return; // exit
         }
 
         if (loggedInUser != null) {
@@ -75,16 +75,16 @@ public class EditProfileActivity extends AppCompatActivity {
             loggedInUser.setLastName(lastName);
             loggedInUser.setUserEmail(email);
 
-            // 仅在密码输入框不为空时更新密码
+            // Not empty to change password
             if (!password.isEmpty()) {
                 String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
                 loggedInUser.setUserPassword(hashedPassword);
             }
 
-            // 更新用户信息到数据库
+            // Update the info
             new Thread(() -> {
                 if (!password.isEmpty()) {
-                    // 更新包括密码在内的所有信息
+                    // Update all
                     userDao.updateUser(
                             loggedInUser.getUserId(),
                             loggedInUser.getUserEmail(),
@@ -93,7 +93,7 @@ public class EditProfileActivity extends AppCompatActivity {
                             loggedInUser.getLastName()
                     );
                 } else {
-                    // 更新除了密码外的其他信息
+                    // Update all except password
                     userDao.updateUser(
                             loggedInUser.getUserId(),
                             loggedInUser.getUserEmail(),
@@ -104,14 +104,14 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
 
                 runOnUiThread(() -> {
-                    // 显示保存成功的提示
+                    // Success Info
                     Toast.makeText(EditProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
 
-                    // 跳转回 ProfileActivity
+                    // Back to Profile
                     Intent intent = new Intent(EditProfileActivity.this, ProfileActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
-                    finish(); // 关闭当前活动
+                    finish(); // Close
                 });
             }).start();
         }

@@ -56,17 +56,10 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profile_activity);
 
 
-        MyApplication myApp = (MyApplication) getApplication();
-
-        // 获取当前登录的用户
-        User loggedInUser = myApp.getLoggedInUser();
-        //updateUIWithUserData(loggedInUser);
-
-
-        // 示例：获取历史记录中的用户信息数据
+        // Get The user Info
         Map<String, String> userInfo = getUserHistoryInfo();
 
-        // 查找布局中的视图
+        // Find the components
         ImageView userProfileImage = findViewById(R.id.userProfileImage);
         TextView userName = findViewById(R.id.userName);
         TextView userEmail = findViewById(R.id.userEmail);
@@ -76,7 +69,7 @@ public class ProfileActivity extends AppCompatActivity {
         editProfileButton = findViewById(R.id.editProfile);
         privacyButton = findViewById(R.id.privacy);
 
-        // 设置用户数据
+        // Set user info
         userName.setText(userInfo.get("name"));
         userEmail.setText(userInfo.get("email"));
         userMembership.setText(userInfo.get("membership"));
@@ -90,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-
+        // Click listener for Edit Profile
         editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,6 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        // Click listener for Privacy Page
         privacyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,81 +104,71 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    public void logoutClick(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+        // Log out button
+        public void logoutClick(View view){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
 
-    public void backClick(View view){
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-    }
-
-
-
-
+        // Back Button
+        public void backClick(View view){
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        }
 
 
-    // 示例：从历史记录获取用户信息 (可以替换为实际的数据来源)
+
+
+
+
+    // Get user Info
     private Map<String, String> getUserHistoryInfo() {
         Map<String, String> userInfo = new HashMap<>();
 
-        // 获取当前登录的用户
+        // get User ID
         MyApplication myApp = (MyApplication) getApplication();
         User loggedInUser = myApp.getLoggedInUser();
 
         if (loggedInUser != null) {
-            // 设置用户名称和电子邮件
+            // Name and Email
             String name = loggedInUser.getFirstName() + " " + loggedInUser.getLastName();
             userInfo.put("name", name);
             userInfo.put("email", loggedInUser.getUserEmail());
 
-            // 1. 获取当前日期和注册日期的时间差
+            // Calc Member time
             Date registerDate = loggedInUser.getRegisterDate();
             String registerDateStr = formatDate(registerDate);
             userInfo.put("membership", "Member since: " + registerDateStr);
 
-            // 2. 获取当前日期和最后冥想日期的时间差
+            // Get last meditation time
             Date lastMeditDate = loggedInUser.getLastMeditDate();
             String lastMeditationDifference = calculateTimeDifference(lastMeditDate);
             userInfo.put("lastMeditation", "Last meditation: " + lastMeditationDifference);
         } else {
-            // 如果没有用户登录，使用默认数据
+            // Guest Default
             userInfo.put("name", "Guest");
             userInfo.put("email", "guest@example.com");
             userInfo.put("membership", "Member since: N/A");
             userInfo.put("lastMeditation", "Last meditation: N/A");
         }
 
-        userInfo.put("profileImage", ""); // 可自定义头像路径
+        //userInfo.put("profileImage", "");
 
         return userInfo;
     }
 
 
 
-    // 更新界面数据
-    private void updateUIWithUserData(User user) {
-        TextView userName = findViewById(R.id.userName);
-        TextView userEmail = findViewById(R.id.userEmail);
-        TextView userMembership = findViewById(R.id.userMembership);
-        TextView lastMeditation = findViewById(R.id.lastMeditation);
 
-        // 设置用户数据
-        userName.setText(user.getFirstName() + " " + user.getLastName());
-        userEmail.setText(user.getUserEmail());
-        userMembership.setText("Member since: " + user.getRegisterDate().toString());
-        lastMeditation.setText("Last meditation: " + user.getLastMeditDate().toString());
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // 销毁数据库实例
+
         UserDB.destroyInstance();
     }
 
-    // 辅助函数：格式化日期为字符串
+    // Helper format Date to String
     private String formatDate(Date date) {
         if (date == null) {
             return "N/A";
@@ -193,7 +177,7 @@ public class ProfileActivity extends AppCompatActivity {
         return sdf.format(date);
     }
 
-    // 辅助函数：计算两个日期之间的时间差
+    // Helper Calc the time difference
     private String calculateTimeDifference(Date pastDate) {
         if (pastDate == null) {
             return "N/A";

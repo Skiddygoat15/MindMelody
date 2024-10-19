@@ -26,7 +26,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-                <!-- Settings Icon (移到左边) -->
+                <!-- Settings Icon  -->
                 <ImageView
                     android:id="@+id/backButton"
                     android:layout_width="24dp"
@@ -39,7 +39,7 @@
                     android:layout_gravity="left"
                     android:onClick="backClick"/>
 
-                <!-- Title: Profile (居中) -->
+                <!-- Title: Profile  -->
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
