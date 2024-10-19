@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication;
 import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.R;
 import com.devsquad.mind_melody.Adapter.HomeAdapter;
@@ -45,8 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         goToSleepAssistButton = findViewById(R.id.goToSleepAssistButton);
 
         // 获取 MainActivity 传递过来的用户信息
-        User loggedInUser = (User) getIntent().getSerializableExtra("loggedInUser");
-
+        User loggedInUser = ((MyApplication) getApplicationContext()).getLoggedInUser();
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerViewHome);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

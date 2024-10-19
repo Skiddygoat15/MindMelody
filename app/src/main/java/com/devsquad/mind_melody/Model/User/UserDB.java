@@ -6,6 +6,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
+import androidx.room.migration.Migration;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.devsquad.mind_melody.Model.DateConverter.DateConverter;
 
@@ -45,5 +47,14 @@ public abstract class UserDB extends RoomDatabase {
     public static void destroyInstance() {
         DBINSTANCE = null;
     }
+
+    // Define a migration strategy
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            // Implement the migration logic here
+            database.execSQL("ALTER TABLE your_table ADD COLUMN new_column INTEGER NOT NULL DEFAULT 0");
+        }
+    };
 
 }
