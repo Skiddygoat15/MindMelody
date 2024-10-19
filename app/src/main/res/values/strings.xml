@@ -12,6 +12,7 @@
         <item>Work</item>
         <item>Study</item>
         <item>Reading</item>
+        <item>Custom</item>
     </string-array>
 
 </resources>
