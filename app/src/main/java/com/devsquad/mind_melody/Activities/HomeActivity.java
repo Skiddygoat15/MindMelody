@@ -2,6 +2,7 @@ package com.devsquad.mind_melody.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,6 +59,9 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         recyclerView.setAdapter(homeAdapter);
+
+        // Check the display state of the RecyclerView and reinitialize it if necessary.
+        checkRecyclerViewVisibility();
 
         // 为 Go to Forum 按钮设置监听器
         goToForumButton.setOnClickListener(v -> {
@@ -121,5 +125,16 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);  // 启动冥想界面
         });
     }
+
+    private void checkRecyclerViewVisibility() {
+        // 检查 RecyclerView 是否可见
+        if (recyclerView.getVisibility() != View.VISIBLE) {
+            // 如果不可见，尝试重新初始化 RecyclerView
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(homeAdapter); // 重新设置适配器
+            recyclerView.invalidate(); // 强制重新绘制 RecyclerView
+        }
+    }
+
 
 }

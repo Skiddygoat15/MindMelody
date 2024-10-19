@@ -3,6 +3,7 @@ package com.devsquad.mind_melody.Model.Forum;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.annotation.NonNull;
 import java.io.Serializable;
@@ -12,7 +13,8 @@ import java.util.Date;
         foreignKeys = @ForeignKey(entity = Post.class,
                 parentColumns = "postId",
                 childColumns = "postId",
-                onDelete = ForeignKey.CASCADE))
+                onDelete = ForeignKey.CASCADE),
+        indices = {@Index(value = "postId")})
 public class Reply implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
