@@ -362,7 +362,7 @@ public class FocusModeActivity extends AppCompatActivity {
         String selectedScenario = scenarioSpinner.getSelectedItem().toString();
         switch (selectedScenario) {
             case "Work":
-                currentSound = "coffee_shop";
+                currentSound = "piano";
                 remainingTime = 12 * extendTime;
                 break;
             case "Study":
@@ -370,7 +370,7 @@ public class FocusModeActivity extends AppCompatActivity {
                 remainingTime = 9 * extendTime;
                 break;
             case "Reading":
-                currentSound = "white_noise";
+                currentSound = "forest";
                 remainingTime = 6 * extendTime;
                 break;
             case "Custom":
