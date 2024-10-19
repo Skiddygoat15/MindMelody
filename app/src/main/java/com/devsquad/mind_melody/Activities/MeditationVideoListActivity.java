@@ -34,11 +34,11 @@ public class MeditationVideoListActivity extends AppCompatActivity {
 
         backToHomeButton.setOnClickListener(v -> {
             Intent intent = new Intent(MeditationVideoListActivity.this, HomeActivity.class);
-            startActivity(intent);  // 启动 HomeActivity
-            finish();  // 关闭当前界面，防止回退到该界面
+            startActivity(intent);  
+            finish();  
         });
 
-        // 创建视频列表
+        // create video list
         List<VideoItem> videoItemList = new ArrayList<>();
 
         videoItemList.add(new VideoItem("Meditation", R.drawable.meditation, R.raw.meditation));
@@ -58,7 +58,7 @@ public class MeditationVideoListActivity extends AppCompatActivity {
         });
         recyclerView.setAdapter(new MeditationVideoAdapter(videoItemList, videoItem -> {
             Intent intent = new Intent(MeditationVideoListActivity.this, VideoPlayerActivity.class);
-            // 传递视频标题和视频ID
+            
             intent.putExtra("videoTitle", videoItem.getTitle());
             intent.putExtra("videoResId", videoItem.getVideoResId());
             startActivity(intent);
