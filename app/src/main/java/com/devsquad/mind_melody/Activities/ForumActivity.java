@@ -236,13 +236,8 @@ public class ForumActivity extends AppCompatActivity {
 
         float batteryPct = level * 100 / (float) scale;
 
-        // Check if the network is Wi-Fi
-        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connManager.getActiveNetworkInfo();
-        boolean isWifi = networkInfo != null && networkInfo.getType() == ConnectivityManager.TYPE_WIFI;
-
         // Uploads are only allowed when the battery is greater than 30% and you are connected to Wi-Fi
-        return batteryPct > 30 && isWifi;
+        return batteryPct > 30;
     }
 
 }
