@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Activities.HomeActivity">
 
-    <!-- RecyclerView 用于显示欢迎内容 -->
-
-    <!-- 去 Forum 的按钮 -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHome"

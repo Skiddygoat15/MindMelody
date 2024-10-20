@@ -8,7 +8,6 @@
     android:layout_marginBottom="15dp"
     android:background="@drawable/recycler_background">
 
-    <!-- 作者名称 -->
     <TextView
         android:id="@+id/author"
         android:layout_width="wrap_content"
@@ -19,9 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 帖子标题 -->
-
-    <!-- 帖子内容 -->
 
     <TextView
         android:id="@+id/title"
@@ -46,7 +42,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/createdAt" />
 
-    <!-- 发布时间 -->
     <TextView
         android:id="@+id/createdAt"
         android:layout_width="wrap_content"
@@ -57,7 +52,6 @@
         app:layout_constraintTop_toBottomOf="@id/content"
         android:layout_marginTop="12dp" />
 
-    <!-- 点赞图标 -->
     <ImageView
         android:id="@+id/likeIcon"
         android:layout_width="24dp"
@@ -68,7 +62,6 @@
         app:layout_constraintEnd_toStartOf="@id/likesNum"
         app:layout_constraintTop_toTopOf="@id/likesNum" />
 
-    <!-- 点赞数 -->
     <TextView
         android:id="@+id/likesNum"
         android:layout_width="wrap_content"

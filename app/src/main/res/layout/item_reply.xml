@@ -7,7 +7,6 @@
     android:layout_marginBottom="5dp"
     android:background="@drawable/reply_background">
 
-    <!-- 回复者姓名 -->
     <TextView
         android:id="@+id/replyAuthor"
         android:layout_width="wrap_content"
@@ -18,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 回复内容 -->
     <TextView
         android:id="@+id/replyContent"
         android:layout_width="0dp"
@@ -30,7 +28,6 @@
         app:layout_constraintTop_toBottomOf="@id/replyAuthor"
         android:layout_marginTop="4dp" />
 
-    <!-- 回复时间 -->
     <TextView
         android:id="@+id/replyDate"
         android:layout_width="wrap_content"

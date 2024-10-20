@@ -6,7 +6,6 @@
     android:padding="16dp"
     android:background="@drawable/reply_background">
 
-    <!-- 帖子标题 -->
     <TextView
         android:id="@+id/postTitle"
         android:layout_width="0dp"
@@ -18,7 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 作者名称 -->
     <TextView
         android:id="@+id/postAuthor"
         android:layout_width="wrap_content"
@@ -29,7 +27,6 @@
         app:layout_constraintStart_toStartOf="@id/postTitle"
         app:layout_constraintTop_toBottomOf="@id/postTitle" />
 
-    <!-- 帖子内容 -->
     <TextView
         android:id="@+id/postContent"
         android:layout_width="0dp"
@@ -41,7 +38,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/postAuthor" />
 
-    <!-- 发布时间 -->
     <TextView
         android:id="@+id/postDate"
         android:layout_width="wrap_content"

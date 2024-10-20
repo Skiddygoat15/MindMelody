@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Activities.PostActivity">
 
-    <!-- RecyclerView 用于显示帖子详细内容 -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPostDetails"
