@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication;
+import com.devsquad.mind_melody.Model.Forum.ForumDB;
+import com.devsquad.mind_melody.Model.Forum.PostDao;
+import com.devsquad.mind_melody.Model.Forum.ReplyDao;
 import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.Model.User.UserDB;
 import com.devsquad.mind_melody.Model.User.UserDao;
@@ -21,6 +24,10 @@ public class EditProfileActivity extends AppCompatActivity {
     private Button saveProfileButton;
     private UserDao userDao;
     private User loggedInUser;
+    private ForumDB forumDB;
+    private PostDao postDao;
+    private ReplyDao replyDao;
+    private String oldAuthor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,7 @@ public class EditProfileActivity extends AppCompatActivity {
         // Get User
         MyApplication myApp = (MyApplication) getApplication();
         loggedInUser = myApp.getLoggedInUser();
+        oldAuthor = loggedInUser.getFirstName();
 
         if (loggedInUser != null) {
             // Fill the info textview
@@ -45,6 +53,9 @@ public class EditProfileActivity extends AppCompatActivity {
             editEmail.setText(loggedInUser.getUserEmail());
             //editPassword.setText(loggedInUser.getUserPassword());
         }
+        forumDB = ForumDB.getDatabase(this);
+        replyDao = forumDB.replyDao();
+        postDao = forumDB.postDao();
 
         // Database
         userDao = UserDB.getDatabase(this).userDao();
@@ -81,10 +92,10 @@ public class EditProfileActivity extends AppCompatActivity {
                 loggedInUser.setUserPassword(hashedPassword);
             }
 
-            // Update the info
-            new Thread(() -> {
+            // Update the info using Room's executor
+            forumDB.getQueryExecutor().execute(() -> {
                 if (!password.isEmpty()) {
-                    // Update all
+                    // Update all info including password
                     userDao.updateUser(
                             loggedInUser.getUserId(),
                             loggedInUser.getUserEmail(),
@@ -93,28 +104,36 @@ public class EditProfileActivity extends AppCompatActivity {
                             loggedInUser.getLastName()
                     );
                 } else {
-                    // Update all except password
+                    // Update all info except password
                     userDao.updateUser(
                             loggedInUser.getUserId(),
                             loggedInUser.getUserEmail(),
-                            loggedInUser.getUserPassword(), // 使用原密码
+                            loggedInUser.getUserPassword(), // Use original password
                             loggedInUser.getFirstName(),
                             loggedInUser.getLastName()
                     );
                 }
 
+                // Update the author's name in all the user's posts
+                postDao.updatePostAuthor(loggedInUser.getFirstName(), loggedInUser.getUserId());
+
+                // Update the author's name in all replies
+                replyDao.updateReplyAuthor(loggedInUser.getFirstName(), oldAuthor);
+
+                // Go back to the UI thread to update the UI
                 runOnUiThread(() -> {
-                    // Success Info
+                    // Show success message
                     Toast.makeText(EditProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
 
-                    // Back to Profile
+                    // Navigate back to ProfileActivity
                     Intent intent = new Intent(EditProfileActivity.this, ProfileActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
-                    finish(); // Close
+                    finish(); // Close current activity
                 });
-            }).start();
+            });
         }
     }
+
 
 }

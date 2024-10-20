@@ -12,7 +12,7 @@ import com.devsquad.mind_melody.Model.DateConverter.DateConverter;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Post.class, Reply.class}, version = 2, exportSchema = false)
+@Database(entities = {Post.class, Reply.class}, version = 3, exportSchema = false)
 @TypeConverters({DateConverter.class})
 public abstract class ForumDB extends RoomDatabase {
 
