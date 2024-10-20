@@ -66,7 +66,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.createdAt.setText(formattedDate);  // Formatted time display
         holder.likesNum.setText(post.getLikesNum() + " Likes");
 
-        // 点击事件
         holder.itemView.setOnClickListener(v -> {
             if (onItemClickListener != null) {
                 onItemClickListener.onItemClick(post);  // Pass the click event through the interface
@@ -88,7 +87,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                     postDao.disLikePost(post.getPostId());  // Call the DAO method that un-likes the
                     post.setLikesNum(post.getLikesNum() - 1);  // Update local likes
                 }).thenRun(() -> {
-                    // 更新UI
                     likedPosts.remove(post.getPostId());  // Update the collection of tracked likes
                     holder.likesNum.post(() -> holder.likesNum.setText(post.getLikesNum() + " Likes"));  // Update likes num
                     holder.likeIcon.post(() -> holder.likeIcon.setImageResource(R.drawable.ic_thumb_up));  // Switch back to the Unliked icon

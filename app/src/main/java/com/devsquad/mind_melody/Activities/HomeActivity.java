@@ -24,7 +24,6 @@ public class HomeActivity extends AppCompatActivity {
     private Button focusModeButton, goToMeditationButton;
 
     private HomeAdapter homeAdapter;
-    private List<String> homeContentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

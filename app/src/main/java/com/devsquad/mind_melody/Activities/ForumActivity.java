@@ -1,10 +1,7 @@
 package com.devsquad.mind_melody.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Bundle;
@@ -49,7 +46,7 @@ public class ForumActivity extends AppCompatActivity {
     private EditText postContent;
     private Button postButton, returnButton;
     private PostDao postDao;
-    private User loggedInUser; // 当前登录的用户
+    private User loggedInUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

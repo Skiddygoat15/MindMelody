@@ -13,41 +13,26 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.devsquad.mind_melody.Adapter.ProfileAdapter;
 import com.devsquad.mind_melody.R;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.Calendar;
 
 import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.Model.User.UserDB;
-import com.devsquad.mind_melody.Model.User.UserDao;
 import com.devsquad.mind_melody.Activities.OverallApplicationSetups.MyApplication;
 
 public class ProfileActivity extends AppCompatActivity {
 
 
-    private Button logoutButton;
-    private ImageView backButton;
     private TextView editProfileButton;
     private TextView privacyButton;
 
-    private UserDB userDB;
-    private UserDao userDao;
-    private User userID;
-    private MyApplication myApplication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +59,6 @@ public class ProfileActivity extends AppCompatActivity {
         userEmail.setText(userInfo.get("email"));
         userMembership.setText(userInfo.get("membership"));
         lastMeditation.setText(userInfo.get("lastMeditation"));
-
-
-
-
-
-
 
 
 
@@ -117,10 +96,6 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
 
-
-
-
-
     // Get user Info
     private Map<String, String> getUserHistoryInfo() {
         Map<String, String> userInfo = new HashMap<>();
@@ -156,10 +131,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         return userInfo;
     }
-
-
-
-
 
     @Override
     protected void onDestroy() {

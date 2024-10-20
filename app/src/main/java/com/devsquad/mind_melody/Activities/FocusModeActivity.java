@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -28,12 +27,6 @@ import com.devsquad.mind_melody.Model.User.User;
 import com.devsquad.mind_melody.Model.User.UserDB;
 import com.devsquad.mind_melody.Model.User.UserDao;
 import com.devsquad.mind_melody.R;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Random;
-import java.lang.reflect.Field;
 
 public class FocusModeActivity extends AppCompatActivity {
 

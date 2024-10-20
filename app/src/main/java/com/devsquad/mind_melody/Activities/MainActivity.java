@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set up a click listener for the Sign Up Link text.
         signUpLink.setOnClickListener(view -> {
-            // 跳转到 RegistrationActivity
+            // RegistrationActivity
             Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
             startActivity(intent);
         });
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Use the query thread pool defined in UserDB.
         db.getQueryExecutor().execute(() -> {
-            User user = db.userDao().getUserByEmail(email);  // 查询用户信息
+            User user = db.userDao().getUserByEmail(email);
 
             runOnUiThread(() -> {
                 if (user == null) {

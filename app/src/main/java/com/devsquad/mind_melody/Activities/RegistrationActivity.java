@@ -42,7 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         // Set the ‘Create User’ button click event.
         createUserButton.setOnClickListener(v -> {
-            if (validateFields()) {  // 验证用户输入字段
+            if (validateFields()) {
                 registerUser();
             }
         });

@@ -38,9 +38,8 @@ public class ReplyAdapter extends RecyclerView.Adapter<ReplyAdapter.ReplyViewHol
         Reply reply = replyList.get(position);
         holder.replyAuthor.setText(reply.getAuthor());
         holder.replyContent.setText(reply.getContent());
-        // 使用 DateUtils 来格式化 createdAt
         String formattedDate = DateUtils.formatDateToSydneyTime(reply.getCreatedAt());
-        holder.replyDate.setText(formattedDate);  // 格式化后的时间显示
+        holder.replyDate.setText(formattedDate);
     }
 
     @Override
