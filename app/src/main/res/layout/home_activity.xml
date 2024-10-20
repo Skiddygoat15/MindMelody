@@ -1,125 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".Activities.HomeActivity">
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHome"
-        android:layout_width="392dp"
-        android:layout_height="201dp"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toTopOf="@id/goToForumButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
 
+    <!-- Divider Line -->
     <View
         android:id="@+id/dividerLine1"
-        android:layout_width="356dp"
-        android:layout_height="3dp"
-        android:layout_marginTop="238dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="16dp" />
 
-    <Button
-        android:id="@+id/goToForumButton"
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="492dp"
-        android:text="Go to Forum"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        android:background="@drawable/custom_button"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
 
-    <Button
-        android:id="@+id/goToFocusButton"
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="255dp"
-        android:layout_marginBottom="492dp"
-        android:background="@drawable/custom_button"
-        android:text="Focus Mode"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/goToForumButton"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Go to Forum"
+            android:background="@drawable/custom_button"
+            android:textColor="#000000"
+            android:layout_marginEnd="16dp" />
 
-    <Button
-        android:id="@+id/goToSleepAssistButton"
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="392dp"
-        android:background="@drawable/custom_button"
-        android:text="Sleep Assistant"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/goToFocusButton"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Focus Mode"
+            android:background="@drawable/custom_button"
+            android:textColor="#000000" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/goToMeditationButton"
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="255dp"
-        android:layout_marginBottom="392dp"
-        android:background="@drawable/custom_button"
-        android:text="Meditation"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="26dp">
 
-    <Button
-        android:id="@+id/goToWhiteNoiseButton"
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="292dp"
-        android:background="@drawable/custom_button"
-        android:text="White Noise"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/goToSleepAssistButton"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Sleep Assistant"
+            android:background="@drawable/custom_button"
+            android:textColor="#000000"
+            android:layout_marginEnd="16dp" />
 
-    <Button
-        android:id="@+id/goToProfileButton"
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="255dp"
-        android:layout_marginBottom="292dp"
-        android:background="@drawable/custom_button"
-        android:text="Profile"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/goToMeditationButton"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Meditation"
+            android:background="@drawable/custom_button"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="26dp">
+
+        <Button
+            android:id="@+id/goToWhiteNoiseButton"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="White Noise"
+            android:background="@drawable/custom_button"
+            android:textColor="#000000"
+            android:layout_marginEnd="16dp" />
+
+        <Button
+            android:id="@+id/goToProfileButton"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:background="@drawable/custom_button"
+            android:textColor="#000000" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/logOutButton"
-        android:layout_width="363dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="196dp"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
         android:text="Log Out"
         android:textColor="#F0F0F0"
         android:backgroundTint="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp" />
+</LinearLayout>
