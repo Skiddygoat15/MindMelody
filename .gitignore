@@ -40,3 +40,4 @@ app/build/intermediates/merged_manifest/debug/processDebugMainManifest/AndroidMa
 app/build/intermediates/merged_manifests/debug/processDebugManifest/AndroidManifest.xml
 app/build/intermediates/packaged_manifests/debug/processDebugManifestForPackage/AndroidManifest.xml
 local.properties
+local.properties
